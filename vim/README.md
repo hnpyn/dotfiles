@@ -1,2 +1,0 @@
-# vim
-my vim config
