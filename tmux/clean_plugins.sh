@@ -1,1 +1,2 @@
-rm -rf ./plugins/*
+rm -rf ./plugins
+mkdir plugins
