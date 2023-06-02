@@ -1,4 +1,3 @@
-# plugins
-!**/tmux/plugins
-**/tmux/plugins/*
+# pluginstmux
+tmux/plugins/*
 
