@@ -2,6 +2,7 @@
 echo "clean plugins..."
 rm -rf plugins
 mkdir plugins
+cd plugins
 echo "done!"
 echo "Install plugins..."
 git clone https://github.com/alexanderjeurissen/ranger_devicons

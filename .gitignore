@@ -4,3 +4,6 @@
 
 # python
 **/__pycache__/
+
+# lazygit
+lazygit/state.yml
