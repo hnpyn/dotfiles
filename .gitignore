@@ -3,5 +3,4 @@
 !nvim/lua/plugins/
 
 # python
-__pycache__/*
-**/__pycache__
+**/__pycache__/
