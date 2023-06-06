@@ -115,7 +115,7 @@ nor <leader>q <C-w>q
 " 不保存退出
 nor <C-c><C-c> <Esc>:q!<cr>
 
-filetype On 
+filetype on
 
 " call plug#begin()
 " The default plugin directory will be as follows:
