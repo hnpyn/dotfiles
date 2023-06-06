@@ -24,7 +24,7 @@ return {
 							text_align = "left",
 						},
 					},
-					separator_style = "slant",
+					-- separator_style = "slant",
 				},
 			})
 		end,
