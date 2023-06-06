@@ -144,8 +144,8 @@ filetype on
 
 " pretty dress
 set termguicolors
-" set highlight to 300ms
-let g:highlightedyank_highlight_duration = 300
+" set highlight to 1000ms
+let g:highlightedyank_highlight_duration = 1000
 " set highlight color
 hi Visual guifg=#0d0e0f guibg=#eebd35 gui=none
 hi Search guifg=#0d0e0f guibg=#eebd35 gui=none
