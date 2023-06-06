@@ -156,6 +156,7 @@ hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none
 " let g:tokyonight_enable_italic = 1
 " let g:Tlist_Ctags_Cmd='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 " 
-" " 颜色主题设置
-" colorscheme tokyonight
+" 颜色主题设置
+set background=dark
+colorscheme gruvbox
 
