@@ -114,6 +114,8 @@ nor <leader>v <C-w>v
 nor <leader>q <C-w>q
 " 不保存退出
 nor <C-c><C-c> <Esc>:q!<cr>
+" no highlight
+map("n", "<Esc>", "<CMD>noh<CR>", opt)
 
 filetype on
 
@@ -144,8 +146,10 @@ filetype on
 set termguicolors
 " set highlight to 300ms
 let g:highlightedyank_highlight_duration = 300
-" set visual color
+" set highlight color
 hi Visual guifg=#0d0e0f guibg=#eebd35 gui=none
+hi Search guifg=#0d0e0f guibg=#eebd35 gui=none
+hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none
 " tokyonight主题设置
 " let g:tokyonight_transparent_background = 1  " 和终端透明度保持一致
 " let g:tokyonight_style = 'night' " available: night, storm
