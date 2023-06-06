@@ -114,14 +114,8 @@ nor <leader>v <C-w>v
 nor <leader>q <C-w>q
 " 不保存退出
 nor <C-c><C-c> <Esc>:q!<cr>
-" 树形结构
-" nor <leader>t :NERDTreeToggle<CR>
-" nor <leader>f :NERDTreeFind<CR>
 
-syntax on           " 自动语法高亮
-
-filetype off        " 关闭文件类型检测
-filetype plugin indent on  " 文件类型插件和缩进
+filetype On 
 
 " call plug#begin()
 " The default plugin directory will be as follows:
@@ -146,8 +140,12 @@ filetype plugin indent on  " 文件类型插件和缩进
 " 
 " call plug#end()
 
-" 开启vim真彩色
+" pretty dress
 set termguicolors
+" set highlight to 300ms
+let g:highlightedyank_highlight_duration = 300
+" set visual color
+hi Visual guifg=#0d0e0f guibg=#eebd35 gui=none
 " tokyonight主题设置
 " let g:tokyonight_transparent_background = 1  " 和终端透明度保持一致
 " let g:tokyonight_style = 'night' " available: night, storm
