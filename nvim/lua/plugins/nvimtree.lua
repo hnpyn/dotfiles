@@ -30,6 +30,8 @@ return {
 
 			-- pass to setup along with your other options
 			require("nvim-tree").setup({
+				-- disables netrw completely
+				disable_netrw = false,
 				on_attach = my_on_attach,
 				sort_by = "case_sensitive",
 				view = {
@@ -39,6 +41,17 @@ return {
 				renderer = {
 					group_empty = true,
 					full_name = true,
+					icons = {
+						show = {
+							folder_arrow = true,
+						},
+						glyphs = {
+							folder = {
+								arrow_closed = " ",
+								arrow_open = " ",
+							},
+						},
+					},
 				},
 				filters = {
 					custom = {
