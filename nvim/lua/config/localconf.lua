@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 
 -- pretty dress
 set.termguicolors = true
-vim.cmd("colorscheme gruvbox-material")
+-- vim.cmd("colorscheme gruvbox-material")
 
 -- highlights
 vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
