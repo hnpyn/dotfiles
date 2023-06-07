@@ -2,6 +2,8 @@ return {
 	{
 		"willothy/nvim-cokeline",
 		config = function()
+			local map = vim.keymap.set
+
 			local get_hex = require("cokeline/utils").get_hex
 			local mappings = require("cokeline/mappings")
 
@@ -131,6 +133,18 @@ return {
 					},
 				},
 			})
+
+			-- cokeline keymap
+			map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", { silent = true })
+			map("n", "<Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
+			map("n", "<Leader>p", "<Plug>(cokeline-switch-prev)", { silent = true })
+			map("n", "<Leader>n", "<Plug>(cokeline-switch-next)", { silent = true })
+			map("n", "<Leader>C", "<Plug>(cokeline-pick-close)", { silent = true })
+
+			for i = 1, 9 do
+				map("n", ("<F%s>"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i), { silent = true })
+				map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-switch-%s)"):format(i), { silent = true })
+			end
 		end,
 	},
 }

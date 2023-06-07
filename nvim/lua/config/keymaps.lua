@@ -24,15 +24,3 @@ map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
 map("n", "<Leader>v", "<C-w>v", { desc = "split window h vertical", silent = true })
 map("n", "<Leader>s", "<C-w>s", { desc = "split window h horizontal", silent = true })
 map("n", "<Leader>x", "<C-w>q", { desc = "quit a window", silent = true })
-
--- cokeline keymap
-map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", { silent = true })
-map("n", "<Tab>", "<Plug>(cokeline-focus-next)", { silent = true })
-map("n", "<Leader>p", "<Plug>(cokeline-switch-prev)", { silent = true })
-map("n", "<Leader>n", "<Plug>(cokeline-switch-next)", { silent = true })
-map("n", "<Leader>C", "<Plug>(cokeline-pick-close)", { silent = true })
-
-for i = 1, 9 do
-	map("n", ("<F%s>"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i), { silent = true })
-	map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-switch-%s)"):format(i), { silent = true })
-end
