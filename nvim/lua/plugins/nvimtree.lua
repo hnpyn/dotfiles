@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-tree/nvim-tree.lua",
+		enabled = true,
 		version = "*",
 		keys = {
 			{ "<Leader>tt", "<CMD>NvimTreeToggle<CR>", desc = "nvim-tree toggle" },
