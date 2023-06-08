@@ -61,4 +61,18 @@ return {
 	-- 		-- vim.cmd("colorscheme kanagawa")
 	-- 	end,
 	-- },
+	-- {
+	-- 	"ful1e5/onedark.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("onedark").setup({
+	-- 			colors = {
+	-- 				hint = "orange0",
+	-- 				error = "#ff0000",
+	-- 			},
+	-- 		})
+	-- 		vim.cmd("colorscheme onedark")
+	-- 	end,
+	-- },
 }
