@@ -39,17 +39,17 @@ return {
 	-- 		vim.cmd("colorscheme gruvbox-baby")
 	-- 	end,
 	-- },
-	{
-		"projekt0n/github-nvim-theme",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("github-theme").setup({
-				-- ...
-			})
-			vim.cmd("colorscheme github_dark")
-		end,
-	},
+	-- {
+	-- 	"projekt0n/github-nvim-theme",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("github-theme").setup({
+	-- 			-- ...
+	-- 		})
+	-- 		vim.cmd("colorscheme github_dark")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"rebelot/kanagawa.nvim",
 	-- 	lazy = false,
@@ -61,18 +61,15 @@ return {
 	-- 		-- vim.cmd("colorscheme kanagawa")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"ful1e5/onedark.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("onedark").setup({
-	-- 			colors = {
-	-- 				hint = "orange0",
-	-- 				error = "#ff0000",
-	-- 			},
-	-- 		})
-	-- 		vim.cmd("colorscheme onedark")
-	-- 	end,
-	-- },
+	{
+		"navarasu/onedark.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("onedark").setup({
+				style = "warm",
+			})
+			vim.cmd("colorscheme onedark")
+		end,
+	},
 }
