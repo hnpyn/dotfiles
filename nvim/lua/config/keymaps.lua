@@ -6,9 +6,9 @@ local opt = { noremap = true, silent = true }
 -- basic
 vim.g.mapleader = " "
 map("i", "jj", "<Esc>", opt)
-map("n", ",w", "<CMD>w<CR>", { desc = "write", silent = true })
-map("n", "<C-c><C-c>", "<CMD>qa!<CR>", opt)
 map("n", "<Esc>", "<CMD>noh<CR>", opt)
+map("n", "<C-c><C-c>", "<CMD>qa!<CR>", opt)
+map("n", ",w", "<CMD>w<CR>", { desc = "Write", silent = true })
 
 -- cursor behaviors
 map("i", "<C-e>", "<C-o>A", { desc = "Insert at the end of line", silent = true })
@@ -21,6 +21,9 @@ map({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 map({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 map({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
 map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
-map("n", "<Leader>v", "<C-w>v", { desc = "split window h vertical", silent = true })
-map("n", "<Leader>s", "<C-w>s", { desc = "split window h horizontal", silent = true })
-map("n", "<Leader>x", "<C-w>q", { desc = "quit a window", silent = true })
+map("n", "<Leader>v", "<C-w>v", { desc = "Split window h vertical", silent = true })
+map("n", "<Leader>s", "<C-w>s", { desc = "Split window h horizontal", silent = true })
+map("n", "<Leader>x", "<C-w>q", { desc = "Quit a window", silent = true })
+
+-- terminal
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Normal mode", silent = true })
