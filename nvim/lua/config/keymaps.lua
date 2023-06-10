@@ -1,17 +1,20 @@
 -- keybindings
 -- default settings
 local map = vim.keymap.set
-local opt = { noremap = true, silent = true }
+
+local function opts(desc)
+	return { desc = "" .. desc, noremap = true, silent = true }
+end
 
 -- basic
 vim.g.mapleader = " "
-map("i", "jj", "<Esc>", opt)
-map("n", "<Esc>", "<CMD>noh<CR>", opt)
-map("n", "<C-c><C-c>", "<CMD>qa!<CR>", opt)
-map("n", ",w", "<CMD>w<CR>", { desc = "Write", silent = true })
+map("i", "jj", "<Esc>", opts(""))
+map("n", "<Esc>", "<CMD>noh<CR>", opts(""))
+map("n", "<C-c><C-c>", "<CMD>qa!<CR>", opts(""))
+map("n", ",w", "<CMD>w<CR>", opts("Write"))
 
 -- cursor behaviors
-map("i", "<C-e>", "<C-o>A", { desc = "Insert at the end of line", silent = true })
+map("i", "<C-e>", "<C-o>A", opts("Insert at the end of line"))
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 map("n", "j", [[v:count ? 'j': 'gj']], { noremap = true, expr = true })
 map("n", "k", [[v:count ? 'k': 'gk']], { noremap = true, expr = true })
@@ -21,9 +24,9 @@ map({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 map({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 map({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
 map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
-map("n", "<Leader>v", "<C-w>v", { desc = "Split window h vertical", silent = true })
-map("n", "<Leader>s", "<C-w>s", { desc = "Split window h horizontal", silent = true })
-map("n", "<Leader>x", "<C-w>q", { desc = "Quit a window", silent = true })
+map("n", "<Leader>v", "<C-w>v", opts("Split window h vertical"))
+map("n", "<Leader>s", "<C-w>s", opts("Split window h horizontal"))
+map("n", "<Leader>x", "<C-w>q", opts("Quit a window"))
 
 -- terminal
-map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Normal mode", silent = true })
+map("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Normal mode"))
