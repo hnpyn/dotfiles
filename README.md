@@ -1,6 +1,8 @@
 # dotfiles
 
-my configs repo
+my dotfiles
+
+![dotfiles](./dotfiles.png)
 
 # Usage
 
