@@ -14,6 +14,8 @@ return {
 			local red = vim.g.terminal_color_1
 			local green = vim.g.terminal_color_2
 			local yellow = vim.g.terminal_color_3
+			local active_bg_color = "#BD93F9"
+			local inactive_bg_color = get_hex("Normal", "bg")
 
 			local components = {
 				space = {
@@ -21,15 +23,33 @@ return {
 					truncation = { priority = 1 },
 				},
 
-				two_spaces = {
-					text = "  ",
+				separator = {
+					text = function(buffer)
+						-- return buffer.index ~= 1 and "▏" or ""
+						if buffer.index ~= 1 then
+							return ""
+						end
+						return ""
+					end,
+					fg = inactive_bg_color,
+					bg = function(buffer)
+						if buffer.is_focused then
+							return active_bg_color
+						end
+						return inactive_bg_color
+					end,
 					truncation = { priority = 1 },
 				},
 
-				separator = {
-					text = function(buffer)
-						return buffer.index ~= 1 and "▏" or ""
+				tail = {
+					text = "",
+					fg = function(buffer)
+						if buffer.is_focused then
+							return active_bg_color
+						end
+						return inactive_bg_color
 					end,
+					bg = inactive_bg_color,
 					truncation = { priority = 1 },
 				},
 
@@ -101,7 +121,7 @@ return {
 
 				close_or_unsaved = {
 					text = function(buffer)
-						return buffer.is_modified and "●" or ""
+						return buffer.is_modified and "●" or "󰅖"
 					end,
 					fg = function(buffer)
 						return buffer.is_modified and green or nil
@@ -112,13 +132,27 @@ return {
 			}
 
 			require("cokeline").setup({
+				default_hl = {
+					-- fg = function(buffer)
+					-- 	return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
+					-- end,
+					-- bg = "NONE",
+					bg = function(buffer)
+						if buffer.is_focused then
+							return active_bg_color
+						end
+					end,
+				},
+
 				components = {
+					components.separator,
 					components.space,
 					components.devicon,
 					components.filename,
 					components.space,
 					components.close_or_unsaved,
 					components.space,
+					components.tail,
 				},
 
 				sidebar = {
