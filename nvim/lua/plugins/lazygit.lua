@@ -19,7 +19,7 @@ return {
 			vim.g.lazygit_use_custom_config_file_path = 0 -- config file path is evaluated if this value is 1
 			vim.g.lazygit_config_file_path = "" -- custom config file path
 
-			vim.cmd.cnoreabbrev([[lg LazyGit]])
+			vim.cmd.cnoreabbrev("lg LazyGit")
 
 			require("telescope").load_extension("lazygit")
 		end,
