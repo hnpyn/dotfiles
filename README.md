@@ -21,5 +21,5 @@ ln -s [the/dotfiles/you/want] [to/your/configs]
 for example
 
 ```bash
-ln -s ~/dotfiles/wezterm ~/.config/wezterm
+ln -s ~/dotfiles/wezterm ~/.config/
 ```
