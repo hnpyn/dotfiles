@@ -1,8 +1,8 @@
 # dotfiles
 
-my dotfiles
+Demonstration of Dracula theme.
 
-![dotfiles](./dotfiles.png)
+![dotfiles](./demo.png)
 
 # Usage
 
