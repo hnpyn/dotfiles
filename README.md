@@ -1,6 +1,6 @@
 # dotfiles
 
-Demonstration of Dracula theme.
+Demonstration of the Dracula theme.
 
 ![dotfiles](./demo.png)
 
