@@ -1,0 +1,25 @@
+# Alacirtty config
+
+# ---------- basic ----------
+# auto reloading
+live_config_reload: true
+
+# ---------- fonts ----------
+font:
+  size: 18
+  normal:
+    family: MesloLGS NF
+    style: Regular
+  bold:
+    family: MesloLGS NF
+    style: Bold
+  italic:
+    family: MesloLGS NF
+    style: Italic
+  bold_italic:
+    family: MesloLGS NF
+    style: Bolad Italic
+
+# ---------- colorscheme ----------
+import:
+  - ~/.config/alacritty/themes/dracula.yml
