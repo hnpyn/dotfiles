@@ -120,18 +120,18 @@ map("n", "<Esc>", "<CMD>noh<CR>", opt)
 nor <leader>tt :NERDTreeToggle<CR>
 
 " ---------- plugins ----------
-" call plug#begin()
-" " The default plugin directory will be as follows:
-" "   - Vim (Linux/macOS): '~/.vim/plugged'
-" "   - Vim (Windows): '~/vimfiles/plugged'
-" "   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" " You can specify a custom plugin directory by passing it as the argument
-" "   - e.g. `call plug#begin('~/.vim/plugged')`
-" "   - Avoid using standard Vim directory names like 'plugin'
-" 
-" " Make sure you use single quotes #确保使用单引号！！！
- 
-" " On-demand loading
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes #确保使用单引号！！！
+
+" On-demand loading
 " " NerdTree
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " " 开始界面
@@ -147,7 +147,7 @@ nor <leader>tt :NERDTreeToggle<CR>
 " " 右侧显示文件结构
 " Plug 'preservim/tagbar' 
 
-" call plug#end()
+call plug#end()
 
 " ---------- pretty dress ----------
 set termguicolors
@@ -160,9 +160,11 @@ hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none
 " colorscheme
 " tokyonight
 " let g:tokyonight_transparent_background = 1  " 和终端透明度保持一致
-" let g:tokyonight_style = 'night' " available: night, storm
+" let g:tokyonight_style = 'night'  " available: night, storm
 " let g:tokyonight_enable_italic = 1
 " colorscheme tokyonight
 " gruvbox
 set background=dark
 colorscheme gruvbox
+" dracula
+" colorscheme dracula
