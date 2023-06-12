@@ -145,7 +145,7 @@ nor <leader>tt :NERDTreeToggle<CR>
 " " coc自动补全
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}  
 " " 右侧显示文件结构
-" Plug 'preservim/tagbar'  " 
+" Plug 'preservim/tagbar' 
 
 " call plug#end()
 
