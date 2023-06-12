@@ -166,5 +166,3 @@ hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none
 " gruvbox
 set background=dark
 colorscheme gruvbox
-" dracula
-" colorscheme dracula
