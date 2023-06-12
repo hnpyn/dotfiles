@@ -1,12 +1,13 @@
 # Alacirtty config
 
-# ---------- basic ----------
+# ---------- general ----------
 # auto reloading
 live_config_reload: true
 
 # ---------- fonts ----------
 font:
   size: 18
+  
   normal:
     family: MesloLGS NF
     style: Regular
@@ -20,6 +21,24 @@ font:
     family: MesloLGS NF
     style: Bolad Italic
 
-# ---------- colorscheme ----------
+# ---------- pretty dress ----------
+env:
+  TERM: xterm-256color
+
+# colorscheme
 import:
-  - ~/.config/alacritty/themes/dracula.yml
+  - ~/.config/alacritty/themes/dracula.yaml
+
+window:
+  opacity: 0.99
+  decorations: None
+  # Windowed, Maximized, Fullscreen
+  starup_mode: Maximized
+
+mouse:
+  hide_when_typing: true
+
+# ---------- key bindings ----------
+key_bindings:
+  - { key: T, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: T, mods: Command, action: SpawnNewInstance }
