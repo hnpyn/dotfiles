@@ -47,3 +47,8 @@ mouse:
 key_bindings:
   - { key: T, mods: Control|Shift, action: SpawnNewInstance }
   - { key: T, mods: Command, action: SpawnNewInstance }
+
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: C, mods: Command, action: Copy }
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: V, mods: Command, action: Paste }
