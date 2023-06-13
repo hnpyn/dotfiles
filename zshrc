@@ -127,7 +127,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias lg='lazygit'
 alias ra='ranger'
-alias n='neofetch'
+alias nf='neofetch'
 alias icat='kitty +kitten icat'
 
 export EDITOR=nvim
