@@ -31,8 +31,8 @@ import:
 
 window:
   dimensions:
-    columns: 90
-    lines: 30
+    columns: 60
+    lines: 20
 
   opacity: 0.99
 
