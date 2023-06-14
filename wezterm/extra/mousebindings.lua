@@ -1,22 +1,23 @@
 -- mouse bindings
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 mousebindings = {}
 
 function mousebindings.mouseBindBasic()
-	local mouse_bindings = {
+	local mouse = {
 		{
 			event = { Drag = { streak = 1, button = "Left" } },
 			mods = "SUPER",
-			action = wezterm.action.StartWindowDrag,
+			action = act.StartWindowDrag,
 		},
 		{
 			event = { Drag = { streak = 1, button = "Left" } },
 			mods = "CTRL|SHIFT",
-			action = wezterm.action.StartWindowDrag,
+			action = act.StartWindowDrag,
 		},
 	}
-	return mouse_bindings
+	return mouse
 end
 
 return mousebindings

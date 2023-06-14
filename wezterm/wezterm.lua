@@ -30,8 +30,10 @@ config.enable_scroll_bar = false
 -- keybindings
 require("extra.navigator")
 local keybind = require("extra.keybindings")
+local mousebind = require("extra.mousebindings")
 
 config.leader = keybind.leader
 config.keys = keybind.keyBindBasic()
+config.mouse_bindings = mousebind.mouseBindBasic()
 
 return config
