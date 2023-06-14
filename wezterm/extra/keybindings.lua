@@ -5,10 +5,21 @@ local act = wezterm.action
 keybind = {}
 
 -- basic
-keybind.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
+keybind.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
 function keybind.keyBindBasic()
 	local keys = {
+		-- manage window
+		{
+			key = "n",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.SpawnCommandInNewWindow({ cwd = "~" }),
+		},
+		{
+			key = "t",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.SpawnCommandInNewTab({ cwd = "~" }),
+		},
 		-- manage pane
 		{
 			key = "v",
