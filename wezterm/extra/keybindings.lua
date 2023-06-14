@@ -1,13 +1,13 @@
--- mac keybindings
+-- keybindings
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-keybind = {}
+keybindings = {}
 
 -- basic
-keybind.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
+keybindings.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
-function keybind.keyBindBasic()
+function keybindings.keyBindBasic()
 	local keys = {
 		-- manage window
 		{
@@ -61,4 +61,4 @@ function keybind.keyBindBasic()
 	return keys
 end
 
-return keybind
+return keybindings
