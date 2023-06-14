@@ -25,11 +25,11 @@ return {
 
 				separator = {
 					text = function(buffer)
-						-- return buffer.index ~= 1 and "▏" or ""
-						if buffer.index ~= 1 then
-							return ""
-						end
-						return ""
+						return buffer.index ~= 1 and "" or ""
+						-- if buffer.index ~= 1 then
+						-- 	return ""
+						-- end
+						-- return ""
 					end,
 					fg = inactive_bg_color,
 					bg = function(buffer)
@@ -152,7 +152,8 @@ return {
 					components.space,
 					components.close_or_unsaved,
 					components.space,
-					components.tail,
+					-- components.tail,
+					components.separator,
 				},
 
 				sidebar = {
