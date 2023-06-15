@@ -4,7 +4,7 @@ local act = wezterm.action
 
 mousebindings = {}
 
-function mousebindings.mouseBindBasic()
+function mousebindings.basic()
 	local mouse = {
 		{
 			event = { Drag = { streak = 1, button = "Left" } },

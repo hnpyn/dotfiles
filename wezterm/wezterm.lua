@@ -23,17 +23,15 @@ config.window_padding = {
 	bottom = 0,
 }
 config.native_macos_fullscreen_mode = true
-
--- behavior
 config.enable_scroll_bar = false
 
 -- keybindings
 require("extra.navigator")
-local keybind = require("extra.keybindings")
-local mousebind = require("extra.mousebindings")
+local keybindings = require("extra.keybindings")
+local mousebindings = require("extra.mousebindings")
 
-config.leader = keybind.leader
-config.keys = keybind.keyBindBasic()
-config.mouse_bindings = mousebind.mouseBindBasic()
+config.leader = keybindings.leader
+config.keys = keybindings.basic()
+config.mouse_bindings = mousebindings.basic()
 
 return config

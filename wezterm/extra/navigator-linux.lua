@@ -37,7 +37,7 @@ end
 
 return {
 	keys = {
-		bind_if(is_outside_vim, "h", "ALT", a.ActivatePaneDirection("Left")),
-		bind_if(is_outside_vim, "l", "ALT", a.ActivatePaneDirection("Right")),
+		bind_if(is_outside_vim, "h", "CTRL", a.ActivatePaneDirection("Left")),
+		bind_if(is_outside_vim, "l", "CTRL", a.ActivatePaneDirection("Right")),
 	},
 }

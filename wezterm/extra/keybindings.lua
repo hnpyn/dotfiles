@@ -7,7 +7,7 @@ keybindings = {}
 -- basic
 keybindings.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
-function keybindings.keyBindBasic()
+function keybindings.basic()
 	local keys = {
 		-- manage window
 		{
