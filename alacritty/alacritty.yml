@@ -27,7 +27,7 @@ env:
 
 # colorscheme
 import:
-  - ~/.config/alacritty/themes/dracula.yaml
+  - ~/.config/alacritty/themes/tokyonight_night.yaml
 
 window:
   dimensions:

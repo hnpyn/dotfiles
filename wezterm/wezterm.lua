@@ -8,7 +8,7 @@ config.font = wezterm.font("MesloLGS NF")
 config.font_size = 18
 
 -- pretty dress
-config.color_scheme = "Dracula (Official)"
+config.color_scheme = "tokyonight_night"
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true

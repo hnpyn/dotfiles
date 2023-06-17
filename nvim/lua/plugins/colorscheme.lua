@@ -61,26 +61,26 @@ return {
 	-- 		-- vim.cmd("colorscheme kanagawa")
 	-- 	end,
 	-- },
-	{
-		"navarasu/onedark.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("onedark").setup({
-				style = "darker",
-			})
-			vim.cmd("colorscheme onedark")
-		end,
-	},
 	-- {
-	-- 	"folke/tokyonight.nvim",
+	-- 	"navarasu/onedark.nvim",
 	-- 	lazy = false,
 	-- 	priority = 1000,
-	-- 	opts = {},
 	-- 	config = function()
-	-- 		vim.cmd("colorscheme tokyonight-moon")
+	-- 		require("onedark").setup({
+	-- 			style = "darker",
+	-- 		})
+	-- 		vim.cmd("colorscheme onedark")
 	-- 	end,
 	-- },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			vim.cmd("colorscheme tokyonight-night")
+		end,
+	},
 	-- {
 	-- 	"Mofiqul/dracula.nvim",
 	-- 	lazy = false,
