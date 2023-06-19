@@ -24,9 +24,9 @@ map({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 map({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 map({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
 map({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
-map("n", "<Leader>v", "<C-w>v", opts("Split window h vertical"))
-map("n", "<Leader>s", "<C-w>s", opts("Split window h horizontal"))
-map("n", "<Leader>x", "<C-w>q", opts("Quit a window"))
+map("n", "<Leader>s", "<C-w>s", opts("Split window"))
+map("n", "<Leader>v", "<C-w>v", opts("Split window vertical"))
+map("n", "<Leader>x", "<C-w>q", opts("Kill a pane"))
 
 -- terminal
 map("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Normal mode"))
