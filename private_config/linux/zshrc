@@ -78,8 +78,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# environment variable
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+# check
+export check_CFLAGS="$HOME/Apps/check=0.14.0/lib:$check_CFLAGS"
+export check_LIBS="$HOME/Apps/check=0.14.0/lib:$check_LIBS"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
