@@ -1,29 +1,12 @@
-# name: L
-function _git_branch_name
-  echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
-end
-
-function _is_git_dirty
-  echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
-end
-
+# a called to `_pure_prompt_new_line` is triggered by an event
 function fish_prompt
-  set -l blue (set_color blue)
-  set -l green (set_color green)
-  set -l normal (set_color normal)
+    set --local exit_code $status  # save previous exit code
 
-  set -l arrow "λ"
-  set -l cwd $blue(basename (prompt_pwd))
+    echo -e -n (_pure_prompt_beginning)  # init prompt context (clear current line, etc.)
+    _pure_print_prompt_rows # manage default vs. compact prompt
+    _pure_place_iterm2_prompt_mark # place iTerm shell integration mark
+    echo -e -n (_pure_prompt $exit_code)  # print prompt
+    echo -e (_pure_prompt_ending)  # reset colors and end prompt
 
-  if [ (_git_branch_name) ]
-    set git_info $green(_git_branch_name)
-    set git_info ":$git_info"
-
-    if [ (_is_git_dirty) ]
-      set -l dirty "*"
-      set git_info "$git_info$dirty"
-    end
-  end
-
-  echo -n -s $cwd $git_info $normal ' ' $arrow ' '
+    set _pure_fresh_session false
 end
