@@ -9,9 +9,16 @@ config.font_size = 18
 
 -- pretty dress
 config.color_scheme = "tokyonight_night"
+config.colors = {
+	split = "#9370DB",
+}
+
+-- tab bar
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
+
+-- window
 config.initial_cols = 70
 config.initial_rows = 21
 config.window_decorations = "RESIZE"
@@ -24,6 +31,13 @@ config.window_padding = {
 }
 config.native_macos_fullscreen_mode = true
 config.enable_scroll_bar = false
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.8,
+}
+
+-- mouse
+config.hide_mouse_cursor_when_typing = true
 
 -- keybindings
 require("extra.navigator")
