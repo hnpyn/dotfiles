@@ -1,11 +1,11 @@
 # plugins
 **/plugins/
 **/plugged/
-!nvim/lua/plugins/
+!config/nvim/lua/plugins/
 
 # python
 *.pyo
 **/__pycache__/
 
 # lazygit
-lazygit/state.yml
+config/lazygit/state.yml
