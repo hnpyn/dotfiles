@@ -3,6 +3,5 @@
 configuration {
   show-icons: true;
   modi: "window,drun,ssh,run,filebrowser";
-  icon-theme: "Papirus";
 }
 @theme "nord"
