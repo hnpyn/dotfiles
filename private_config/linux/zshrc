@@ -84,6 +84,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # check
 export check_CFLAGS="$HOME/Apps/check=0.14.0/lib:$check_CFLAGS"
 export check_LIBS="$HOME/Apps/check=0.14.0/lib:$check_LIBS"
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
