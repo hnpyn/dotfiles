@@ -23,7 +23,7 @@
     sort = yes
     idle_threshold = 120
     # font = PingFang SC 12
-    font = Ubuntu Nerd Font Bold 18
+    font = Ubuntu Nerd Font Bold 16
     line_height = 0
     markup = full
     format = "<span><b>%s %p</b></span>\n%b"
