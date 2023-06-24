@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DIR="$HOME/.config/polybar"
+
 # Terminate already running bar instances
 killall -q polybar
 # If all your bars have ipc enabled, you can also use 
