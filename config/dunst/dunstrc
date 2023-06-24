@@ -13,12 +13,12 @@
     follow = mouse
 
     ### Geometry ###
-    geometry = "320x6-30+60"
-    width = 300
+    geometry = "500x0-30+60"
+    transparency = 0
 
     ### Progress bar ###
     indicate_hidden = yes
-    separator_height = 1
+    separator_height = 2
     padding = 10
     horizontal_padding = 10
     frame_width = 0
@@ -61,7 +61,6 @@
 
     ### Unknown ###
     shrink = no
-    notification_height = 30
     startup_notification = false
     verbosity = mesg
 
