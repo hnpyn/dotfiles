@@ -13,7 +13,10 @@
     follow = mouse
 
     ### Geometry ###
-    geometry = "500x0-30+60"
+    width = 500
+    height = 300
+    origin = top-right
+    offset = 30x60
     transparency = 0
 
     ### Progress bar ###
@@ -61,14 +64,9 @@
 
     ### Unknown ###
     shrink = no
-    startup_notification = false
-    verbosity = mesg
 
-
-[shortcuts]
-    close = ctrl+space
-    history = ctrl+shift+h
-    context = ctrl+shift+period
+    ### shotcuts ###
+    # none
 
 
 [urgency_low]
