@@ -1,8 +1,8 @@
 # dotfiles
 
-Demonstration of the Dracula theme.
+🏠.dotfiles
 
-![dotfiles](./demo.png)
+-- nvim, kitty, lazygit, ranger ...
 
 # Usage
 
@@ -12,14 +12,8 @@ jsut
 git clone https://github.com/hnpyn/dotfiles.git
 ```
 
-and
+and [TODO]
 
 ```bash
-ln -s [the/dotfiles/you/want] [to/your/configs]
-```
-
-for example
-
-```bash
-ln -s ~/dotfiles/wezterm ~/.config/
+bash install.sh
 ```
