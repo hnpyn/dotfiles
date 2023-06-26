@@ -9,3 +9,6 @@
 
 # lazygit
 config/lazygit/state.yml
+
+# nvim lazy
+config/nvim/lazy-lock.json
