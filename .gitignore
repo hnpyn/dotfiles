@@ -8,10 +8,10 @@
 **/__pycache__/
 
 # lazygit
-/config/lazygit/state.yml
+config/lazygit/state.yml
 
 # nvim lazy
-/config/nvim/lazy-lock.json
+config/nvim/lazy-lock.json
 
 # tmp
 *~
