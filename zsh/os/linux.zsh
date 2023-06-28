@@ -16,10 +16,14 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # environment variable
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+
 # check
 export check_CFLAGS="$HOME/Apps/check=0.14.0/lib:$check_CFLAGS"
 export check_LIBS="$HOME/Apps/check=0.14.0/lib:$check_LIBS"
+
 # libffi
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
