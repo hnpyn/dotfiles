@@ -12,7 +12,7 @@ return {
 					null_ls.builtins.formatting.black.with({
 						extra_args = { "--line-length", "120" },
 					}),
-					-- null_ls.builtins.formatting.clang_format,
+					null_ls.builtins.formatting.clang_format,
 					null_ls.builtins.formatting.markdownlint,
 				},
 				on_attach = function(client, bufnr)
