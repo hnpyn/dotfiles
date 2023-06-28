@@ -1,0 +1,11 @@
+# aliases
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vi="nvim"
+alias vim="nvim"
+alias ra="ranger"
+alias lg="lazygit"
+alias nf="neofetch"
+alias icat="kitty +kitten icat"
+alias chrome="google-chrome"
+alias pigcha="PigchaProxy"
