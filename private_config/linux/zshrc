@@ -101,7 +101,7 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
