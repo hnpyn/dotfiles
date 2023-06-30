@@ -14,7 +14,7 @@ set.cursorline = true
 set.nobackup = true
 set.nowritebackup = true
 set.autoread = true
-set.clipboard = "unnamed"
+set.clipboard = "unnamedplus"
 -- highlight after copy
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
@@ -37,5 +37,5 @@ set.termguicolors = true
 require("mason").setup()
 require("mason-lspconfig").setup()
 
--- boost dap ui
+-- bootstrap dap ui
 require("dapui").setup()
