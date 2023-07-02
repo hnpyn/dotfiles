@@ -4,16 +4,14 @@
 
 -- nvim, kitty, lazygit, ranger ...
 
-# Usage
+# Install
 
 jsut
 
 ```bash
 git clone https://github.com/hnpyn/dotfiles.git
-```
-
-and [TODO]
-
-```bash
-bash install.sh
+cd dotfiles
+chmod u+x install.sh
+[TODO]
+./install.sh
 ```
