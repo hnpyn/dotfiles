@@ -15,3 +15,9 @@ chmod u+x install.sh
 [TODO]
 ./install.sh
 ```
+
+or you can link what you like, for example
+
+```
+ln -s /the/path/of/dotfiles/config/nvim ~/.config/
+```
