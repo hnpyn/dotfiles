@@ -7,7 +7,7 @@ local python_path = ""
 if os_name == "Darwin" then
 	python_path = "/Users/n/Apps/miniconda3/bin/python"
 else
-	python_path = "/Home/n/Apps/miniconda3/bin/python"
+	python_path = "/home/n/Apps/miniconda3/bin/python"
 end
 
 dap.adapters.python = function(cb, config)
