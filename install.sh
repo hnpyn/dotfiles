@@ -7,7 +7,9 @@ DOTFILES=$(pwd -P)
 
 set -e
 
+echo ''
 echo ' Start installing...'
+echo ''
 
 # print log
 info () {
@@ -32,7 +34,7 @@ fail () {
 set_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
-    info ' Configure git'
+    info 'Configure git'
 
     git_credential='store'
     if [ "$(uname -s)" == "Darwin" ]
@@ -47,13 +49,125 @@ set_gitconfig () {
 
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
-    success ' Successfully set gitconfig.' 
+    success 'Successfully set gitconfig.' 
+    info '...'
   fi
 }
 
 # make soft link
-link_file() {
+link_file () {
   local src=$1 dst=$2
+
+  local overwrite= backup= skip=
+  local action=
+
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  then
+
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+    then
+
+      local currentSrc="$(readlink $dst)"
+
+      if [ "$currentSrc" == "$src" ]
+      then
+
+        skip=true;
+
+      else
+
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        read -n 1 action
+
+        case "$action" in
+          s )
+            skip=true;;
+          S )
+            skip_all=true;;
+          o )
+            overwrite=true;;
+          O )
+            overwrite_all=true;;
+          b )
+            backup=true;;
+          B )
+            backup_all=true;;
+          * )
+            ;;
+        esac
+
+      fi
+
+    fi
+
+    overwrite=${overwrite:-$overwrite_all}
+    backup=${backup:-$backup_all}
+    skip=${skip:-$skip_all}
+
+    if [ "$overwrite" == "true" ]
+    then
+      rm -rf "$dst"
+      success "removed $dst"
+    fi
+
+    if [ "$backup" == "true" ]
+    then
+      mv "$dst" "${dst}.backup"
+      success "moved $dst to ${dst}.backup"
+    fi
+
+    if [ "$skip" == "true" ]
+    then
+      success "skipped $src"
+    fi
+  
+  fi
+
+  if [ "$skip" != "true" ]
+  then
+    ln -s "$1" "$2"
+    success "linked $1 to $2"
+  fi
+}
+
+# install
+install_dotfiles () {
+  local overwrite_all=false backup_all=false skip_all=false
+
+  # git config
+  info 'install git config...'
+  for src in $(find -H "$DOTFILES/git" -maxdepth 1 -name '*.symlink')
+  do
+    dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+  
+  # home dotfiles config
+  info '...'
+  info 'install $HOME dotfiles...'
+  for src in $(find -H "$DOTFILES" -maxdepth 1 \( -name 'vim' -o -name 'zsh' \))
+  do
+    bname="$(basename "${src}")"
+    dst="$HOME/.$bname"
+    link_file "$src" "$dst"
+    srcf="$src/${bname}rc"
+    dstf="$HOME/.${bname}rc"
+    link_file "$srcf" "$dstf"
+  done
+
+  # config dotfiles config
+  info '...'
+  info 'install $HOME/.config dotfiles...'
+  for src in $(find -H "$DOTFILES/config" -maxdepth 1 -name '*' -not -path "$DOTFILES/config")
+  do
+    dst="$HOME/.config/$(basename "${src}")"
+    link_file "$src" "$dst"
+  done
 }
 
 set_gitconfig
+install_dotfiles
+
+echo ''
+echo ' All installed!'
