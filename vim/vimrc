@@ -103,24 +103,24 @@ filetype on
 let mapleader=' '
 
 " , w直接保存
-ino ,w <Esc>:w<cr>
+nnoremap ,w <Esc>:w<CR>
 " map jj to escape key
-ino jj <Esc>
+inoremap jj <Esc>
 " 分屏中的光标移动
-nor <C-h> <C-w>h
-nor <C-j> <C-w>j
-nor <C-k> <C-w>k
-nor <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 " 分屏
-nor <leader>s <C-w>s
-nor <leader>v <C-w>v
-nor <leader>q <C-w>q
+nnoremap <leader>s <C-w>s
+nnoremap <leader>v <C-w>v
+nnoremap <leader>q <C-w>q
 " 不保存退出
-nor <C-c><C-c> <Esc>:q!<cr>
+nnoremap <C-c><C-c> <Esc>:q!<CR>
 " no highlight
-map("n", "<Esc>", "<CMD>noh<CR>", opt)
+nnoremap <Esc> :noh<CR>
 " NerdTree
-nor <leader>tt :NERDTreeToggle<CR>
+nnoremap <leader>tt :NERDTreeToggle<CR>
 
 " ---------- plugins ----------
 call plug#begin()
