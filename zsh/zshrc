@@ -99,6 +99,8 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+zle_highlight=('paste:none')
+
 # aliases
 source $HOME/.zsh/aliases.zsh
 
