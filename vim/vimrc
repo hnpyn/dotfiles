@@ -119,6 +119,7 @@ nnoremap <leader>q <C-w>q
 nnoremap <C-c><C-c> <Esc>:q!<CR>
 " no highlight
 nnoremap <Esc> :noh<CR>
+nnoremap <Esc>^[ <Esc>^[
 " NerdTree
 nnoremap <leader>tt :NERDTreeToggle<CR>
 
