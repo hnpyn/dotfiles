@@ -72,15 +72,15 @@ return {
 	-- 		vim.cmd("colorscheme onedark")
 	-- 	end,
 	-- },
-	-- {
-	--   "folke/tokyonight.nvim",
-	--   lazy = false,
-	--   priority = 1000,
-	--   opts = {},
-	--   config = function()
-	--     vim.cmd("colorscheme tokyonight-night")
-	--   end,
-	-- },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			vim.cmd("colorscheme tokyonight-night")
+		end,
+	},
 	-- {
 	-- 	"Mofiqul/dracula.nvim",
 	-- 	lazy = false,
@@ -89,12 +89,12 @@ return {
 	-- 		vim.cmd("colorscheme dracula")
 	-- 	end,
 	-- },
-	{
-		"gbprod/nord.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd("colorscheme nord")
-		end,
-	},
+	-- {
+	-- 	"gbprod/nord.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme nord")
+	-- 	end,
+	-- },
 }
