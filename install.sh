@@ -140,7 +140,7 @@ install_dotfiles () {
   for src in $(find -H "$DOTFILES/git" -maxdepth 1 -name '*.symlink')
   do
     dst="$HOME/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
+    cp "$src" "$dst"
   done
   
   # home dotfiles config
