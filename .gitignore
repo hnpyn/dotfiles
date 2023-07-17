@@ -13,5 +13,8 @@ config/lazygit/state.yml
 # nvim lazy
 config/nvim/lazy-lock.json
 
+# mpv
+config/mpv/watch_later/
+
 # tmp
 *~
