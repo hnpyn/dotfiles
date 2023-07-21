@@ -10,7 +10,7 @@ config.font_size = 18
 -- pretty dress
 config.color_scheme = "tokyonight_night"
 config.colors = {
-	split = "#9370DB",
+	split = "#107dac",
 }
 
 -- tab bar
