@@ -1,6 +1,6 @@
 # aliases
+alias ls="ls -G"
 alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
 alias vim="nvim"
 alias ra="ranger"

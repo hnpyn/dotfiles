@@ -16,7 +16,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # environment variable
-
 # check
 export check_CFLAGS="$HOME/Apps/check=0.14.0/lib:$check_CFLAGS"
 export check_LIBS="$HOME/Apps/check=0.14.0/lib:$check_LIBS"
