@@ -15,6 +15,7 @@ return {
 					null_ls.builtins.formatting.clang_format,
 					null_ls.builtins.formatting.markdownlint,
 					null_ls.builtins.formatting.yamlfmt,
+					null_ls.builtins.formatting.shfmt,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
