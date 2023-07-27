@@ -18,8 +18,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# =========================== Basic ===========================
 # My zsh path
-ZSH="$HOME/.zsh"
+ZSH=$HOME/.zsh
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=2000
+SAVEHIST=1000
 
 # =========================== OS rc ===========================
 case `uname` in
@@ -30,7 +35,7 @@ case `uname` in
 esac
 
 # ========================== Plugins ==========================
-PLUGINS="$ZSH/plugins"
+PLUGINS=$ZSH/plugins
 
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=96"
