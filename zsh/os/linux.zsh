@@ -26,3 +26,7 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# cuda 11.7
+export PATH="/usr/local/cuda-11.7/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH"
+
