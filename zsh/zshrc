@@ -49,6 +49,8 @@ fpath=($PLUGINS/zsh-completions/src $fpath)
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
+eval "$(zoxide init zsh)"
+
 # fzf
 source $ZSH/fzf/completion.zsh
 source $ZSH/fzf/key-bindings.zsh
