@@ -37,6 +37,8 @@ esac
 # ========================== Plugins ==========================
 PLUGINS=$ZSH/plugins
 
+autoload -Uz compinit && compinit
+
 source $PLUGINS/fzf-tab/fzf-tab.plugin.zsh
 source $ZSH/fzf/fzf-tab.zsh
 
