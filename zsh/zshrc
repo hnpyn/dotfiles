@@ -37,6 +37,9 @@ esac
 # ========================== Plugins ==========================
 PLUGINS=$ZSH/plugins
 
+source $PLUGINS/fzf-tab/fzf-tab.plugin.zsh
+source $ZSH/fzf/fzf-tab.zsh
+
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=96"
 
@@ -44,16 +47,7 @@ source $PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 source $PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-fpath=($PLUGINS/zsh-completions/src $fpath)
-
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
-
 eval "$(zoxide init zsh)"
-
-# fzf
-source $ZSH/fzf/completion.zsh
-source $ZSH/fzf/key-bindings.zsh
 
 # ========================== Theme ============================
 source $PLUGINS/powerlevel10k/powerlevel10k.zsh-theme
