@@ -1,6 +1,7 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    event = "VeryLazy",
-  }
+	{
+		"neovim/nvim-lspconfig",
+		cmd = { "Mason", "Neoconf" },
+		event = { "BufReadPost", "BufNewFile" },
+	},
 }
