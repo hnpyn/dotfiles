@@ -1,5 +1,11 @@
 return {
 	{
+		"numToStr/Navigator.nvim",
+		config = function()
+			require("Navigator").setup({})
+		end,
+	},
+	{
 		"iamcco/markdown-preview.nvim",
 		enabled = true,
 		lazy = true,
@@ -25,6 +31,24 @@ return {
 			vim.g.mkdp_browser = ""
 			vim.g.mkdp_echo_preview_url = true
 			vim.g.mkdp_page_title = "${name}"
+		end,
+	},
+	{
+		"kelly-lin/ranger.nvim",
+		config = function()
+			require("ranger-nvim").setup({
+				enable_cmds = true,
+				replace_netrw = true,
+			})
+			vim.keymap.set("n", "<leader>ra", "", {
+				desc = "Open ranger",
+				noremap = true,
+				silent = true,
+				callback = function()
+					require("ranger-nvim").open(true)
+				end,
+			})
+			vim.cmd.cnoreabbrev("ra Ranger")
 		end,
 	},
 }
