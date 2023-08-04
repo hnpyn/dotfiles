@@ -199,9 +199,6 @@ return {
 		version = "*",
 		-- event = "VeryLazy",
 		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
 		keys = {
 			{ "<Leader>]", "<Cmd>BufferLineCycleNext<CR>", desc = "next buffer" },
 			{ "<Leader>[", "<Cmd>BufferLineCyclePrev<CR>", desc = "prev buffer" },
