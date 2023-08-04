@@ -1,7 +1,7 @@
 -- neodev
 require("neodev").setup({})
 -- key maps
-require("lsp.lspmap")
+require("lsp.mappings")
 -- lua language
 require("lsp.lua")
 -- python language

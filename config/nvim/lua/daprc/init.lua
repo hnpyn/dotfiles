@@ -1,5 +1,5 @@
 -- keymaps
-require("daprc.dapmap")
+require("daprc.mappings")
 -- python
 require("daprc.python")
 
