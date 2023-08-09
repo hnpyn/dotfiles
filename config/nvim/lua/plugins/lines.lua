@@ -144,15 +144,15 @@ return {
 
 			require("cokeline").setup({
 				default_hl = {
-					-- fg = function(buffer)
-					-- 	return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
-					-- end,
-					-- bg = "NONE",
-					bg = function(buffer)
-						if buffer.is_focused then
-							return active_bg_color
-						end
+					fg = function(buffer)
+						return buffer.is_focused and get_hex("Normal", "fg") or "#333333" -- get_hex("Comment", "fg")
 					end,
+					bg = "NONE",
+					-- bg = function(buffer)
+					-- 	if buffer.is_focused then
+					-- 		return active_bg_color
+					-- 	end
+					-- end,
 				},
 
 				components = {
