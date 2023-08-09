@@ -27,6 +27,8 @@ return {
 			local yellow = vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
+			local focused_color = get_hex("Normal", "fg")
+			local unfocused_color = "#333333" -- get_hex("Comment", "fg")
 
 			local components = {
 				space = {
@@ -145,7 +147,7 @@ return {
 			require("cokeline").setup({
 				default_hl = {
 					fg = function(buffer)
-						return buffer.is_focused and get_hex("Normal", "fg") or "#333333" -- get_hex("Comment", "fg")
+						return buffer.is_focused and focused_color or unfocused_color
 					end,
 					bg = "NONE",
 					-- bg = function(buffer)
