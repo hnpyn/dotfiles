@@ -27,8 +27,8 @@ return {
 			local yellow = vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
-			local focused_color = get_hex("Normal", "fg")
-			local unfocused_color = "#333333" -- get_hex("Comment", "fg")
+			local focused_color = "#ffffff" -- get_hex("Normal", "fg")
+			local unfocused_color = "#555555" -- get_hex("Comment", "fg")
 
 			local components = {
 				space = {

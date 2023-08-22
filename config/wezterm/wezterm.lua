@@ -8,7 +8,7 @@ config.font = wezterm.font("MesloLGS NF")
 config.font_size = 18
 
 -- pretty dress
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "GruvboxDark" -- "tokyonight_night"
 config.colors = {
 	split = "#107dac",
 }

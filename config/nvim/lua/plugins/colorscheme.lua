@@ -31,14 +31,14 @@ return {
 	-- 		vim.cmd("colorscheme gruvbox-material")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"luisiacc/gruvbox-baby",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme gruvbox-baby")
-	-- 	end,
-	-- },
+	{
+		"luisiacc/gruvbox-baby",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme gruvbox-baby")
+		end,
+	},
 	-- {
 	-- 	"projekt0n/github-nvim-theme",
 	-- 	lazy = false,
@@ -72,15 +72,15 @@ return {
 	-- 		vim.cmd("colorscheme onedark")
 	-- 	end,
 	-- },
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			vim.cmd("colorscheme tokyonight-night")
-		end,
-	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme tokyonight-night")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"Mofiqul/dracula.nvim",
 	-- 	lazy = false,
