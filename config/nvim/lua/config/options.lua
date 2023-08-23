@@ -30,9 +30,9 @@ set.termguicolors = true
 
 -- highlights
 vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
-vim.cmd("hi Search guifg=#0d0e0f guibg=#eebd35 gui=none")
+vim.cmd("hi Search guifg=#0d0e0f guibg=#d79921 gui=none")
 vim.cmd("hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none")
-vim.cmd("hi CurSearch guifg=#0d0e0f guibg=#ffffff gui=none")
+vim.cmd("hi CurSearch guifg=#0d0e0f guibg=#e7d7ad gui=none")
 
 -- bridge mason and lspconfig
 require("mason").setup()
