@@ -23,7 +23,7 @@ return {
 			local warnings_fg = get_hex("DiagnosticWarn", "fg")
 
 			local red = vim.g.terminal_color_1
-			local green = vim.g.terminal_color_2
+			local green = "#8ec07c" -- vim.g.terminal_color_2
 			local yellow = vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
