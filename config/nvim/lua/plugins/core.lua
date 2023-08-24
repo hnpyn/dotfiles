@@ -12,12 +12,14 @@ return {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 1000
-      require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("which-key").setup({})
     end,
+  },
+  {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    cmd = "Trouble",
+    opts = {},
   },
   {
     "akinsho/toggleterm.nvim",
