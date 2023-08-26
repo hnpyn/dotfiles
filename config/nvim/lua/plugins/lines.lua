@@ -24,7 +24,7 @@ return {
 
 			local red = vim.g.terminal_color_1
 			local green = "#8ec07c" -- vim.g.terminal_color_2
-			local yellow = vim.g.terminal_color_3
+			local yellow = "#eebd35" -- vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
 			local focused_color = "#ffffff" -- get_hex("Normal", "fg")

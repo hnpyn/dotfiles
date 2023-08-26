@@ -10,8 +10,19 @@ return {
 			{ "<Leader>fr", "<Cmd>Telescope resume<CR>", desc = "Telescope: resume" },
 			{ "<Leader>fo", "<Cmd>Telescope oldfiles<CR>", desc = "Telescope: old files" },
 		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
+		opts = {
+			defaults = {
+				layout_config = {
+					prompt_position = "bottom",
+				},
+				mappings = {
+					n = {
+						["q"] = function(...)
+							return require("telescope.actions").close(...)
+						end,
+					},
+				},
+			},
 		},
 	},
 }
