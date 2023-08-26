@@ -1,11 +1,5 @@
--- key map
-require("config.keymappings")
-
--- bootstrap lazy.nvim
-require("config.lazy")
-
--- local configs
-require("config.options")
+-- basic configs
+require("config.init")
 
 -- lsp configs
 require("lsp.init")

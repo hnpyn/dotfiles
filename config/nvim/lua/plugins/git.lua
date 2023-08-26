@@ -8,8 +8,13 @@ return {
 	},
 	{
 		"akinsho/git-conflict.nvim",
+		enabled = false,
 		version = "*",
 		config = true,
+	},
+	{
+		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 	},
 	{
 		"TimUntersberger/neogit",
