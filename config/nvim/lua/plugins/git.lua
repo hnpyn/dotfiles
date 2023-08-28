@@ -15,15 +15,15 @@ return {
 	{
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
+		init = function()
+			vim.cmd.cnoreabbrev("diff DiffviewOpen")
+		end,
 	},
 	{
 		"TimUntersberger/neogit",
 		event = "VeryLazy",
 		cmd = "Neogit",
-		config = function()
-			require("neogit").setup({
-				-- ...
-			})
+		init = function()
 			vim.cmd.cnoreabbrev("git Neogit")
 		end,
 	},

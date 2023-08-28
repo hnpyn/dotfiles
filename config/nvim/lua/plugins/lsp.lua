@@ -45,6 +45,7 @@ return {
 	},
 	{
 		"stevearc/aerial.nvim",
+		enabled = false,
 		config = function()
 			require("aerial").setup({
 				attach_mode = "global",
@@ -73,5 +74,34 @@ return {
 			})
 			vim.keymap.set("n", "<Leader>a", "<Cmd>AerialToggle!<CR>")
 		end,
+	},
+	{
+		"SmiteshP/nvim-navic",
+		enabled = true,
+		lazy = true,
+		init = function()
+			-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+			vim.g.navic_silence = true
+			require("utils").on_attach(function(client, buffer)
+				if client.server_capabilities.documentSymbolProvider then
+					require("nvim-navic").attach(client, buffer)
+				end
+			end)
+		end,
+		opts = function()
+			return {
+				separator = " ",
+				highlight = true,
+				depth_limit = 5,
+			}
+		end,
+	},
+	{
+		"SmiteshP/nvim-navbuddy",
+		cmd = "Navbuddy",
+		init = function()
+			vim.cmd.cnoreabbrev("na Navbuddy")
+		end,
+		opts = { lsp = { auto_attach = true } },
 	},
 }

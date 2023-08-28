@@ -10,18 +10,18 @@ return {
 			require("nvim-treesitter.configs").setup({
 				-- :TSInstallInfo 命令查看支持的语言
 				ensure_installed = {
+					"c",
+					"cpp",
+					"vim",
 					"html",
 					"css",
-					"vim",
 					"lua",
 					"javascript",
 					"typescript",
 					"tsx",
 					"python",
-					"cpp",
 					"cuda",
 					"markdown",
-					"vim",
 				},
 				highlight = {
 					enable = true,

@@ -2,7 +2,7 @@
 require("config.init")
 
 -- lsp configs
-require("lsp.init")
+require("plugins.configs.lsp.init")
 
 -- dap configs
-require("daprc.init")
+require("plugins.configs.dap.init")

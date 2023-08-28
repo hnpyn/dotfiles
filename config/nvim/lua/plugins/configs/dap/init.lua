@@ -1,7 +1,7 @@
 -- keymaps
-require("daprc.mappings")
+require("plugins.configs.dap.mappings")
 -- python
-require("daprc.python")
+require("plugins.configs.dap.python")
 
 -- use nvim-dap events to open and close the windows automatically
 local dap, dapui = require("dap"), require("dapui")
