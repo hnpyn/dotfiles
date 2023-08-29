@@ -18,6 +18,21 @@ return {
 		init = function()
 			vim.cmd.cnoreabbrev("diff DiffviewOpen")
 		end,
+		opts = {
+			hooks = {
+				-- See ':h diffview-config-hooks'
+				view_opened = function()
+					require("diffview.actions").toggle_files()
+				end,
+			},
+			keymaps = {
+				view = {
+					["q"] = function()
+						return require("diffview.actions").close()
+					end,
+				},
+			},
+		},
 	},
 	{
 		"TimUntersberger/neogit",
