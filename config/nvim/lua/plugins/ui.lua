@@ -64,7 +64,7 @@ return {
 			},
 		},
 		opts = {
-			timeout = 500,
+			timeout = 2000,
 			max_height = function()
 				return math.floor(vim.o.lines * 0.75)
 			end,

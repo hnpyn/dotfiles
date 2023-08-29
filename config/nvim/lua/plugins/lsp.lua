@@ -77,10 +77,10 @@ return {
 	},
 	{
 		"SmiteshP/nvim-navic",
-		enabled = true,
+		enabled = false,
 		lazy = true,
 		init = function()
-			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+			-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 			vim.g.navic_silence = true
 			require("utils").on_attach(function(client, buffer)
 				if client.server_capabilities.documentSymbolProvider then
@@ -93,7 +93,7 @@ return {
 				separator = " ",
 				highlight = true,
 				depth_limit = 5,
-				icons = require("config.icons").icons.kinds,
+				icons = require("config.ui").icons.kinds,
 			}
 		end,
 	},
