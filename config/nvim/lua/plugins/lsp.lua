@@ -80,7 +80,7 @@ return {
 		enabled = true,
 		lazy = true,
 		init = function()
-			-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 			vim.g.navic_silence = true
 			require("utils").on_attach(function(client, buffer)
 				if client.server_capabilities.documentSymbolProvider then
@@ -93,11 +93,13 @@ return {
 				separator = " ",
 				highlight = true,
 				depth_limit = 5,
+				icons = require("config.icons").icons.kinds,
 			}
 		end,
 	},
 	{
 		"SmiteshP/nvim-navbuddy",
+		enabled = false,
 		cmd = "Navbuddy",
 		init = function()
 			vim.cmd.cnoreabbrev("na Navbuddy")
