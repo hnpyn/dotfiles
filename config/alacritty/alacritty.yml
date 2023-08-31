@@ -3,11 +3,9 @@
 # ---------- general ----------
 # auto reloading
 live_config_reload: true
-
 # ---------- fonts ----------
 font:
   size: 18
-  
   normal:
     family: MesloLGS NF
     style: Regular
@@ -20,35 +18,27 @@ font:
   bold_italic:
     family: MesloLGS NF
     style: Bolad Italic
-
 # ---------- pretty dress ----------
 env:
   TERM: xterm-256color
-
 # colorscheme
 import:
-  - ~/.config/alacritty/themes/tokyonight_night.yaml
-
+  - ~/.config/alacritty/themes/gruvbox_dark.yaml
 window:
   dimensions:
     columns: 70
     lines: 20
-
   opacity: 0.99
-
   decorations: Full
   # Windowed, Maximized, Fullscreen
   starup_mode: Maximized
-
 mouse:
   hide_when_typing: true
-
 # ---------- key bindings ----------
 key_bindings:
-  - { key: T, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: T, mods: Command, action: SpawnNewInstance }
-
-  - { key: C, mods: Control|Shift, action: Copy }
-  - { key: C, mods: Command, action: Copy }
-  - { key: V, mods: Control|Shift, action: Paste }
-  - { key: V, mods: Command, action: Paste }
+  - {key: T, mods: Control|Shift, action: SpawnNewInstance}
+  - {key: T, mods: Command, action: SpawnNewInstance}
+  - {key: C, mods: Control|Shift, action: Copy}
+  - {key: C, mods: Command, action: Copy}
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: V, mods: Command, action: Paste}
