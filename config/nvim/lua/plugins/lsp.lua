@@ -1,14 +1,10 @@
 return {
-	{ "folke/neodev.nvim" },
+	{ "folke/neodev.nvim", opts = {} },
 	{
 		"neovim/nvim-lspconfig",
-		cmd = { "Mason", "Neoconf" },
 		event = { "BufReadPost", "BufNewFile" },
 	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		cmd = { "LspInstall", "LspUninstall" },
-	},
+	{ "williamboman/mason-lspconfig.nvim" },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPost", "BufNewFile" },
