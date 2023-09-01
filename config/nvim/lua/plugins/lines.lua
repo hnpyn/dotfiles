@@ -1,17 +1,46 @@
 return {
 	{
 		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine").setup({
+		event = "VeryLazy",
+		opts = function()
+			local icons = require("config.ui").icons
+			local Util = require("utils")
+
+			return {
 				options = {
 					theme = "auto",
-					-- theme = "gruvbox-material",
+					globalstatus = true,
+					icons_enabled = true,
+					always_divide_middle = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+					sections = {
+						-- left
+						lualine_a = { "mode" },
+						lualine_b = { "branch", "diff", "diagnostics" },
+						lualine_c = { "filename" },
+						-- right
+						lualine_x = { "encoding", "fileformat", "filetype" },
+						lualine_z = { "location" },
+					},
+					inactive_sections = {
+						lualine_a = { "filename" },
+						lualine_b = {},
+						lualine_c = {},
+						lualine_x = { "location" },
+						lualine_y = {},
+						lualine_z = {},
+					},
+					tabline = {},
+					extensions = {},
 				},
-			})
+			}
 		end,
 	},
 	{
 		"willothy/nvim-cokeline",
+		enabled = false,
 		config = function()
 			local map = vim.keymap.set
 
@@ -27,7 +56,7 @@ return {
 			local yellow = "#eebd35" -- vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
-			local focused_color = "#ffffff" -- get_hex("Normal", "fg")
+			local focused_color = get_hex("Normal", "fg")
 			local unfocused_color = "#555555" -- get_hex("Comment", "fg")
 
 			local components = {
@@ -170,12 +199,14 @@ return {
 				},
 
 				sidebar = {
-					filetype = "NvimTree",
+					filetype = { "neo-tree", "NvimTree" },
 					components = {
 						{
-							text = "  NvimTree",
+							text = function(buf)
+								return vim.bo[buf.number].filetype
+							end,
 							fg = yellow,
-							bg = get_hex("NvimTreeNormal", "bg"),
+							bg = get_hex("Normal", "bg"),
 							style = "bold",
 						},
 					},
@@ -197,30 +228,62 @@ return {
 	},
 	{
 		"akinsho/bufferline.nvim",
-		enabled = false,
+		enabled = true,
+		event = "VeryLazy",
 		version = "*",
-		-- event = "VeryLazy",
-		lazy = false,
 		keys = {
-			{ "<Leader>]", "<Cmd>BufferLineCycleNext<CR>", desc = "next buffer" },
-			{ "<Leader>[", "<Cmd>BufferLineCyclePrev<CR>", desc = "prev buffer" },
-			{ "<Leader>C", "<Cmd>BufferLinePickClose<CR>", desc = "close buffer" },
+			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
+			{ "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
 		},
-		config = function()
-			require("bufferline").setup({
+		opts = function()
+			local get_hex = require("utils").get_hex
+			return {
 				options = {
-					-- 左侧让出 nvim-tree 的位置
+          -- stylua: ignore
+          close_command = function(n) require("mini.bufremove").delete(n, false) end,
+          -- stylua: ignore
+          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+					diagnostics = "nvim_lsp",
+					always_show_bufferline = false,
+					diagnostics_indicator = function(_, _, diag)
+						local icons = require("config.ui").icons.diagnostics
+						local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+							.. (diag.warning and icons.Warn .. diag.warning or "")
+						return vim.trim(ret)
+					end,
 					offsets = {
 						{
-							filetype = "NvimTree",
-							text = "File Explorer",
+							filetype = "neo-tree",
+							text = "neo-tree",
 							highlight = "Directory",
 							text_align = "left",
 						},
 					},
-					-- separator_style = "slant",
+					separator_style = { "", "" },
 				},
-			})
+				highlights = {
+					fill = { bg = get_hex("Normal", "bg") },
+					background = { bg = get_hex("Normal", "bg") },
+					separator = { bg = get_hex("Normal", "bg") },
+					close_button = { bg = get_hex("Normal", "bg") },
+					modified = { bg = get_hex("Normal", "bg") },
+					duplicate = { bg = get_hex("Normal", "bg") },
+					pick = { bg = get_hex("Normal", "bg") },
+					diagnostic = { bg = get_hex("Normal", "bg") },
+					error = { bg = get_hex("Normal", "bg") },
+					error_diagnostic = { bg = get_hex("Normal", "bg") },
+					warning = { bg = get_hex("Normal", "bg") },
+					warning_diagnostic = { bg = get_hex("Normal", "bg") },
+					info = { bg = get_hex("Normal", "bg") },
+					info_diagnostic = { bg = get_hex("Normal", "bg") },
+					hint = { bg = get_hex("Normal", "bg") },
+					hint_diagnostic = { bg = get_hex("Normal", "bg") },
+					numbers = { bg = get_hex("Normal", "bg") },
+					buffer = { bg = get_hex("Normal", "bg") },
+				},
+			}
 		end,
 	},
 }
