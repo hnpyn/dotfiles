@@ -17,9 +17,18 @@ M.icons = {
 		Info = " ",
 	},
 	git = {
+		git = "󰊢",
 		added = " ",
 		modified = " ",
 		removed = " ",
+		branch = "",
+		conflict = "",
+		ignored = "◌",
+		renamed = "➜",
+		gitsign = "▎",
+		staged = "✓",
+		unstaged = "✗",
+		untracked = "★",
 	},
 	kinds = {
 		Array = " ",
@@ -57,6 +66,18 @@ M.icons = {
 		Unit = " ",
 		Value = " ",
 		Variable = " ",
+	},
+	file = {
+		DefaultFile = "󰈙",
+		FileNew = "",
+		FileModified = "",
+		FileReadOnly = "",
+		FoldClosed = "",
+		FoldOpened = "",
+		FoldSeparator = " ",
+		FolderClosed = "",
+		FolderEmpty = "",
+		FolderOpen = "",
 	},
 }
 

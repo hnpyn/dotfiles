@@ -33,7 +33,7 @@ return {
 						lualine_z = {},
 					},
 					tabline = {},
-					extensions = {},
+					extensions = { "neo-tree", "lazy" },
 				},
 			}
 		end,
@@ -51,13 +51,13 @@ return {
 			local errors_fg = get_hex("DiagnosticError", "fg")
 			local warnings_fg = get_hex("DiagnosticWarn", "fg")
 
-			local red = vim.g.terminal_color_1
+			local red = "#fb4934" -- vim.g.terminal_color_1
 			local green = "#8ec07c" -- vim.g.terminal_color_2
 			local yellow = "#eebd35" -- vim.g.terminal_color_3
 			local active_bg_color = "#BD93F9"
 			local inactive_bg_color = get_hex("Normal", "bg")
 			local focused_color = get_hex("Normal", "fg")
-			local unfocused_color = "#555555" -- get_hex("Comment", "fg")
+			local unfocused_color = "#665c54" -- get_hex("Comment", "fg")
 
 			local components = {
 				space = {
@@ -261,12 +261,15 @@ return {
 							text_align = "left",
 						},
 					},
-					separator_style = { "", "" },
+					separator_style = { "", "" }, -- ▎
 				},
 				highlights = {
 					fill = { bg = get_hex("Normal", "bg") },
 					background = { bg = get_hex("Normal", "bg") },
 					separator = { bg = get_hex("Normal", "bg") },
+					indicator_selected = { fg = "#b16286" },
+					numbers = { bg = get_hex("Normal", "bg") },
+					buffer = { bg = get_hex("Normal", "bg") },
 					close_button = { bg = get_hex("Normal", "bg") },
 					modified = { bg = get_hex("Normal", "bg") },
 					duplicate = { bg = get_hex("Normal", "bg") },
@@ -280,8 +283,6 @@ return {
 					info_diagnostic = { bg = get_hex("Normal", "bg") },
 					hint = { bg = get_hex("Normal", "bg") },
 					hint_diagnostic = { bg = get_hex("Normal", "bg") },
-					numbers = { bg = get_hex("Normal", "bg") },
-					buffer = { bg = get_hex("Normal", "bg") },
 				},
 			}
 		end,
