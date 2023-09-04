@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			-- change highlight
 			-- vim.api.nvim_set_hl(0, "@lsp.type.variable.lua", { link = "Normal" })
@@ -41,63 +41,82 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		init = function()
+			-- disable rtp plugin, as we only need its queries for mini.ai
+			-- In case other textobject modules are enabled, we will load them
+			-- once nvim-treesitter is loaded
+			require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
+			load_textobjects = true
+		end,
 		event = "VeryLazy",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				textobjects = {
-					swap = {
-						enable = true,
-						swap_next = {
-							["<Leader>p"] = "@parameter.inner",
-						},
-						swap_previous = {
-							["<Leader>P"] = "@parameter.inner",
-						},
-					},
-					select = {
-						enable = true,
-
-						-- Automatically jump forward to textobj, similar to targets.vim
-						lookahead = true,
-
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["aa"] = "@parameter.outer",
-							["ia"] = "@parameter.inner",
-							["ac"] = "@class.outer",
-							-- You can optionally set descriptions to the mappings (used in the desc parameter of
-							-- nvim_buf_set_keymap) which plugins like which-key display
-							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-							-- You can also use captures from other query groups like `locals.scm`
-							["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-						},
-						-- You can choose the select mode (default is charwise 'v')
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * method: eg 'v' or 'o'
-						-- and should return the mode ('v', 'V', or '<c-v>') or a table
-						-- mapping query_strings to modes.
-						selection_modes = {
-							["@parameter.outer"] = "v", -- charwise
-							["@function.outer"] = "V", -- linewise
-							["@class.outer"] = "<c-v>", -- blockwise
-						},
-						-- If you set this to `true` (default is `false`) then any textobject is
-						-- extended to include preceding or succeeding whitespace. Succeeding
-						-- whitespace has priority in order to act similarly to eg the built-in
-						-- `ap`.
-						--
-						-- Can also be a function which gets passed a table with the keys
-						-- * query_string: eg '@function.inner'
-						-- * selection_mode: eg 'v'
-						-- and should return true of false
-						include_surrounding_whitespace = true,
-					},
+	},
+	{
+		"echasnovski/mini.ai",
+		-- keys = {
+		--   { "a", mode = { "x", "o" } },
+		--   { "i", mode = { "x", "o" } },
+		-- },
+		event = "VeryLazy",
+		dependencies = { "nvim-treesitter-textobjects" },
+		opts = function()
+			local ai = require("mini.ai")
+			return {
+				n_lines = 500,
+				custom_textobjects = {
+					o = ai.gen_spec.treesitter({
+						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+					}, {}),
+					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
 				},
-			})
+			}
+		end,
+		config = function(_, opts)
+			require("mini.ai").setup(opts)
+			-- register all text objects with which-key
+			require("utils").on_load("which-key.nvim", function()
+				---@type table<string, string|table>
+				local i = {
+					[" "] = "Whitespace",
+					['"'] = 'Balanced "',
+					["'"] = "Balanced '",
+					["`"] = "Balanced `",
+					["("] = "Balanced (",
+					[")"] = "Balanced ) including white-space",
+					[">"] = "Balanced > including white-space",
+					["<lt>"] = "Balanced <",
+					["]"] = "Balanced ] including white-space",
+					["["] = "Balanced [",
+					["}"] = "Balanced } including white-space",
+					["{"] = "Balanced {",
+					["?"] = "User Prompt",
+					_ = "Underscore",
+					a = "Argument",
+					b = "Balanced ), ], }",
+					c = "Class",
+					f = "Function",
+					o = "Block, conditional, loop",
+					q = "Quote `, \", '",
+					t = "Tag",
+				}
+				local a = vim.deepcopy(i)
+				for k, v in pairs(a) do
+					a[k] = v:gsub(" including.*", "")
+				end
+
+				local ic = vim.deepcopy(i)
+				local ac = vim.deepcopy(a)
+				for key, name in pairs({ n = "Next", l = "Last" }) do
+					i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+					a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+				end
+				require("which-key").register({
+					mode = { "o", "x" },
+					i = i,
+					a = a,
+				})
+			end)
 		end,
 	},
 }
