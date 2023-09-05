@@ -60,14 +60,6 @@ return {
 		end,
 	},
 	{
-		"TimUntersberger/neogit",
-		event = { "BufReadPre", "BufNewFile" },
-		init = function()
-			vim.cmd.cnoreabbrev("git Neogit")
-		end,
-		config = true,
-	},
-	{
 		"ruifm/gitlinker.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()

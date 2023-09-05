@@ -4,8 +4,20 @@ return {
 		enabled = false,
 		version = "*",
 		keys = {
-			{ "<Leader>tt", "<CMD>NvimTreeToggle<CR>", desc = "nvim-tree toggle" },
-			{ "<Leader>tf", "<CMD>NvimTreeFindFile<CR>", desc = "nvim-tree find file" },
+			{
+				"<Leader>tt",
+				function()
+					require("nvim-tree.api").tree.toggle()
+				end,
+				desc = "nvim-tree toggle",
+			},
+			{
+				"<Leader>tf",
+				function()
+					require("nvim-tree.api").tree.toggle({ find_file = true, focus = true })
+				end,
+				desc = "nvim-tree find file",
+			},
 		},
 		config = function()
 			local map = vim.keymap.set
@@ -102,6 +114,8 @@ return {
 		opts = function()
 			local icons = require("config.ui").icons
 			return {
+				use_popups_for_input = false,
+				close_if_last_window = true,
 				sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 				open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
 				filesystem = {
