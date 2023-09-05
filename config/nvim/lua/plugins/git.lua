@@ -70,7 +70,7 @@ return {
 	{
 		"ruifm/gitlinker.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		init = function()
+		config = function()
 			local map = vim.keymap.set
 
 			map("n", "<Leader>gr", '<Cmd>lua require"gitlinker".get_repo_url()<CR>', { silent = true })
@@ -92,9 +92,13 @@ return {
 				'<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
 				{}
 			)
+
+			require("gitlinker").setup({
+				callbacks = {
+					["gitlab.utopilot.com.cn"] = require("gitlinker.hosts").get_gitlab_type_url,
+				},
+				mappings = "<Leader>gl",
+			})
 		end,
-		opts = {
-			mappings = "<Leader>gl",
-		},
 	},
 }
