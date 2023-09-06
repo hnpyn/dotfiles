@@ -114,7 +114,8 @@ return {
 		opts = function()
 			local icons = require("config.ui").icons
 			return {
-				use_popups_for_input = false,
+				popup_border_style = "rounded",
+				use_popups_for_input = true,
 				close_if_last_window = true,
 				sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 				open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
