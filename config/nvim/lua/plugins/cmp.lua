@@ -9,11 +9,11 @@ return {
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
+			"L3MON4D3/LuaSnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"L3MON4D3/LuaSnip",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -69,6 +69,14 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 					-- { name = "ultisnips" }, -- For ultisnips users.
 					-- { name = "snippy" }, -- For snippy users.
+					-- { name = "vsnip" }, -- For vsnip users.
+					{
+						name = "path",
+						option = {
+							trailing_slash = true,
+							label_trailing_slash = false,
+						},
+					},
 				}, {
 					{ name = "buffer" },
 				}),
