@@ -1,5 +1,8 @@
 -- neodev
 require("neodev").setup({})
+-- bridge mason and lspconfig
+require("mason").setup()
+require("mason-lspconfig").setup()
 -- key maps
 require("plugins.configs.lsp.mappings")
 -- lua language

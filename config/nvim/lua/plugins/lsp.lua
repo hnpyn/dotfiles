@@ -6,6 +6,33 @@ return {
 	},
 	{ "williamboman/mason-lspconfig.nvim" },
 	{
+		"williamboman/mason.nvim",
+		cmd = {
+			"Mason",
+			"MasonInstall",
+			"MasonUninstall",
+			"MasonUninstallAll",
+			"MasonLog",
+			"MasonUpdate",
+			"MasonUpdateAll",
+		},
+		opts = {
+			ensure_installed = {
+				"stylua",
+				"shfmt",
+				"black",
+			},
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_uninstalled = "✗",
+					package_pending = "⟳",
+				},
+			},
+		},
+		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+	},
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
