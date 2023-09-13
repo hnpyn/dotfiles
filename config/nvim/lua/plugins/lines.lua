@@ -241,11 +241,23 @@ return {
 			local get_hex = require("utils").get_hex
 			return {
 				options = {
+					left_mouse_command = function(bufnum)
+						local lazy = require("bufferline.lazy")
+						local ui = lazy.require("bufferline.ui")
+						local windows = vim.fn.win_findbuf(bufnum)
+						if windows[1] then
+							vim.api.nvim_set_current_win(windows[1])
+						end
+						vim.schedule(function()
+							vim.cmd(string.format("buffer %d", bufnum))
+							ui.refresh()
+						end)
+					end,
           -- stylua: ignore
-          -- close_command = function(n) require("mini.bufremove").delete(n, false) end,
+          close_command = function(n) require("mini.bufremove").delete(n, false) end,
           -- stylua: ignore
-          -- right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
-          diagnostics = "nvim_lsp",
+          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+					diagnostics = "nvim_lsp",
 					always_show_bufferline = false,
 					diagnostics_indicator = function(_, _, diag)
 						local icons = require("config.ui").icons.diagnostics
