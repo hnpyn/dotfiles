@@ -42,8 +42,8 @@ return {
 			local actions = require("diffview.actions")
 			return {
 				signs = {
-					fold_closed = "",
-					fold_open = "",
+					fold_closed = "", -- "❯"
+					fold_open = "", -- ""
 				},
 				hooks = {
 					-- See ':h diffview-config-hooks'
