@@ -4,6 +4,7 @@
 
 # dotfiles path
 DOTFILES=$(pwd -P)
+FDIR=$HOME/.local/share/fonts
 
 set -e
 
@@ -28,6 +29,14 @@ fail() {
 	printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
 	echo ''
 	exit
+}
+
+# Install Fonts
+install_fonts() {
+	info 'Installing fonts'
+	[[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
+	cp -rf $DOTFILES/fonts/* "$FDIR"
+	info '...'
 }
 
 # set git config
@@ -138,7 +147,7 @@ install_dotfiles() {
 		cp "$src" "$dst"
 	done
 
-	# home dotfiles config
+	# home dotfiles
 	info '...'
 	info 'install $HOME dotfiles...'
 	for src in $(find -H "$DOTFILES" -maxdepth 1 \( -name 'vim' -o -name 'zsh' \)); do
@@ -150,7 +159,7 @@ install_dotfiles() {
 		link_file "$srcf" "$dstf"
 	done
 
-	# config dotfiles config
+	# home/.config dotfiles
 	info '...'
 	info 'install $HOME/.config dotfiles...'
 	for src in $(find -H "$DOTFILES/config" -maxdepth 1 -name '*' -not -path "$DOTFILES/config"); do
@@ -159,8 +168,9 @@ install_dotfiles() {
 	done
 }
 
-set_gitconfig
-install_dotfiles
+install_fonts
+# set_gitconfig
+# install_dotfiles
 
 echo ''
 echo ' All installed!'
