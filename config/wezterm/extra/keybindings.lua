@@ -25,6 +25,11 @@ function keybindings.basic()
 			mods = "CTRL|SUPER",
 			action = "ToggleFullScreen",
 		},
+		{
+			key = "z",
+			mods = "CTRL|SUPER",
+			action = "TogglePaneZoomState",
+		},
 		-- manage pane
 		{
 			key = "v",
