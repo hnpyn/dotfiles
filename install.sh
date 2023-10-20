@@ -169,8 +169,8 @@ install_dotfiles() {
 }
 
 install_fonts
-# set_gitconfig
-# install_dotfiles
+set_gitconfig
+install_dotfiles
 
 echo ''
 echo ' All installed!'

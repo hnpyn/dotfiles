@@ -10,7 +10,7 @@ try:
             style="monokai",
         )
         use_pygments = True
-        sticky_by_default = True
+        sticky_by_default = False
         prompt = "\033[1;92mpdb++> \033[0m"
         current_line_color = "1;100;1"
 
