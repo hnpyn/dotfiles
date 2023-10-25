@@ -30,3 +30,9 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libffi.so.7
 export PATH="/usr/local/cuda-11.7/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH"
 
+# NUPLAN
+export PYTHONPATH="${PYTHONPATH}:$HOME/Workspace/data/NuScenes/nuplan-devkit"
+export NUPLAN_DATA_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/dataset"
+export NUPLAN_MAPS_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/dataset/maps"
+export NUPLAN_EXP_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/exp"
+
