@@ -30,10 +30,10 @@ runtime! debian.vim
 " let g:skip_defaults_vim = 1
 
 " Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes
-" numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+" NOTE: debian.vim sets 'nocompatible'. Setting 'compatible' changes
+" numerous options, so any other options should be set AFTER setting 'compatible'.
+
+" set compatible
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -73,49 +73,50 @@ set autowrite		    " Automatically save before commands like :next and :make
 set hidden		      " Hide buffers when they are abandoned
 set mouse=a		      " Enable mouse usage (all modes)
 " others
-set nocompatible    " 设置不与vi兼容
-set ic              " 搜索时忽略大小写
-set hlsearch        " 高亮显示搜索结果
-set scrolloff=2     " 光标上下至少显示的行数
-set number          " 左侧显示行号
-set relativenumber  " 相对行号
-set expandtab       " tab 替换为空格
-set tabstop=4       " tab 长度为4个空格
-set encoding=utf-8  " 编码为utf-8
-set fileencodings=utf-8,usc-bom,GB2312,big5  " 逐一探测编码方式
-set nobackup        " 覆盖文件时不备份
-set nowritebackup   " 不备份
-set cursorline      " 突出显示当前行
-set ruler           " 在右下角显示光标位置的状态行
-set autoindent      " 自动缩进
-set smartindent     " 智能缩进
-set shiftwidth=4    " 缩进时，缩进的空格数
-set autoread        " 文件发生变化时，自动读取新文件
-set go=             " 取消图形按钮
-set signcolumn=yes  " 显示侧边栏
-set backspace=indent,eol,start  " 设置退格
-set clipboard=unnamedplus  " 剪切板互通
+set nocompatible    " Not compatible with vi
+set ic
+set hlsearch
+set number
+set relativenumber
+set expandtab
+set tabstop=4
+set encoding=utf-8
+set fileencodings=utf-8,usc-bom,GB2312,big5
+set nobackup
+set nowritebackup
+set cursorline
+set ruler
+set autoindent
+set smartindent
+set shiftwidth=4
+set autoread
+set go=
+set signcolumn=yes
+set backspace=indent,eol,start
+set clipboard=unnamed
+set paste
+" set scrolloff=2 
 
 filetype on
 
 " ---------- key bindings ----------
-" 自定义控制键
+" leader key space
 let mapleader=' '
 
-" , w直接保存
+" ,w to save
 nnoremap ,w <Esc>:w<CR>
 " map jj to escape key
 inoremap jj <Esc>
-" 分屏中的光标移动
+" navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-" 分屏
+" panels
 nnoremap <leader>s <C-w>s
 nnoremap <leader>v <C-w>v
 nnoremap <leader>q <C-w>q
-" 不保存退出
+" quit without save
 nnoremap <C-c><C-c> <Esc>:q!<CR>
 " no highlight
 nnoremap <Esc> :noh<CR>
@@ -133,22 +134,17 @@ call plug#begin()
 "   - e.g. `call plug#begin('~/.vim/plugged')`
 "   - Avoid using standard Vim directory names like 'plugin'
 
-" Make sure you use single quotes #确保使用单引号！！！
+" Make sure you use single quotes
 
 " On-demand loading
-" " NerdTree
+
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" " 开始界面
 " Plug 'mhinz/vim-startify'  
 " Plug 'ghifarit53/tokyonight-vim' 
-" " 缩进分割线
 " Plug 'Yggdroot/indentLine'  
-" " 底部栏
 " Plug 'vim-airline/vim-airline'  
 " Plug 'vim-airline/vim-airline-themes'
-" " coc自动补全
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}  
-" " 右侧显示文件结构
 " Plug 'preservim/tagbar' 
 
 call plug#end()
