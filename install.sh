@@ -9,7 +9,7 @@ FDIR=$HOME/.local/share/fonts
 set -e
 
 echo ''
-echo ' Start installing...'
+echo ' Start the installation...'
 echo ''
 
 # print log
@@ -33,8 +33,8 @@ fail() {
 
 # Install Fonts
 install_fonts() {
-	info 'Install fonts...'
-	[[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
+	info 'Installing fonts...'
+	[ ! -d "$FDIR" ] && mkdir -p "$FDIR"
 	cp -rf $DOTFILES/fonts/* "$FDIR"
 	success 'Done.'
 	info '...'
@@ -43,7 +43,7 @@ install_fonts() {
 # set git config
 set_gitconfig() {
 	if ! [ -f git/gitconfig.symlink ]; then
-		info 'Configure git'
+		info 'Please configure git'
 
 		git_credential='store'
 		if [ "$(uname -s)" == "Darwin" ]; then
@@ -137,12 +137,12 @@ link_file() {
 	fi
 }
 
-# install
+# install all
 install_dotfiles() {
 	local overwrite_all=false backup_all=false skip_all=false
 
 	# git config
-	info 'Install git config...'
+	info 'Installing git config...'
 	for src in $(find -H "$DOTFILES/git" -maxdepth 1 -name '*.symlink'); do
 		dst="$HOME/.$(basename "${src%.*}")"
 		cp "$src" "$dst"
@@ -150,7 +150,7 @@ install_dotfiles() {
 
 	# home dotfiles
 	info '...'
-	info 'Install $HOME dotfiles...'
+	info 'Installing $HOME dotfiles...'
 	for src in $(find -H "$DOTFILES" -maxdepth 1 \( -name 'vim' -o -name 'zsh' \)); do
 		bname="$(basename "${src}")"
 		dst="$HOME/.$bname"
@@ -162,7 +162,7 @@ install_dotfiles() {
 
 	# home/.config dotfiles
 	info '...'
-	info 'Install $HOME/.config dotfiles...'
+	info 'Installing $HOME/.config dotfiles...'
 	for src in $(find -H "$DOTFILES/config" -maxdepth 1 -name '*' -not -path "$DOTFILES/config"); do
 		dst="$HOME/.config/$(basename "${src}")"
 		link_file "$src" "$dst"
@@ -174,4 +174,4 @@ set_gitconfig
 install_dotfiles
 
 echo ''
-echo ' All installed!'
+echo ' All installations completed!'
