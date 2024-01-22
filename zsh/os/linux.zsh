@@ -36,3 +36,6 @@ export NUPLAN_DATA_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/dataset"
 export NUPLAN_MAPS_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/dataset/maps"
 export NUPLAN_EXP_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/exp"
 
+# linuxbrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
