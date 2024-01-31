@@ -16,9 +16,11 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # environment variable
-# homebrew
 export PATH=$HOME/bin:/usr/local/bin:$PATH 
+
+# homebrew
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 
 # wezterm
 export PATH="/Applications/WezTerm.app/Contents/MacOS:$PATH"
