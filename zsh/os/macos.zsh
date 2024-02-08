@@ -17,6 +17,7 @@ unset __conda_setup
 
 # environment variable
 export PATH=$HOME/bin:/usr/local/bin:$PATH 
+export PATH=$HOME/.local/bin:$PATH 
 
 # homebrew
 export PATH="/opt/homebrew/bin:$PATH"
