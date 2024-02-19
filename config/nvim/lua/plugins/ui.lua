@@ -176,4 +176,17 @@ return {
       },
     },
 	},
+	{
+		"petertriho/nvim-scrollbar",
+		enabled = true,
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			require("scrollbar").setup()
+		end,
+	},
+	{
+		"dstein64/nvim-scrollview",
+		enabled = false,
+		event = { "BufReadPost", "BufNewFile" },
+	},
 }
