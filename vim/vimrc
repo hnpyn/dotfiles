@@ -99,7 +99,7 @@ set paste
 
 filetype on
 
-" ---------- key bindings ----------
+" ---------- Key Bindings ----------
 " leader key space
 let mapleader=' '
 
@@ -124,7 +124,7 @@ nnoremap <Esc>^[ <Esc>^[
 " NerdTree
 nnoremap <leader>tt :NERDTreeToggle<CR>
 
-" ---------- plugins ----------
+" ---------- Plugins ----------
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -149,7 +149,7 @@ call plug#begin()
 
 call plug#end()
 
-" ---------- pretty dress ----------
+" ---------- Pretty Dress ----------
 set termguicolors
 " set highlight to 1000ms
 let g:highlightedyank_highlight_duration = 1000
