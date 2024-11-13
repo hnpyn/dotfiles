@@ -11,8 +11,10 @@ set.tabstop = 2
 set.shiftwidth = 2
 set.autoindent = true
 set.cursorline = true
-set.nobackup = true
-set.nowritebackup = true
+-- set.nobackup = true
+-- set.backup = false
+-- set.nowritebackup = true
+-- set.writebackup = false
 set.autoread = true
 set.clipboard = "unnamedplus"
 -- highlight after copy

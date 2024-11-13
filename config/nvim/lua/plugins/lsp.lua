@@ -21,6 +21,7 @@ return {
 				"stylua",
 				"shfmt",
 				"black",
+				"python-lsp-server",
 			},
 			ui = {
 				icons = {
