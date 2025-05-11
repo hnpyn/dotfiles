@@ -18,15 +18,11 @@ return {
 			dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
 			dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-			dashboard.button(
-				"t",
-				"󰙅 " .. " File tree", -- 
-				[[:lua require("neo-tree.command").execute({ toggle = true, dir = require("utils").get_root() }) <cr>]]
-			),
-			dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+			dashboard.button("e", "󰙅 " .. " File explorer", ":Oil --float <CR>"),
+			dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <CR>]]),
 			dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-			dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-			dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+			dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy <CR>"),
+			dashboard.button("q", " " .. " Quit", ":qa <CR>"),
 		}
 		for _, button in ipairs(dashboard.section.buttons.val) do
 			button.opts.hl = "AlphaButtons"
