@@ -1,13 +1,15 @@
 #!/usr/bin/env sh
 #
+# ========================================================================
 # ███╗   ███╗██╗   ██╗██╗   ██╗ █████╗ ██████╗  █████╗ ██╗██████╗  ██████╗
 # ████╗ ████║╚██╗ ██╔╝╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗██║██╔══██╗██╔════╝
 # ██╔████╔██║ ╚████╔╝  ╚████╔╝ ███████║██████╔╝███████║██║██████╔╝██║
 # ██║╚██╔╝██║  ╚██╔╝    ╚██╔╝  ██╔══██║██╔══██╗██╔══██║██║██╔══██╗██║
 # ██║ ╚═╝ ██║   ██║      ██║   ██║  ██║██████╔╝██║  ██║██║██║  ██║╚██████╗
 # ╚═╝     ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝
+# ========================================================================
 #
-# ================================ 设置 ================================
+# ============================== SETTINGS ================================
 # 这里参考了 yabai 的 wiki 。
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
@@ -17,7 +19,7 @@ yabai -m config layout bsp
 # 默认拆分规则 first_child second_child
 yabai -m config window_placement second_child
 # 窗口间距设置
-yabai -m config top_padding 4
+yabai -m config top_padding 34
 yabai -m config bottom_padding 4
 yabai -m config left_padding 4
 yabai -m config right_padding 4
@@ -54,10 +56,9 @@ yabai -m config window_opacity_duration 0.0
 # 在所有显示器上的每个空间顶部添加 0 填充 底部添加 0 填充
 yabai -m config external_bar all:0:5
 
-# ================================ 规则 ================================
-# 打开系统偏好设置，不使用平铺模式
-yabai -m rule --add app="^系统偏好设置$" manage=off
-yabai -m rule --add app="^提醒事项$" manage=off
-yabai -m rule --add app="^关于本机$" manage=off
+# ================================ RULES ================================
+# 不使用平铺模式
+yabai -m rule --add app="^系统设置$" manage=off
+yabai -m rule --add app="^系统信息$" manage=off
 
 echo "yabai configuration loaded.."

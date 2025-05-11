@@ -1,14 +1,16 @@
-#SKHD STUFF
 
-# if you're having troubles finding key codes for a key just type skhd --observe in a terminal and type a key. Pretty cool! Or just check the wiki.
+# ====================================================================
+# ███╗   ███╗██╗   ██╗███████╗██╗  ██╗██╗  ██╗██████╗ ██████╗  ██████╗
+# ████╗ ████║╚██╗ ██╔╝██╔════╝██║ ██╔╝██║  ██║██╔══██╗██╔══██╗██╔════╝
+# ██╔████╔██║ ╚████╔╝ ███████╗█████╔╝ ███████║██║  ██║██████╔╝██║     
+# ██║╚██╔╝██║  ╚██╔╝  ╚════██║██╔═██╗ ██╔══██║██║  ██║██╔══██╗██║     
+# ██║ ╚═╝ ██║   ██║   ███████║██║  ██╗██║  ██║██████╔╝██║  ██║╚██████╗
+# ╚═╝     ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
+# ====================================================================
 
-## HYPER == SHIFT + CMD + ALT + OPTION
+# HYPER == SHIFT + CMD + ALT + OPTION
 
-### ==================================================================== ###
-###                           My Settings                                ###
-### ==================================================================== ###
-
-# ============================== 窗口设置 ============================== #
+# ============================== DISPAY SETTINGS ============================== #
 # Float or BSP
 shift + cmd - space : yabai -m space --layout float
 shift + cmd - b : yabai -m space --layout bsp
@@ -80,7 +82,7 @@ ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window 
 # 重启 Yabai
 cmd + alt - r : /usr/bin/env osascript <<< "display notification \"正在重启 Yabai\" with title \"Yabai\""; launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-# ================================ 多桌面配置  ================================
+# ================================ MULTI DESKTOP ================================
 # 创建一个新桌面，并把当前活动的窗口发送到新桌面，并且自动跳转到新桌面 需要jq支持 brew install jq
 shift + alt - n : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
@@ -117,7 +119,7 @@ cmd + alt - w : yabai -m space --destroy
 # alacritty / wezterm / kitty
 # cmd - return : open -a wezterm
 
-# ================================ 多显示器配置 ================================
+# ================================ MULTI MONITOR ================================
 # focus monitora : 
 # ctrl + alt - z  : yabai -m display --focus prev
 # ctrl + alt - 3  : yabai -m display --focus 3
