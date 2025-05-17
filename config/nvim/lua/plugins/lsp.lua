@@ -34,7 +34,7 @@ return {
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			local null_ls = require("null-ls")
