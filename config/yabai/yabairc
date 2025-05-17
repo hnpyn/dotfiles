@@ -58,9 +58,13 @@ yabai -m config external_bar all:30:0
 
 # ================================ RULES ================================
 # 不使用平铺模式
+yabai -m rule --add app="^预览$" manage=off
+yabai -m rule --add app="^访达$" manage=off
 yabai -m rule --add app="^系统设置$" manage=off
 yabai -m rule --add app="^系统信息$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^ClashX$" manage=off
+yabai -m rule --add app="^Clash Verge$" manage=off
 yabai -m rule --add app="^Battle.net$" manage=off
 yabai -m rule --add app="^Hearthstone$" manage=off
 
