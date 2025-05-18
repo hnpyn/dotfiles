@@ -67,5 +67,6 @@ yabai -m rule --add app="^ClashX$" manage=off
 yabai -m rule --add app="^Clash Verge$" manage=off
 yabai -m rule --add app="^Battle.net$" manage=off
 yabai -m rule --add app="^Hearthstone$" manage=off
+yabai -m rule --add app="^网易云音乐$" manage=off
 
 echo "yabai configuration loaded.."
