@@ -22,6 +22,7 @@ export PATH=$HOME/.local/bin:$PATH
 # homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
+export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 # wezterm
 export PATH="/Applications/WezTerm.app/Contents/MacOS:$PATH"
