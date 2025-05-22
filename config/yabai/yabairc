@@ -10,7 +10,7 @@
 # ========================================================================
 #
 # ============================== SETTINGS ================================
-# 这里参考了 yabai 的 wiki 。
+# 参考 yabai wiki
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
@@ -48,7 +48,7 @@ yabai -m config window_shadow float
 yabai -m config window_opacity on
 # 配置活动窗口不透明度
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.1
+yabai -m config normal_window_opacity 0.9
 yabai -m config window_opacity_duration 0.0
 
 # 在主显示器上的每个空间顶部添加 20 填充 底部添加 0 填充
