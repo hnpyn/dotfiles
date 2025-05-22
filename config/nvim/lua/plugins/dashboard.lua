@@ -6,7 +6,7 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
+		opts = function()
 			vim.g.indent_blankline_filetype_exclude = { "dashboard" }
 			require("dashboard").setup({
 				-- theme = "doom",

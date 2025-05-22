@@ -1,5 +1,11 @@
 return {
 	{
+		"tpope/vim-fugitive",
+		enabled = true,
+		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "Git", "G" },
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
@@ -34,6 +40,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },
 		init = function()
 			vim.cmd.cnoreabbrev("diff DiffviewOpen")

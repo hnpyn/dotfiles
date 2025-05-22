@@ -16,7 +16,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 		},
-		config = function()
+		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")

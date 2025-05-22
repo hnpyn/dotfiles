@@ -14,7 +14,19 @@ return {
 			view_options = {
 				show_hidden = true,
 			},
+			-- for oil-git-status
+			win_options = {
+				signcolumn = "yes:2",
+			},
 		},
+	},
+	{
+		"refractalize/oil-git-status.nvim",
+		enabled = true,
+		lazy = true,
+		dependencies = "stevearc/oil.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = true,
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
