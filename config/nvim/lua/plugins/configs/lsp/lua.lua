@@ -1,10 +1,15 @@
 -- lua language configs
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.lua_ls.setup({
-  capabilities = capabilities,
-  settings = {
+-- befor Nvim 0.10
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- require("lspconfig").lua_ls.setup({
+--   capabilities = capabilities,
+--   ...
+-- })
+
+-- Nvim 0.11+
+vim.lsp.config("lua_ls", {
+	settings = {
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
