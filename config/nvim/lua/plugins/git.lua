@@ -73,7 +73,6 @@ return {
 	{
 		"ruifm/gitlinker.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {},
 		config = function()
 			require("gitlinker").setup({
 				callbacks = {
