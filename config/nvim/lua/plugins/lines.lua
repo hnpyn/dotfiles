@@ -39,9 +39,82 @@ return {
 		end,
 	},
 	{
+		"akinsho/bufferline.nvim",
+		enabled = true,
+		event = "VeryLazy",
+		version = "*",
+		keys = {
+			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
+			{ "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+		},
+		opts = function()
+			local get_hex = require("utils").get_hex
+			return {
+				options = {
+					left_mouse_command = function(bufnum)
+						local lazy = require("bufferline.lazy")
+						local ui = lazy.require("bufferline.ui")
+						local windows = vim.fn.win_findbuf(bufnum)
+						if windows[1] then
+							vim.api.nvim_set_current_win(windows[1])
+						end
+						vim.schedule(function()
+							vim.cmd(string.format("buffer %d", bufnum))
+							ui.refresh()
+						end)
+					end,
+          -- stylua: ignore
+          close_command = function(n) require("mini.bufremove").delete(n, false) end,
+          -- stylua: ignore
+          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+					diagnostics = "nvim_lsp",
+					always_show_bufferline = false,
+					diagnostics_indicator = function(_, _, diag)
+						local icons = require("config.ui").icons.diagnostics
+						local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+							.. (diag.warning and icons.Warn .. diag.warning or "")
+						return vim.trim(ret)
+					end,
+					offsets = {
+						{
+							filetype = "neo-tree",
+							text = "neo-tree",
+							highlight = "Directory",
+							text_align = "left",
+						},
+					},
+					separator_style = { "", "" }, -- ▎
+				},
+				highlights = {
+					fill = { bg = get_hex("Normal", "bg") },
+					background = { bg = get_hex("Normal", "bg") },
+					separator = { bg = get_hex("Normal", "bg") },
+					indicator_selected = { fg = "#b16286" },
+					numbers = { bg = get_hex("Normal", "bg") },
+					buffer = { bg = get_hex("Normal", "bg") },
+					close_button = { bg = get_hex("Normal", "bg") },
+					modified = { bg = get_hex("Normal", "bg") },
+					duplicate = { bg = get_hex("Normal", "bg") },
+					pick = { bg = get_hex("Normal", "bg") },
+					diagnostic = { bg = get_hex("Normal", "bg") },
+					error = { bg = get_hex("Normal", "bg") },
+					error_diagnostic = { bg = get_hex("Normal", "bg") },
+					warning = { bg = get_hex("Normal", "bg") },
+					warning_diagnostic = { bg = get_hex("Normal", "bg") },
+					info = { bg = get_hex("Normal", "bg") },
+					info_diagnostic = { bg = get_hex("Normal", "bg") },
+					hint = { bg = get_hex("Normal", "bg") },
+					hint_diagnostic = { bg = get_hex("Normal", "bg") },
+				},
+			}
+		end,
+	},
+	{
 		"willothy/nvim-cokeline",
 		enabled = false,
-		config = function()
+		opts = function()
 			local map = vim.keymap.set
 
 			local get_hex = require("cokeline/utils").get_hex
@@ -224,79 +297,6 @@ return {
 				map("n", ("<F%s>"):format(i), ("<Plug>(cokeline-focus-%s)"):format(i), { silent = true })
 				map("n", ("<Leader>%s"):format(i), ("<Plug>(cokeline-switch-%s)"):format(i), { silent = true })
 			end
-		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		enabled = true,
-		event = "VeryLazy",
-		version = "*",
-		keys = {
-			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
-			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
-			{ "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-		},
-		opts = function()
-			local get_hex = require("utils").get_hex
-			return {
-				options = {
-					left_mouse_command = function(bufnum)
-						local lazy = require("bufferline.lazy")
-						local ui = lazy.require("bufferline.ui")
-						local windows = vim.fn.win_findbuf(bufnum)
-						if windows[1] then
-							vim.api.nvim_set_current_win(windows[1])
-						end
-						vim.schedule(function()
-							vim.cmd(string.format("buffer %d", bufnum))
-							ui.refresh()
-						end)
-					end,
-          -- stylua: ignore
-          close_command = function(n) require("mini.bufremove").delete(n, false) end,
-          -- stylua: ignore
-          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
-					diagnostics = "nvim_lsp",
-					always_show_bufferline = false,
-					diagnostics_indicator = function(_, _, diag)
-						local icons = require("config.ui").icons.diagnostics
-						local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-							.. (diag.warning and icons.Warn .. diag.warning or "")
-						return vim.trim(ret)
-					end,
-					offsets = {
-						{
-							filetype = "neo-tree",
-							text = "neo-tree",
-							highlight = "Directory",
-							text_align = "left",
-						},
-					},
-					separator_style = { "", "" }, -- ▎
-				},
-				highlights = {
-					fill = { bg = get_hex("Normal", "bg") },
-					background = { bg = get_hex("Normal", "bg") },
-					separator = { bg = get_hex("Normal", "bg") },
-					indicator_selected = { fg = "#b16286" },
-					numbers = { bg = get_hex("Normal", "bg") },
-					buffer = { bg = get_hex("Normal", "bg") },
-					close_button = { bg = get_hex("Normal", "bg") },
-					modified = { bg = get_hex("Normal", "bg") },
-					duplicate = { bg = get_hex("Normal", "bg") },
-					pick = { bg = get_hex("Normal", "bg") },
-					diagnostic = { bg = get_hex("Normal", "bg") },
-					error = { bg = get_hex("Normal", "bg") },
-					error_diagnostic = { bg = get_hex("Normal", "bg") },
-					warning = { bg = get_hex("Normal", "bg") },
-					warning_diagnostic = { bg = get_hex("Normal", "bg") },
-					info = { bg = get_hex("Normal", "bg") },
-					info_diagnostic = { bg = get_hex("Normal", "bg") },
-					hint = { bg = get_hex("Normal", "bg") },
-					hint_diagnostic = { bg = get_hex("Normal", "bg") },
-				},
-			}
 		end,
 	},
 }

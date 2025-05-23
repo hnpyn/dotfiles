@@ -1,9 +1,7 @@
 return {
 	{
 		"numToStr/Navigator.nvim",
-		config = function()
-			require("Navigator").setup({})
-		end,
+		opts = {},
 	},
 	{
 		"iamcco/markdown-preview.nvim",
@@ -37,7 +35,7 @@ return {
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope", "TodoQuickFix" },
 		event = { "BufReadPost", "BufNewFile" },
-		config = true,
+		opts = {},
 		keys = {
 			{
 				"]t",

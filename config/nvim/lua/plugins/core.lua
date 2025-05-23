@@ -11,6 +11,13 @@ return {
 		opts = {
 			delay = 1000,
 		},
+		config = function(_, opts)
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.add({
+				{ "<Leader>g", group = "+git" },
+			})
+		end,
 	},
 	{
 		"folke/trouble.nvim",

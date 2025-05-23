@@ -73,35 +73,54 @@ return {
 	{
 		"ruifm/gitlinker.nvim",
 		event = { "BufReadPre", "BufNewFile" },
+		opts = {},
 		config = function()
-			local map = vim.keymap.set
-
-			map("n", "<Leader>gr", '<Cmd>lua require"gitlinker".get_repo_url()<CR>', { silent = true })
-			map(
-				"n",
-				"<Leader>gR",
-				'<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-				{ silent = true }
-			)
-			map(
-				"n",
-				"<Leader>gL",
-				'<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-				{ silent = true }
-			)
-			map(
-				"v",
-				"<Leader>gL",
-				'<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
-				{}
-			)
-
 			require("gitlinker").setup({
 				callbacks = {
-					["gitlab.utopilot.com.cn"] = require("gitlinker.hosts").get_gitlab_type_url,
+					["112.27.121.65:28088"] = require("gitlinker.hosts").get_gitlab_type_url,
 				},
 				mappings = "<Leader>gl",
 			})
 		end,
+		keys = {
+			{
+				"<Leader>gr",
+				function()
+					require("gitlinker").get_repo_url()
+				end,
+				mode = "n",
+				desc = "Gitlinker: Copy repo URL",
+			},
+			{
+				"<Leader>gR",
+				function()
+					require("gitlinker").get_repo_url({
+						action_callback = require("gitlinker.actions").open_in_browser,
+					})
+				end,
+				mode = "n",
+				desc = "Gitlinker: Open repo URL in browser",
+			},
+			{
+				"<Leader>gL",
+				function()
+					require("gitlinker").get_buf_range_url("n", {
+						action_callback = require("gitlinker.actions").open_in_browser,
+					})
+				end,
+				mode = "n",
+				desc = "Gitlinker: Open buffer line URL in browser",
+			},
+			{
+				"<Leader>gL",
+				function()
+					require("gitlinker").get_buf_range_url("v", {
+						action_callback = require("gitlinker.actions").open_in_browser,
+					})
+				end,
+				mode = "v",
+				desc = "Gitlinker: Open visual range URL in browser",
+			},
+		},
 	},
 }

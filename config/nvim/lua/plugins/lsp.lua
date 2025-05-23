@@ -36,7 +36,7 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		config = function()
+		opts = function()
 			local null_ls = require("null-ls")
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
