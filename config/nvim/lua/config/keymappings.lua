@@ -31,12 +31,12 @@ map("n", "<Leader>x", "<C-w>q", opts("Kill a pane"))
 -- terminal
 function _G.set_terminal_keymaps()
 	local opt = { buffer = 0 }
-	map("t", "<Esc><Esc>", [[<C-\><C-n>]], opt)
-	map("t", "<C-w>", [[<C-\><C-n><C-w>]], opt)
-	map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opt)
-	map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opt)
-	map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opt)
-	map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opt)
+	map("t", "<Esc><Esc>", "<C-\\><C-n>", opt)
+	map("t", "<C-w>", "<C-\\><C-n><C-w>", opt)
+	map("t", "<C-h>", "<Cmd>wincmd h<CR>", opt)
+	map("t", "<C-j>", "<Cmd>wincmd j<CR>", opt)
+	map("t", "<C-k>", "<Cmd>wincmd k<CR>", opt)
+	map("t", "<C-l>", "<Cmd>wincmd l<CR>", opt)
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead

@@ -1,22 +1,18 @@
--- local configs
+-- general settings
 local set = vim.o
 
--- editor behavior
-set.number = true
-set.relativenumber = true
-set.hidden = true
--- set.scrolloff = 2
-set.expandtab = true
-set.tabstop = 2
-set.shiftwidth = 2
 set.autoindent = true
-set.cursorline = true
--- set.nobackup = true
--- set.backup = false
--- set.nowritebackup = true
--- set.writebackup = false
 set.autoread = true
 set.clipboard = "unnamedplus"
+set.cursorline = true
+set.expandtab = true
+set.hidden = true
+set.number = true
+set.relativenumber = true
+set.shiftwidth = 2
+set.tabstop = 2
+set.termguicolors = true -- pretty dress
+
 -- highlight after copy
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
@@ -26,9 +22,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 		})
 	end,
 })
-
--- pretty dress
-set.termguicolors = true
 
 -- highlights
 vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
