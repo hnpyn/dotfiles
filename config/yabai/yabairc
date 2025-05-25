@@ -60,6 +60,8 @@ yabai -m config external_bar all:30:0
 # 不使用平铺模式
 yabai -m rule --add app="^预览$" manage=off
 yabai -m rule --add app="^访达$" manage=off
+yabai -m rule --add app="^日历$" manage=off
+yabai -m rule --add app="^照片$" manage=off
 yabai -m rule --add app="^系统设置$" manage=off
 yabai -m rule --add app="^系统信息$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
@@ -71,5 +73,6 @@ yabai -m rule --add app="^Hearthstone$" manage=off
 yabai -m rule --add app="^网易云音乐$" manage=off
 yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^飞书视频$" manage=off
+yabai -m rule --add app="^飞书会议$" manage=off
 
 echo "yabai configuration loaded.."
