@@ -9,18 +9,15 @@ return {
 	-- 		-- vim.cmd("colorscheme nvim-base16-gruvbox-soft")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("gruvbox").setup({
-	-- 			-- ...
-	-- 		})
-	-- 		vim.o.background = "dark"
-	-- 		-- vim.cmd("colorscheme gruvbox")
-	-- 	end,
-	-- },
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.o.background = "dark"
+			vim.cmd("colorscheme gruvbox")
+		end,
+	},
 	-- {
 	-- 	"sainnhe/gruvbox-material",
 	-- 	lazy = false,
@@ -49,15 +46,15 @@ return {
 	-- 		vim.cmd("colorscheme catppuccin-frappe")
 	-- 	end,
 	-- },
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			vim.cmd("colorscheme tokyonight-night")
-		end,
-	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme tokyonight-night")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"projekt0n/github-nvim-theme",
 	-- 	lazy = false,
