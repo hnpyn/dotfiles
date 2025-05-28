@@ -11,11 +11,8 @@ alias l='ls -CF'
 # some apps aliases
 alias vi="nvim"
 alias vim="nvim"
-alias ra="ranger"
 alias lg="lazygit"
 alias lzd="lazydocker"
-alias pf="pfetch"
-alias nf="neofetch"
 alias icat="kitty +kitten icat"
 alias chrome="google-chrome"
 alias pigcha="PigchaProxy"
