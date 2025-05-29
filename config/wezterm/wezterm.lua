@@ -1,7 +1,10 @@
 -- WezTerm config
 local wezterm = require("wezterm")
 
-local config = {}
+local config = wezterm.config_builder()
+
+-- general config
+config.max_fps = 120
 
 -- font
 config.font = wezterm.font("MesloLGS NF")
@@ -11,6 +14,15 @@ config.font_size = 18
 config.color_scheme = "GruvboxDark" -- "tokyonight_night"
 config.colors = {
 	split = "#7fa2ac",
+	tab_bar = {
+		active_tab = {
+			bg_color = "#458588",
+			fg_color = "#282c34",
+			intensity = "Bold",
+			italic = true,
+			strikethrough = false,
+		},
+	},
 }
 
 -- tab bar

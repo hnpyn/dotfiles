@@ -117,7 +117,7 @@ cmd + alt - w : yabai -m space --destroy
 
 # ================================ APPS ================================
 # alacritty / wezterm / kitty
-# cmd - return : open -a wezterm
+cmd - return : open -a kitty
 
 # ================================ MULTI MONITOR ================================
 # focus monitora : 
