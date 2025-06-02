@@ -4,7 +4,7 @@ echo " clean plugins..."
 echo ""
 
 rm -rf ./plugins
-mkdir plugins
+mkdir -p plugins
 
 echo " done!"
 echo ""

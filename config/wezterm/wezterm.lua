@@ -11,7 +11,7 @@ config.font = wezterm.font("MesloLGS NF")
 config.font_size = 18
 
 -- pretty dress
-config.color_scheme = "GruvboxDark" -- "tokyonight_night"
+config.color_scheme = "Catppuccin Latte" -- "GruvboxDark"
 config.colors = {
 	split = "#7fa2ac",
 	tab_bar = {
@@ -36,10 +36,10 @@ config.initial_rows = 21
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.99
 config.window_padding = {
-	left = 0,
+	left = 10,
 	right = 0,
-	top = 0,
-	bottom = 0,
+	top = 5,
+	bottom = 5,
 }
 config.native_macos_fullscreen_mode = true
 config.enable_scroll_bar = false
