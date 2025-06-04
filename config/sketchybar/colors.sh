@@ -1,0 +1,113 @@
+#!/usr/bin/env sh
+
+# Color Palette
+
+# Default
+WHITE=0xffffffff
+BLACK=0xff000000
+RED=0xffff313a
+GREEN=0xff28cd41
+BLUE=0xff007aff
+YELLOW=0xffffcc00
+PINK=0xffff2d55
+PERPLE=0xffaf52de
+MAGENTA=0xffc6a0f6
+GRAY=0xff8e8e93
+ORANGE=0xffff9500
+WHITE_27=0x45ffffff
+DARK_GREEN=0xff28cd41
+TRANSPARENT=0x1affffff
+FORGROUND=0xff000000
+BACKGROUND=0x1affffff
+SURFACE=0xffb0b4c2
+
+# Colorschemes
+COLORSCHEME="Catppuccin_mocha"
+
+case "$COLORSCHEME" in
+"Gruvbox_dark")
+	# WHITE=0xfffbf1c7
+	# BLACK=0xff1d2021
+	RED=0xfffb4934
+	GREEN=0xffb8bb26
+	BLUE=0xff458588
+	YELLOW=0xffd79921
+	GRAY=0xffa89984
+	PERPLE=0xffb16286
+	ORANGE=0xffd65d0e
+	DARK_GREEN=0xff98971a
+	TRANSPARENT=0x4d282828
+	FORGROUND=0xfffbf1c7
+	BACKGROUND=0xcc282828
+	;;
+"Catppuccin_latte")
+	# WHITE=0xffeff1f5
+	# BLACK=0xff4c4f69
+	RED=0xffd20f39
+	GREEN=0xff40a02b
+	BLUE=0xff1e66f5
+	YELLOW=0xffdf8e1d
+	PINK=0xffea76cb
+	GRAY=0xff9ca0b0
+	PERPLE=0xff8839ef
+	TRANSPARENT=0x4dffffff
+	FORGROUND=0xff4c4f69
+	BACKGROUND=0xcceff1f5
+	SURFACE=0x808839ef
+	;;
+"Catppuccin_frappe")
+	# WHITE=0xffc6d0f5
+	# BLACK=0xff303446
+	RED=0xffe78284
+	GREEN=0xffa6d189
+	BLUE=0xff8caaee
+	YELLOW=0xffe5c890
+	PINK=0xfff4b8e4
+	GRAY=0xff737994
+	PERPLE=0xffca9ee6
+	TRANSPARENT=0x4dbabbf1
+	FORGROUND=0xffc6d0f5
+	BACKGROUND=0xcc303446
+	;;
+"Catppuccin_mocha")
+	# WHITE=0xffcdd6f4
+	# BLACK=0xff1e1e2e
+	RED=0xfff38ba8
+	GREEN=0xffa6e3a1
+	BLUE=0xff89b4fa
+	YELLOW=0xfff9e2af
+	PINK=0xfff5c2e7
+	GRAY=0xff6c7086
+	PERPLE=0xffcba6f7
+	TRANSPARENT=0x4db4befe
+	FORGROUND=0xffcdd6f4
+	BACKGROUND=0xcc1e1e2e
+	SURFACE=0x80cba6f7
+	;;
+"Tokyonight")
+	# WHITE=0xffc0caf5
+	# BLACK=0xff1a1b26
+	RED=0xfff7768e
+	GREEN=0xff9ece6a
+	BLUE=0xff7dcfff
+	YELLOW=0xffe0af68
+	PINK=0xfff4b8e4
+	GRAY=0xff565f89
+	PERPLE=0xffbb9af7
+	TRANSPARENT=0x4d414868
+	FORGROUND=0xffc0caf5
+	BACKGROUND=0x4d414868
+	;;
+esac
+
+# Plugin Cpu
+CPU_BLACK=0xff181926
+CPU_WHITE=0xffcad3f5
+CPU_RED=0xffed8796
+CPU_GREEN=0xffa6da95
+CPU_BLUE=0xff8aadf4
+CPU_YELLOW=0xffeed49f
+CPU_ORANGE=0xfff5a97f
+CPU_MAGENTA=0xffc6a0f6
+CPU_GREY=0xff939ab7
+CPU_TRANSPARENT=0x00000000

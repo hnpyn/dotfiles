@@ -1,0 +1,59 @@
+
+# ================================================================================================== 
+# ███████╗██╗  ██╗███████╗████████╗ ██████╗██╗  ██╗██╗   ██╗██████╗ ██████╗ ██████╗ ██████╗  ██████╗
+# ██╔════╝██║ ██╔╝██╔════╝╚══██╔══╝██╔════╝██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝
+# ███████╗█████╔╝ █████╗     ██║   ██║     ███████║ ╚████╔╝ ██████╔╝██████╔╝██████╔╝██████╔╝██║     
+# ╚════██║██╔═██╗ ██╔══╝     ██║   ██║     ██╔══██║  ╚██╔╝  ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     
+# ███████║██║  ██╗███████╗   ██║   ╚██████╗██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║██║  ██║╚██████╗
+# ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
+# ================================================================================================== 
+                                                                                                  
+CONFIG_DIR="$HOME/.config/sketchybar"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEM_DIR="$CONFIG_DIR/items"
+
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh"
+
+FONT="SF Pro"
+NERD_FONT="Liga SFMono Nerd Font"
+PADDINGS=4
+
+sketchybar --bar height=26            \
+                 margin=4             \
+                 y_offset=4           \
+                 corner_radius=8      \
+                 blur_radius=100      \
+                 position=top         \
+                 padding_left=10      \
+                 padding_right=10     \
+                 color="$BACKGROUND"  \
+                 shadow=on
+
+sketchybar --default updates=when_shown                       \
+                     drawing=on                               \
+                     label.font="$FONT:Light:14.0"            \
+                     label.color="$FORGROUND"                 \
+                     label.padding_left="$PADDINGS"           \
+                     label.padding_right="$PADDINGS"          \
+                     icon.font="$NERD_FONT:Regular:14.0"      \
+                     icon.color="$FORGROUND"                  \
+                     icon.padding_left="$PADDINGS"            \
+                     icon.padding_right="$PADDINGS"           \
+
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/new_space.sh"
+source "$ITEM_DIR/vpn.sh"
+source "$ITEM_DIR/window_title.sh"
+
+source "$ITEM_DIR/datetime.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/darkside.sh"
+
+sketchybar --update
+
+echo "sketchybar configuration loaded.."
