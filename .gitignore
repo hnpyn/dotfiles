@@ -16,8 +16,15 @@ config/nvim/lazy-lock.json
 # mpv
 config/mpv/watch_later/
 
+# emacs
+config/emacs/auto-save-list/
+config/emacs/elpa/
+config/emacs/transient/
+config/emacs/recentf
+
 # tmp
 *~
 *swp
 
 .DS_Store
+.vscode/*
