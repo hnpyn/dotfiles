@@ -1,11 +1,11 @@
 (when (display-graphic-p)
-  (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (set-face-attribute 'default nil :height 120))
 
 (setq inhibit-startup-screen t)
 (setq visible-bell t)
 
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 (global-display-line-numbers-mode t)
 (column-number-mode)
