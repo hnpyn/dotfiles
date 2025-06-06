@@ -1,17 +1,3 @@
-(when (display-graphic-p)
-  (tab-bar-mode 1)
-  (scroll-bar-mode -1)
-  (set-face-attribute 'default nil :height 120))
-
-(setq inhibit-startup-screen t)
-(setq visible-bell t)
-
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(global-display-line-numbers-mode t)
-(column-number-mode)
-
 (use-package evil
   :init
   (setq evil-want-keybinding nil)
