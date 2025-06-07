@@ -74,5 +74,6 @@ yabai -m rule --add app="^网易云音乐$" manage=off
 yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^飞书视频$" manage=off
 yabai -m rule --add app="^飞书会议$" manage=off
+yabai -m rule --add app="^腾讯会议$" manage=off
 
 echo "yabai configuration loaded.."
