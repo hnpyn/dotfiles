@@ -10,7 +10,7 @@ GREEN=0xff28cd41
 BLUE=0xff007aff
 YELLOW=0xffffcc00
 PINK=0xffff2d55
-PERPLE=0xffaf52de
+PURPLE=0xffaf52de
 MAGENTA=0xffc6a0f6
 GRAY=0xff8e8e93
 ORANGE=0xffff9500
@@ -22,23 +22,41 @@ BACKGROUND=0x1affffff
 SURFACE=0xffb0b4c2
 
 # Colorschemes
-COLORSCHEME="Catppuccin_mocha"
+COLORSCHEME="Gruvbox_dark"
 
 case "$COLORSCHEME" in
 "Gruvbox_dark")
 	# WHITE=0xfffbf1c7
-	# BLACK=0xff1d2021
+	# BLACK=0xff282828
 	RED=0xfffb4934
 	GREEN=0xffb8bb26
 	BLUE=0xff458588
 	YELLOW=0xffd79921
-	GRAY=0xffa89984
-	PERPLE=0xffb16286
+	GRAY=0xff928374
+	PURPLE=0xffb16286
 	ORANGE=0xffd65d0e
 	DARK_GREEN=0xff98971a
 	TRANSPARENT=0x4d282828
 	FORGROUND=0xfffbf1c7
-	BACKGROUND=0xcc282828
+	BACKGROUND=0xff282828
+	SURFACE=0x80665c54
+	;;
+"Dracula")
+	# WHITE=0xfff8f8f2
+	# BLACK=0xff282a36
+	RED=0xffff5555
+	GREEN=0xff50fa7b
+	BLUE=0xff8be9fd
+	YELLOW=0xfff1fa8c
+	PINK=0xffff79c6
+	GRAY=0xff6272a4
+	PURPLE=0xffbd93f9
+	ORANGE=0xffffb86c
+	DARK_GREEN=0xff98971a
+	TRANSPARENT=0x4dffffff
+	FORGROUND=0xfff8f8f2
+	BACKGROUND=0xcc282a36
+	SURFACE=0x80bd93f9
 	;;
 "Catppuccin_latte")
 	# WHITE=0xffeff1f5
@@ -49,7 +67,7 @@ case "$COLORSCHEME" in
 	YELLOW=0xffdf8e1d
 	PINK=0xffea76cb
 	GRAY=0xff9ca0b0
-	PERPLE=0xff8839ef
+	PURPLE=0xff8839ef
 	TRANSPARENT=0x4dffffff
 	FORGROUND=0xff4c4f69
 	BACKGROUND=0xcceff1f5
@@ -64,7 +82,7 @@ case "$COLORSCHEME" in
 	YELLOW=0xffe5c890
 	PINK=0xfff4b8e4
 	GRAY=0xff737994
-	PERPLE=0xffca9ee6
+	PURPLE=0xffca9ee6
 	TRANSPARENT=0x4dbabbf1
 	FORGROUND=0xffc6d0f5
 	BACKGROUND=0xcc303446
@@ -78,11 +96,26 @@ case "$COLORSCHEME" in
 	YELLOW=0xfff9e2af
 	PINK=0xfff5c2e7
 	GRAY=0xff6c7086
-	PERPLE=0xffcba6f7
+	PURPLE=0xffcba6f7
 	TRANSPARENT=0x4db4befe
 	FORGROUND=0xffcdd6f4
-	BACKGROUND=0xcc1e1e2e
+	BACKGROUND=0xff1e1e2e
 	SURFACE=0x80cba6f7
+	;;
+"Rose_pine")
+	# WHITE=0xffe0def4
+	# BLACK=0xff191724
+	RED=0xffeb6f92
+	GREEN=0xff31748f
+	BLUE=0xff9ccfd8
+	YELLOW=0xfff6c177
+	PINK=0xffebbcba
+	GRAY=0xff908caa
+	PURPLE=0xffc4a7e7
+	TRANSPARENT=0x4dffffff
+	FORGROUND=0xffe0def4
+	BACKGROUND=0xff191724
+	SURFACE=0xff26233a
 	;;
 "Tokyonight")
 	# WHITE=0xffc0caf5
@@ -93,7 +126,7 @@ case "$COLORSCHEME" in
 	YELLOW=0xffe0af68
 	PINK=0xfff4b8e4
 	GRAY=0xff565f89
-	PERPLE=0xffbb9af7
+	PURPLE=0xffbb9af7
 	TRANSPARENT=0x4d414868
 	FORGROUND=0xffc0caf5
 	BACKGROUND=0x4d414868

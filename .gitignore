@@ -2,6 +2,7 @@
 **/plugins/
 **/plugged/
 !config/nvim/lua/plugins/
+!config/sketchybar/plugins/
 
 # python
 *.pyo
