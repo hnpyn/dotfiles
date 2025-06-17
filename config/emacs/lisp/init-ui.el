@@ -25,15 +25,15 @@
 			  (projects . 10)))
   (dashboard-setup-startup-hook))
 
-;; (use-package gruvbox-theme
-;;   :config
-;;   (load-theme 'gruvbox-dark-medium t))
-
-(use-package catppuccin-theme
+(use-package gruvbox-theme
   :config
-  (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-flavor 'mocha) ; 'latte, 'frappe, 'macchiato, or 'mocha
-  (catppuccin-reload))
+  (load-theme 'gruvbox-dark-medium t))
+
+;; (use-package catppuccin-theme
+;;   :config
+;;   (load-theme 'catppuccin :no-confirm)
+;;   (setq catppuccin-flavor 'mocha) ; 'latte, 'frappe, 'macchiato, or 'mocha
+;;   (catppuccin-reload))
 
 (use-package smart-mode-line
   :config

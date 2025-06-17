@@ -10,13 +10,13 @@ return {
   -- 	end,
   -- },
   -- {
-  -- 	"ellisonleao/gruvbox.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.o.background = "dark"
-  -- 		vim.cmd("colorscheme gruvbox")
-  -- 	end,
+  --   "ellisonleao/gruvbox.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.o.background = "dark"
+  --     vim.cmd("colorscheme gruvbox")
+  --   end,
   -- },
   -- {
   -- 	"sainnhe/gruvbox-material",
@@ -28,24 +28,41 @@ return {
   -- 		vim.cmd("colorscheme gruvbox-material")
   -- 	end,
   -- },
-  -- {
-  -- 	"luisiacc/gruvbox-baby",
-  -- 	enabled = true,
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.cmd("colorscheme gruvbox-baby")
-  -- 	end,
-  -- },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "luisiacc/gruvbox-baby",
+    enabled = true,
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme catppuccin-mocha")
+      vim.cmd("colorscheme gruvbox-baby")
     end,
   },
+  -- {
+  -- 	"catppuccin/nvim",
+  -- 	name = "catppuccin",
+  -- 	lazy = false,
+  -- 	priority = 1000,
+  -- 	config = function()
+  -- 		vim.cmd("colorscheme catppuccin-mocha")
+  -- 	end,
+  -- },
+  -- {
+  -- 	"Mofiqul/dracula.nvim",
+  -- 	lazy = false,
+  -- 	priority = 1000,
+  -- 	config = function()
+  -- 		vim.cmd("colorscheme dracula")
+  -- 	end,
+  -- },
+  -- {
+  -- 	"rose-pine/neovim",
+  -- 	lazy = false,
+  -- 	priority = 1000,
+  -- 	name = "rose-pine",
+  -- 	config = function()
+  -- 		vim.cmd("colorscheme rose-pine-main")
+  -- 	end,
+  -- },
   -- {
   -- 	"folke/tokyonight.nvim",
   -- 	lazy = false,
@@ -86,14 +103,6 @@ return {
   -- 			style = "darker",
   -- 		})
   -- 		vim.cmd("colorscheme onedark")
-  -- 	end,
-  -- },
-  -- {
-  -- 	"Mofiqul/dracula.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.cmd("colorscheme dracula")
   -- 	end,
   -- },
   -- {

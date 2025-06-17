@@ -164,9 +164,9 @@ hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none
 " let g:tokyonight_enable_italic = 1
 " colorscheme tokyonight
 " gruvbox
-" set background=dark
-" colorscheme gruvbox
+set background=dark
+colorscheme gruvbox
 " dracula
 " colorscheme dracula
 " catppuccin
-colorscheme catppuccin_mocha
+" colorscheme catppuccin_mocha
