@@ -18,8 +18,8 @@ WHITE_27=0x45ffffff
 DARK_GREEN=0xff28cd41
 TRANSPARENT=0x1affffff
 FORGROUND=0xff000000
-BACKGROUND=0x1affffff
-SURFACE=0xffb0b4c2
+BACKGROUND=0xccffffff
+SURFACE=0x80b0b4c2
 
 # Colorschemes
 COLORSCHEME="Gruvbox_dark"
