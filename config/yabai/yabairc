@@ -48,13 +48,13 @@ yabai -m config window_shadow float
 yabai -m config window_opacity on
 # 配置活动窗口不透明度
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
+yabai -m config normal_window_opacity 1.0
 yabai -m config window_opacity_duration 0.0
 
 # 在主显示器上的每个空间顶部添加 20 填充 底部添加 0 填充
 # yabai -m config external_bar main:20:0
 # 在所有显示器上的每个空间顶部添加 0 填充 底部添加 0 填充
-yabai -m config external_bar all:30:0
+# yabai -m config external_bar all:30:0
 
 # ================================ RULES ================================
 # 不使用平铺模式
