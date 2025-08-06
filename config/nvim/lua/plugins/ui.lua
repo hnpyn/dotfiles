@@ -57,7 +57,9 @@ return {
 		"petertriho/nvim-scrollbar",
 		enabled = true,
 		event = { "BufReadPost", "BufNewFile" },
-		opts = {},
+		opts = {
+			handlers = { gitsigns = true },
+		},
 	},
 	{
 		"dstein64/nvim-scrollview",
