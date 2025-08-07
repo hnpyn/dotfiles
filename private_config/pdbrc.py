@@ -11,7 +11,7 @@ try:
         )
         use_pygments = True
         sticky_by_default = False
-        prompt = "\033[1;92mpdb++> \033[0m"
+        prompt = "\001\033[1;92m\002pdb++>\001\033[0m\002 "
         current_line_color = "1;100;1"
 
 except ModuleNotFoundError:

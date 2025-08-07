@@ -51,14 +51,14 @@ return {
 		deactivate = function()
 			vim.cmd([[Neotree close]])
 		end,
-		init = function()
-			if vim.fn.argc() == 1 then
-				local stat = vim.loop.fs_stat(vim.fn.argv(0))
-				if stat and stat.type == "directory" then
-					require("neo-tree")
-				end
-			end
-		end,
+		-- init = function()
+		-- 	if vim.fn.argc() == 1 then
+		-- 		local stat = vim.loop.fs_stat(vim.fn.argv(0))
+		-- 		if stat and stat.type == "directory" then
+		-- 			require("neo-tree")
+		-- 		end
+		-- 	end
+		-- end,
 		opts = function()
 			local icons = require("config.ui").icons
 			return {
@@ -72,6 +72,7 @@ return {
 					follow_current_file = { enabled = true },
 					use_libuv_file_watcher = true,
 				},
+                hijack_netrw_behavior = "disabled",
 				window = {
 					mappings = {
 						["<space>"] = "none",

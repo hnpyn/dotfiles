@@ -38,4 +38,4 @@ export NUPLAN_EXP_ROOT="$HOME/Workspace/data/NuScenes/nuPlan/exp"
 
 # linuxbrew
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-
+export HOMEBREW_AUTO_UPDATE_SECS=604800
