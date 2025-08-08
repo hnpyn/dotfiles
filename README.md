@@ -2,11 +2,17 @@
 
 🏠.dotfiles
 
--- nvim, kitty, lazygit, ranger ...
+-- zsh, nvim, kitty, lazygit ...
+
+# Requirements
+
+Required: git, zsh, xclip, file, ripgrep, fzf, fd, lsd, bat, chafa.
+
+Optional: neovim, zoxide, yazi, kitty, lazygit, tmux, etc.
 
 # Install
 
-jsut
+Jsut
 
 ```bash
 git clone https://github.com/hnpyn/dotfiles.git

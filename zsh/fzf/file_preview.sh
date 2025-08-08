@@ -4,7 +4,7 @@ category=${mime%%/*}
 if [ -d "$1" ]; then
   lsd -A --icon=always "$1" 2>/dev/null 
 elif [ "$category" = text ]; then
-  (bat -p --style numbers --color=always "$1" ) 2>/dev/null | head -1000
+  (batcat -p --style numbers --color=always "$1" ) 2>/dev/null | head -1000
 elif [ "$category" = image ]; then 
   # (~/.zsh/fzf/img_preview $1) 2>/dev/null 
   chafa -f symbols "$1"
