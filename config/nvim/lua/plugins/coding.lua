@@ -6,6 +6,11 @@ end
 
 return {
 	{
+		"windwp/nvim-autopairs",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
