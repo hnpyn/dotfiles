@@ -5,15 +5,16 @@ return {
 		"stevearc/dressing.nvim",
 		lazy = true,
 		init = function()
-			---@diagnostic disable-next-line: duplicate-set-field
+			local ori_select = vim.ui.select
+			local ori_input = vim.ui.input
+
 			vim.ui.select = function(...)
 				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
+				return ori_select(...)
 			end
-			---@diagnostic disable-next-line: duplicate-set-field
 			vim.ui.input = function(...)
 				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
+				return ori_input(...)
 			end
 		end,
 	},
@@ -32,7 +33,7 @@ return {
 		event = "VeryLazy",
 		opts = function()
 			local icons = require("config.ui").icons
-			local Util = require("config.nvim.lua.util.init")
+			local Util = require("util")
 
 			return {
 				options = {
@@ -78,7 +79,7 @@ return {
 			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
 		},
 		opts = function()
-			local get_hex = require("config.nvim.lua.util.init").get_hex
+			local get_hex = require("util").get_hex
 			return {
 				options = {
 					left_mouse_command = function(bufnum)

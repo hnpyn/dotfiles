@@ -1,8 +1,5 @@
--- key mappings
+-- keymapps
 require("config.keymaps")
 
--- bootstrap lazy.nvim
-require("config.lazy")
-
--- local configs
+-- options
 require("config.options")

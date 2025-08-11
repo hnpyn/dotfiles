@@ -7,7 +7,6 @@ local function opts(desc)
 end
 
 -- basic
-vim.g.mapleader = " "
 map("i", "jj", "<Esc>", opts(""))
 map("n", ",w", "<Cmd>w<CR>", opts("Write"))
 map("n", "<Esc>", "<Cmd>noh<CR>", opts(""))
@@ -38,6 +37,3 @@ function _G.set_terminal_keymaps()
 	map("t", "<C-k>", "<Cmd>wincmd k<CR>", opt)
 	map("t", "<C-l>", "<Cmd>wincmd l<CR>", opt)
 end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
