@@ -25,4 +25,4 @@ require("lazy").setup({
 })
 
 -- Load config
-require("config.init")
+require("config")
