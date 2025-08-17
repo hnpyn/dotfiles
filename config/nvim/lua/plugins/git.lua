@@ -48,14 +48,37 @@ return {
 	},
 	{
 		"ruifm/gitlinker.nvim",
+		enabled = true,
 		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("gitlinker").setup({
+		opts = function()
+			local get_custom_type_url = function(url_data)
+				local url = "http://" .. url_data.host
+				if url_data.port then
+					url = url .. ":" .. url_data.port .. "/"
+				end
+				url = url .. url_data.repo .. "/-/blob/" .. url_data.rev .. "/" .. url_data.file
+				if url_data.lstart then
+					url = url .. "#L" .. url_data.lstart
+					if url_data.lend then
+						url = url .. "-L" .. url_data.lend
+					end
+				end
+				return url
+			end
+
+			return {
 				callbacks = {
-					["112.27.121.65:28088"] = require("gitlinker.hosts").get_gitlab_type_url,
+					["112.29.101.105"] = function(url_data)
+						url_data.port = "28088"
+						return get_cutome_type_url(url_data)
+					end,
+					["ads.shineauto.com.cn"] = function(url_data)
+						url_data.port = "28088"
+						return get_cutome_type_url(url_data)
+					end,
 				},
 				mappings = "<Leader>gl",
-			})
+			}
 		end,
 		keys = {
 			{

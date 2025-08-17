@@ -8,7 +8,6 @@ return {
       "MasonUninstallAll",
       "MasonLog",
       "MasonUpdate",
-      "MasonUpdateAll",
     },
     opts = {
       ensure_installed = {
@@ -28,7 +27,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "mason.nvim",
       { "mason-org/mason-lspconfig.nvim", config = function() end },
