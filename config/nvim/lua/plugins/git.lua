@@ -70,11 +70,11 @@ return {
 				callbacks = {
 					["112.29.101.105"] = function(url_data)
 						url_data.port = "28088"
-						return get_cutome_type_url(url_data)
+						return get_custom_type_url(url_data)
 					end,
 					["ads.shineauto.com.cn"] = function(url_data)
 						url_data.port = "28088"
-						return get_cutome_type_url(url_data)
+						return get_custom_type_url(url_data)
 					end,
 				},
 				mappings = "<Leader>gl",
