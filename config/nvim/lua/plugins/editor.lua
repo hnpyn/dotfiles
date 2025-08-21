@@ -56,7 +56,7 @@ return {
 		lazy = false,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<leader>fe", "<Cmd>Oil<CR>", desc = "File Explorer" },
+			{ "<Leader>fe", "<Cmd>Oil<CR>", desc = "File Explorer" },
 		},
 		opts = {
 			default_file_explorer = true,
@@ -78,7 +78,7 @@ return {
 		cmd = "Neotree",
 		keys = {
 			{
-				"<leader>tt",
+				"<Leader>tt",
 				function()
 					require("neo-tree.command").execute({
 						toggle = true,
@@ -88,7 +88,7 @@ return {
 				desc = "Explorer NeoTree (root dir)",
 			},
 			{
-				"<leader>te",
+				"<Leader>te",
 				function()
 					require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
 				end,
@@ -176,14 +176,21 @@ return {
 			local wk = require("which-key")
 			wk.setup(opts)
 			wk.add({
-				{ "<Leader>g", group = "+git" },
+				{ "<Leader>b", group = "+Buffer" },
+				{ "<Leader>f", group = "+Finder" },
+				{ "<Leader>t", group = "+Tree" },
+				{ "<Leader>g", group = "+Git" },
+				{ "<Leader>gh", group = "+Gitsigns" },
+				{ "<Leader>gl", desc = "Gitlinker: Copy buffer line url" },
 			})
 		end,
 	},
 	{
 		"folke/trouble.nvim",
 		cmd = { "Trouble" },
-		opts = { use_diagnostic_signs = true },
+		opts = {
+			use_diagnostic_signs = true,
+		},
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -213,17 +220,17 @@ return {
 		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
     -- stylua: ignore
     keys = {
-      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
+      { "<Leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
+      { "<Leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<Leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
 	},
 	{
 		"echasnovski/mini.bufremove",
     -- stylua: ignore
     keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
+      { "<Leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<Leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
     },
 	},
 }

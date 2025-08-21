@@ -4,6 +4,18 @@ return {
 		enabled = true,
 		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "Git", "G" },
+		keys = {
+			{
+				"<Leader>gg",
+				"<Cmd>Git<CR>",
+				desc = "Git: fugitive",
+			},
+			{
+				"<Leader>gv",
+				"<Cmd>vert Git<CR>",
+				desc = "Git: fugitive vertical",
+			},
+		},
 	},
 	{
 		"refractalize/oil-git-status.nvim",
