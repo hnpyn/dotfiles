@@ -181,6 +181,7 @@ return {
 				{ "<Leader>t", group = "+Tree" },
 				{ "<Leader>g", group = "+Git" },
 				{ "<Leader>gh", group = "+Gitsigns" },
+				{ "<Leader>gt", group = "+Gitsigns" },
 				{ "<Leader>gl", desc = "Gitlinker: Copy buffer line url" },
 			})
 		end,

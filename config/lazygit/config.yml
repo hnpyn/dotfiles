@@ -8,6 +8,11 @@ gui:
   mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
   language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
+  customIcons:
+    extensions:
+      ".py":
+        icon: "\ue606"
+        color: "#FFD700"
   theme:
     # default color
     # lightTheme: false
@@ -121,7 +126,8 @@ gui:
   experimentalShowBranchHeads: false # visualize branch heads with (*) in commits list
   showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
   showCommandLog: true
-  showIcons: true
+  nerdFontsVersion: "2"
+  showFileIcons: true
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
