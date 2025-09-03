@@ -43,8 +43,8 @@ return {
 				end
 
         -- stylua: ignore start
-        map("n", "]h", gs.next_hunk, "GitSigns Next Hunk")
-        map("n", "[h", gs.prev_hunk, "GitSigns Prev Hunk")
+        map("n", "]h", gs.next_hunk, "Next Hunk")
+        map("n", "[h", gs.prev_hunk, "Prev Hunk")
         map({ "n", "v" }, "<Leader>ghs", "<Cmd>Gitsigns stage_hunk<CR>", "Stage Hunk")
         map({ "n", "v" }, "<Leader>ghr", "<Cmd>Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<Leader>ghS", gs.stage_buffer, "Stage Buffer")

@@ -187,13 +187,6 @@ return {
 		end,
 	},
 	{
-		"folke/trouble.nvim",
-		cmd = { "Trouble" },
-		opts = {
-			use_diagnostic_signs = true,
-		},
-	},
-	{
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope", "TodoQuickFix" },
 		event = { "BufReadPost", "BufNewFile" },

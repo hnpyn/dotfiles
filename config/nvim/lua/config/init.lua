@@ -1,4 +1,10 @@
--- keymapps
+-- autocmds
+require("config.autocmds")
+
+-- commands
+require("config.commands")
+
+-- keymaps
 require("config.keymaps")
 
 -- options

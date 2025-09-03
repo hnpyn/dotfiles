@@ -1,9 +1,9 @@
--- general settings
 local set = vim.o
+local util = require("util")
 
+-- basic
 set.autoindent = true
 set.autoread = true
-set.clipboard = "unnamedplus"
 set.cursorline = true
 set.expandtab = true
 set.hidden = true
@@ -13,15 +13,13 @@ set.shiftwidth = 2
 set.tabstop = 2
 set.termguicolors = true -- pretty dress
 
--- highlight after copy
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  pattern = { "*" },
-  callback = function()
-    vim.highlight.on_yank({
-      timeout = 300,
-    })
-  end,
-})
+-- clipboard
+if util.is_remote() and not util.is_tmux() then
+	set.clipboard = "unnamedplus"
+	vim.g.clipboard = "osc52"
+else
+	set.clipboard = "unnamedplus"
+end
 
 -- highlight groups
 vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
