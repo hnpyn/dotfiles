@@ -1,5 +1,3 @@
--- keybindings
--- default settings
 local map = vim.keymap.set
 
 local function opts(desc)
