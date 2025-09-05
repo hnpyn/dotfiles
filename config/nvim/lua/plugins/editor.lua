@@ -13,6 +13,7 @@ return {
 	},
 	{
 		"ibhagwan/fzf-lua",
+		enabled = true,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = { "FzfLua" },
 		opts = function()
@@ -28,6 +29,10 @@ return {
 				end
 			end
 			return {
+				files = {
+					fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git]],
+					rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git"]],
+				},
 				previewers = {
 					builtin = {
 						extensions = {
