@@ -2,10 +2,63 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"numToStr/Navigator.nvim",
+		lazy = true,
 		opts = {},
+		keys = {
+			{ "<C-h>", "<Cmd>NavigatorLeft<CR>", desc = "Navigate Left" },
+			{ "<C-j>", "<Cmd>NavigatorDown<CR>", desc = "Navigate Down" },
+			{ "<C-k>", "<Cmd>NavigatorUp<CR>", desc = "Navigate Up" },
+			{ "<C-l>", "<Cmd>NavigatorRight<CR>", desc = "Navigate Right" },
+		},
+	},
+	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = { "FzfLua" },
+		opts = function()
+			local img_previewer ---@type string[]?
+			for _, v in ipairs({
+				{ cmd = "ueberzug", args = {} },
+				{ cmd = "chafa", args = { "{file}", "--format=symbols" } },
+				{ cmd = "viu", args = { "-b" } },
+			}) do
+				if vim.fn.executable(v.cmd) == 1 then
+					img_previewer = vim.list_extend({ v.cmd }, v.args)
+					break
+				end
+			end
+			return {
+				previewers = {
+					builtin = {
+						extensions = {
+							["png"] = img_previewer,
+							["jpg"] = img_previewer,
+							["jpeg"] = img_previewer,
+							["gif"] = img_previewer,
+							["webp"] = img_previewer,
+						},
+						ueberzug_scaler = "fit_contain",
+					},
+				},
+			}
+		end,
+		keys = {
+			{ "<leader>/", "<Cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
+			{ "<leader>:", "<Cmd>FzfLua command_history<CR>", desc = "Command History" },
+			-- find
+			{ "<leader>fb", "<Cmd>FzfLua buffers sort_mru=true sort_lastused=true<CR>", desc = "Find Buffers" },
+			{ "<leader>ff", "<Cmd>FzfLua files<CR>", desc = "Find Files" },
+			{ "<leader>fg", "<Cmd>FzfLua git_files<CR>", desc = "Find Git Files" },
+			{ "<leader>fr", "<Cmd>FzfLua oldfiles<CR>", desc = "Recent Files" },
+			{ "<leader>fR", "<Cmd>FzfLua resume<CR>", desc = "Resume Find" },
+			-- git
+			{ "<leader>gc", "<Cmd>FzfLua git_commits<CR>", desc = "Git: Commits" },
+			{ "<leader>gs", "<Cmd>FzfLua git_status<CR>", desc = "Git: Status" },
+		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		enabled = false,
 		tag = "0.1.4",
 		cmd = { "Telescope" },
 		keys = {
@@ -188,7 +241,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		cmd = { "TodoTrouble", "TodoTelescope", "TodoQuickFix" },
+		cmd = { "TodoFzfLua", "TodoQuickFix" },
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {},
 		keys = {
