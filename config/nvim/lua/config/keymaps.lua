@@ -17,10 +17,6 @@ map("n", "j", [[v:count ? 'j': 'gj']], { noremap = true, expr = true })
 map("n", "k", [[v:count ? 'k': 'gk']], { noremap = true, expr = true })
 
 -- window behaviors
-map({ "n", "t" }, "<C-h>", "<Cmd>NavigatorLeft<CR>")
-map({ "n", "t" }, "<C-j>", "<Cmd>NavigatorDown<CR>")
-map({ "n", "t" }, "<C-k>", "<Cmd>NavigatorUp<CR>")
-map({ "n", "t" }, "<C-l>", "<Cmd>NavigatorRight<CR>")
 map("n", "<Leader>s", "<C-w>s", opts("Split window"))
 map("n", "<Leader>v", "<C-w>v", opts("Split window vertical"))
 map("n", "<Leader>x", "<C-w>q", opts("Kill a pane"))
