@@ -384,10 +384,10 @@ return {
 
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file", "<Cmd>Telescope find_files<CR>"),
-        dashboard.button("n", " " .. " New file", "<Cmd>ene <BAR> startinsert<CR>"),
-        dashboard.button("r", " " .. " Recent files", "<Cmd>Telescope oldfiles<CR>"),
-        dashboard.button("g", " " .. " Find text", "<Cmd>Telescope live_grep<CR>"),
+        dashboard.button("f", " " .. " Find file", "<Cmd>FzfLua files<CR>"),
+				dashboard.button("n", " " .. " New file", "<Cmd>ene <BAR> startinsert<CR>"),
+				dashboard.button("r", " " .. " Recent files", "<Cmd>FzfLua oldfiles<CR>"),
+				dashboard.button("g", " " .. " Find text", "<Cmd>FzfLua live_grep<CR>"),
         dashboard.button("e", "󰙅 " .. " File explorer", "<Cmd>Oil --float<CR>"),
         dashboard.button("s", " " .. " Restore Session", [[<Cmd>lua require("persistence").load()<CR>]]),
         dashboard.button("c", " " .. " Config", "<Cmd>e $MYVIMRC<CR>"),
