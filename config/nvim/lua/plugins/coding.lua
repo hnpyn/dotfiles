@@ -5,9 +5,25 @@ return {
 		opts = {},
 	},
 	{
+		"zbirenbaum/copilot.lua",
+		enabled = true,
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				markdown = true,
+				help = true,
+			},
+		},
+	},
+	{
 		"hrsh7th/nvim-cmp",
+		enabled = false,
 		event = "InsertEnter",
 		dependencies = {
+			"zbirenbaum/copilot-cmp",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
@@ -65,6 +81,7 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "copilot", group_index = 2 },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
 					-- { name = "ultisnips" }, -- For ultisnips users.
@@ -109,5 +126,76 @@ return {
 				}),
 			})
 		end,
+	},
+	{
+		"saghen/blink.cmp",
+		enabled = true,
+		event = "InsertEnter",
+		dependencies = {
+			{
+				"fang2hou/blink-copilot",
+				opts = {
+					kind_icon = "",
+				},
+			},
+			"rafamadriz/friendly-snippets",
+		},
+		version = "1.*",
+		opts = {
+			keymap = {
+				preset = "default",
+				["<CR>"] = { "accept", "fallback" },
+				["<Tab>"] = { "show_and_insert", "select_next" },
+				["<S-Tab>"] = { "show_and_insert", "select_prev" },
+			},
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = {
+				accept = {
+					auto_brackets = {
+						enabled = true,
+					},
+				},
+				menu = {
+					draw = {
+						treesitter = { "lsp" },
+					},
+				},
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+				},
+			},
+			cmdline = {
+				keymap = {
+					preset = "inherit",
+					["<CR>"] = { "accept_and_enter", "fallback" },
+				},
+				completion = { menu = { auto_show = true } },
+			},
+			sources = {
+				default = { "copilot", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					copilot = {
+						name = "copilot",
+						module = "blink-copilot",
+						score_offset = 100,
+						async = true,
+					},
+					cmdline = {
+						min_keyword_length = function(ctx)
+							-- when typing a command, only show when the keyword is 3 characters or longer
+							if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
+								return 3
+							end
+							return 0
+						end,
+					},
+				},
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
 	},
 }
