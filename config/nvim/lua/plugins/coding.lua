@@ -170,7 +170,7 @@ return {
 			cmdline = {
 				keymap = {
 					preset = "inherit",
-					["<CR>"] = { "accept_and_enter", "fallback" },
+					-- ["<CR>"] = { "accept_and_enter", "fallback" },
 				},
 				completion = { menu = { auto_show = true } },
 			},
