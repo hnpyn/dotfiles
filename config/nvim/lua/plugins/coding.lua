@@ -145,8 +145,8 @@ return {
 			keymap = {
 				preset = "default",
 				["<CR>"] = { "accept", "fallback" },
-				["<Tab>"] = { "show_and_insert", "select_next" },
-				["<S-Tab>"] = { "show_and_insert", "select_prev" },
+				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 			},
 			appearance = {
 				nerd_font_variant = "mono",
@@ -166,11 +166,12 @@ return {
 					auto_show = true,
 					auto_show_delay_ms = 200,
 				},
+				ghost_text = { enabled = false },
 			},
 			cmdline = {
 				keymap = {
 					preset = "inherit",
-					-- ["<CR>"] = { "accept_and_enter", "fallback" },
+					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
 				completion = { menu = { auto_show = true } },
 			},
