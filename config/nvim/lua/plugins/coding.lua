@@ -152,6 +152,11 @@ return {
 				nerd_font_variant = "mono",
 			},
 			completion = {
+				list = {
+					selection = {
+						preselect = false,
+					},
+				},
 				accept = {
 					auto_brackets = {
 						enabled = true,
@@ -173,7 +178,14 @@ return {
 					preset = "inherit",
 					["<CR>"] = { "accept_and_enter", "fallback" },
 				},
-				completion = { menu = { auto_show = true } },
+				completion = {
+					list = {
+						selection = {
+							preselect = false,
+						},
+					},
+					menu = { auto_show = true },
+				},
 			},
 			sources = {
 				default = { "copilot", "lsp", "path", "snippets", "buffer" },
