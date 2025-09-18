@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Diagnostic open float" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic go to prev" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic go to next" })
--- map("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic set locllist" })
+map("n", "<Leader>l", vim.diagnostic.setloclist, { desc = "Diagnostic set locllist" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -21,9 +21,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 		map("n", "gD", vim.lsp.buf.declaration, opts("go to declaration"))
 		map("n", "gd", vim.lsp.buf.definition, opts("go to definition"))
-		map("n", "K", vim.lsp.buf.hover, opts("hover"))
-		-- map("n", "gi", vim.lsp.buf.implementation, opts(" "))
-		-- map("n", "<C-k>", vim.lsp.buf.signature_help, opts(" "))
+		map("n", "gi", vim.lsp.buf.implementation, opts(" "))
+		map("n", "K", function()
+			vim.lsp.buf.hover({ border = "rounded" })
+		end, opts("hover documentation"))
+		map("n", "<C-k>", function()
+			vim.lsp.buf.signature_help({ border = "rounded" })
+		end, opts("signature help"))
 		map("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, opts("add workspace folder"))
 		map("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, opts("remove workspace folder"))
 		map("n", "<Leader>wl", function()
@@ -33,7 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<Leader>rn", vim.lsp.buf.rename, opts("rename"))
 		map({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, opts("code action"))
 		map("n", "gr", vim.lsp.buf.references, opts("go to references"))
-		map("n", "<Leader>lf", function()
+		map("n", "<Leader>cF", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts("format"))
 	end,

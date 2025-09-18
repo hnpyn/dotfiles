@@ -22,7 +22,7 @@ else
 end
 
 -- highlight groups
-vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
+-- vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
 vim.cmd("hi Search guifg=#0d0e0f guibg=#d79921 gui=none")
 vim.cmd("hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none")
 vim.cmd("hi CurSearch guifg=#0d0e0f guibg=#689d6a gui=none")

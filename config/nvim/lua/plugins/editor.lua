@@ -29,6 +29,7 @@ return {
 				end
 			end
 			return {
+				fzf_colors = true,
 				files = {
 					fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git]],
 					rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git"]],
@@ -105,14 +106,38 @@ return {
 				"<Leader>md",
 				"<Cmd>RenderMarkdown toggle<CR>",
 				mode = "n",
-				desc = "render-markdown: RenderMarkdown toggle",
+				desc = "RenderMarkdown: RenderMarkdown toggle",
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.files",
+		enabled = true,
+		opts = {
+			windows = {
+				preview = true,
+				width_preview = 50,
+			},
+			options = {
+				-- Whether to use for editing directories
+				use_as_default_explorer = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+				end,
+				desc = "Open mini.files (Directory of Current File)",
 			},
 		},
 	},
 	{
 		"stevearc/oil.nvim",
-		lazy = false,
+		enabled = true,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = "Oil",
 		keys = {
 			{ "<Leader>fe", "<Cmd>Oil<CR>", desc = "File Explorer" },
 		},
