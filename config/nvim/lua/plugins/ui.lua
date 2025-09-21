@@ -25,7 +25,7 @@ return {
 		event = "VeryLazy",
 		opts = function()
 			local icons = require("config.ui").icons
-			local Util = require("util")
+			local util = require("util")
 
 			return {
 				options = {
@@ -101,7 +101,7 @@ return {
 					offsets = {
 						{
 							filetype = "neo-tree",
-							text = "neo-tree",
+							text = "Neo-tree",
 							highlight = "Directory",
 							text_align = "left",
 						},
