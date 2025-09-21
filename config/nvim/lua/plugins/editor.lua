@@ -63,34 +63,6 @@ return {
 		},
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		enabled = false,
-		tag = "0.1.4",
-		cmd = { "Telescope" },
-		keys = {
-			{ "<Leader>ff", "<Cmd>Telescope find_files<CR>", desc = "Telescope: find files" },
-			{ "<Leader>fg", "<Cmd>Telescope live_grep<CR>", desc = "Telescope: live grep" },
-			{ "<Leader>fb", "<Cmd>Telescope buffers<CR>", desc = "Telescope: buffers" },
-			{ "<Leader>fr", "<Cmd>Telescope resume<CR>", desc = "Telescope: resume" },
-			{ "<Leader>fo", "<Cmd>Telescope oldfiles<CR>", desc = "Telescope: old files" },
-		},
-		opts = {
-			defaults = {
-				sorting_strategy = "ascending",
-				layout_config = {
-					prompt_position = "top",
-				},
-				mappings = {
-					n = {
-						["q"] = function(...)
-							return require("telescope.actions").close(...)
-						end,
-					},
-				},
-			},
-		},
-	},
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -107,29 +79,6 @@ return {
 				"<Cmd>RenderMarkdown toggle<CR>",
 				mode = "n",
 				desc = "RenderMarkdown: RenderMarkdown toggle",
-			},
-		},
-	},
-	{
-		"nvim-mini/mini.files",
-		enabled = true,
-		opts = {
-			windows = {
-				preview = true,
-				width_preview = 50,
-			},
-			options = {
-				-- Whether to use for editing directories
-				use_as_default_explorer = false,
-			},
-		},
-		keys = {
-			{
-				"<leader>fm",
-				function()
-					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-				end,
-				desc = "Open mini.files (Directory of Current File)",
 			},
 		},
 	},
@@ -248,6 +197,30 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"nvim-mini/mini.files",
+		enabled = true,
+		opts = {
+			windows = {
+				preview = true,
+				width_focus = 30,
+				width_preview = 50,
+			},
+			options = {
+				-- Whether to use for editing directories
+				use_as_default_explorer = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+				end,
+				desc = "Open mini.files (Directory of Current File)",
+			},
+		},
 	},
 	{
 		"folke/which-key.nvim",

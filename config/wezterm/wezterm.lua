@@ -13,16 +13,16 @@ config.font_size = 18
 -- pretty dress
 config.color_scheme = "Catppuccin Mocha" -- "GruvboxDark"
 config.colors = {
-	split = "#7fa2ac",
-	-- tab_bar = {
-	-- 	active_tab = {
-	-- 		bg_color = "#458588",
-	-- 		fg_color = "#282c34",
-	-- 		intensity = "Bold",
-	-- 		italic = true,
-	-- 		strikethrough = false,
-	-- 	},
-	-- },
+  split = "#7fa2ac",
+  -- tab_bar = {
+  -- 	active_tab = {
+  -- 		bg_color = "#458588",
+  -- 		fg_color = "#282c34",
+  -- 		intensity = "Bold",
+  -- 		italic = true,
+  -- 		strikethrough = false,
+  -- 	},
+  -- },
 }
 
 -- tab bar
@@ -36,16 +36,16 @@ config.initial_rows = 21
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.99
 config.window_padding = {
-	left = 5,
-	right = 0,
-	top = 5,
-	bottom = 5,
+  left = 5,
+  right = 0,
+  top = 5,
+  bottom = 5,
 }
 config.native_macos_fullscreen_mode = true
 config.enable_scroll_bar = false
 config.inactive_pane_hsb = {
-	saturation = 0.9,
-	brightness = 0.8,
+  saturation = 0.9,
+  brightness = 0.8,
 }
 
 -- mouse

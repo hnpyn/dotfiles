@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded" })
 		end, opts("hover documentation"))
-		map("n", "<C-k>", function()
+		map("n", "<Leader>K", function()
 			vim.lsp.buf.signature_help({ border = "rounded" })
 		end, opts("signature help"))
 		map("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, opts("add workspace folder"))

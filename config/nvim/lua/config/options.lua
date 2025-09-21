@@ -11,7 +11,7 @@ set.number = true
 set.relativenumber = true
 set.shiftwidth = 2
 set.tabstop = 2
-set.termguicolors = true -- pretty dress
+set.termguicolors = true
 
 -- clipboard
 if util.is_remote() and not util.is_tmux() then
