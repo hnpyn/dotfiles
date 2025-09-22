@@ -20,6 +20,10 @@ map("n", "k", [[v:count ? 'k': 'gk']], { noremap = true, expr = true })
 map("n", "<Leader>s", "<C-w>s", opts("Split window"))
 map("n", "<Leader>v", "<C-w>v", opts("Split window vertical"))
 map("n", "<Leader>x", "<C-w>q", opts("Kill a pane"))
+map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- terminal
 function _G.set_terminal_keymaps()

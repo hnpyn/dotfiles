@@ -2,7 +2,7 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"numToStr/Navigator.nvim",
-		lazy = true,
+		enabled = false,
 		opts = {},
 		keys = {
 			{ "<C-h>", "<Cmd>NavigatorLeft<CR>", desc = "Navigate Left" },
@@ -64,6 +64,7 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		enabled = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
@@ -79,6 +80,30 @@ return {
 				"<Cmd>RenderMarkdown toggle<CR>",
 				mode = "n",
 				desc = "RenderMarkdown: RenderMarkdown toggle",
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.files",
+		enabled = true,
+		opts = {
+			windows = {
+				preview = true,
+				width_focus = 30,
+				width_preview = 50,
+			},
+			options = {
+				-- Whether to use for editing directories
+				use_as_default_explorer = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+				end,
+				desc = "Open mini.files (Directory of Current File)",
 			},
 		},
 	},
@@ -106,7 +131,7 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		enabled = true,
+		enabled = false,
 		cmd = "Neotree",
 		keys = {
 			{
@@ -199,30 +224,6 @@ return {
 		end,
 	},
 	{
-		"nvim-mini/mini.files",
-		enabled = true,
-		opts = {
-			windows = {
-				preview = true,
-				width_focus = 30,
-				width_preview = 50,
-			},
-			options = {
-				-- Whether to use for editing directories
-				use_as_default_explorer = false,
-			},
-		},
-		keys = {
-			{
-				"<leader>fm",
-				function()
-					require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-				end,
-				desc = "Open mini.files (Directory of Current File)",
-			},
-		},
-	},
-	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -267,7 +268,7 @@ return {
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
-		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
+		opts = {},
     -- stylua: ignore
     keys = {
       { "<Leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },

@@ -20,7 +20,6 @@ return {
 	{
 		"refractalize/oil-git-status.nvim",
 		enabled = true,
-		lazy = true,
 		dependencies = "stevearc/oil.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {},

@@ -3,14 +3,19 @@ return {
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"NvChad/nvim-colorizer.lua",
-		lazy = true,
+		enabled = false,
 		cmd = {
 			"ColorizerToggle",
 			"ColorizerAttachToBuffer",
 			"ColorizerDetachFromBuffer",
 			"ColorizerReloadAllBuffers",
 		},
-		opts = { user_default_options = { names = false } },
+		opts = {
+			user_default_options = {
+				RRGGBBAA = true,
+				names = false,
+			},
+		},
 	},
 	{
 		"petertriho/nvim-scrollbar",
@@ -25,7 +30,6 @@ return {
 		event = "VeryLazy",
 		opts = function()
 			local icons = require("config.ui").icons
-			local util = require("util")
 
 			return {
 				options = {
@@ -35,35 +39,45 @@ return {
 					always_divide_middle = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
-					disabled_filetypes = { statusline = { "dashboard", "alpha" } },
-					sections = {
-						-- left
-						lualine_a = { "mode" },
-						lualine_b = { "branch", "diff", "diagnostics" },
-						lualine_c = { "filename" },
-						-- right
-						lualine_x = { "encoding", "fileformat", "filetype" },
-						lualine_z = { "location" },
-					},
-					inactive_sections = {
-						lualine_a = { "filename" },
-						lualine_b = {},
-						lualine_c = {},
-						lualine_x = { "location" },
-						lualine_y = {},
-						lualine_z = {},
-					},
-					tabline = {},
-					extensions = { "neo-tree", "lazy" },
+					disabled_filetypes = { statusline = { "alpha", "dashboard" } },
 				},
+				sections = {
+					-- left
+					lualine_a = { "mode" },
+					lualine_b = {
+						"branch",
+						"diff",
+						{
+							"diagnostics",
+							symbols = {
+								error = icons.diagnostics.Error,
+								warn = icons.diagnostics.Warn,
+								info = icons.diagnostics.Info,
+								hint = icons.diagnostics.Hint,
+							},
+						},
+					},
+					lualine_c = { "filename" },
+					-- right
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = { "filename" },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				extensions = { "neo-tree", "lazy", "fzf" },
 			}
 		end,
 	},
 	{
 		"akinsho/bufferline.nvim",
-		enabled = true,
 		event = "VeryLazy",
-		version = "*",
 		keys = {
 			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
 			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
@@ -131,9 +145,22 @@ return {
 				},
 			}
 		end,
+		config = function(_, opts)
+			local bufferline = require("bufferline")
+			bufferline.setup(opts)
+			-- Fix bufferline when restoring a session
+			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+				callback = function()
+					vim.schedule(function()
+						pcall(bufferline.refresh)
+					end)
+				end,
+			})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		enabled = true,
 		event = { "BufReadPost", "BufNewFile" },
 		main = "ibl",
 		opts = {
@@ -141,7 +168,7 @@ return {
 				char = "│",
 				tab_char = "│", -- ▏
 			},
-			scope = { show_start = false, show_end = false },
+			scope = { enabled = false },
 			exclude = {
 				filetypes = {
 					"help",
@@ -159,11 +186,45 @@ return {
 		},
 	},
 	{
+		"nvim-mini/mini.indentscope",
+		enabled = true,
+		version = false,
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			draw = { delay = 0 },
+			options = { try_as_border = true },
+			symbol = "╎", -- | │ ▏
+		},
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"alpha",
+					"dashboard",
+					"erlang",
+					"fzf",
+					"help",
+					"lazy",
+					"lazyterm",
+					"markdown",
+					"mason",
+					"neo-tree",
+					"notify",
+					"toggleterm",
+					"trouble",
+					"Trouble",
+				},
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
+	},
+	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
 		opts = function()
 			local dashboard = require("alpha.themes.dashboard")
-			local logo_lines = {
+			local logo = {
 				"███╗   ███╗███████╗   ████   ██╗██╗   ██╗██╗███╗   ███╗",
 				"████╗ ████║██╔════╝   ████╗  ██║██║   ██║██║████╗ ████║",
 				"██╔████╔██║█████╗     ██╔██╗ ██║╚██╗ ██╔╝██║██╔████╔██║",
@@ -171,14 +232,8 @@ return {
 				"██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║",
 				"╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝",
 			}
-			local logo = table.concat(
-				vim.tbl_map(function(line)
-					return "" .. line
-				end, logo_lines),
-				"\n"
-			)
 
-			dashboard.section.header.val = vim.split(logo, "\n")
+			dashboard.section.header.val = logo
 			dashboard.section.buttons.val = {
 				dashboard.button("f", " " .. " Find file", "<Cmd>FzfLua files<CR>"),
 				dashboard.button("n", " " .. " New file", "<Cmd>ene <BAR> startinsert<CR>"),
@@ -194,7 +249,7 @@ return {
 				button.opts.hl = "AlphaButtons"
 				button.opts.hl_shortcut = "AlphaShortcut"
 			end
-			-- dashboard.section.header.opts.hl = "AlphaHeader"
+			dashboard.section.header.opts.hl = "AlphaHeader"
 			dashboard.section.buttons.opts.hl = "AlphaButtons"
 			dashboard.section.footer.opts.hl = "AlphaFooter"
 			dashboard.opts.layout[1].val = 8
@@ -215,12 +270,20 @@ return {
 			require("alpha").setup(dashboard.opts)
 
 			vim.api.nvim_create_autocmd("User", {
+				once = true,
 				pattern = "LazyVimStarted",
 				callback = function()
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 					dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
 					pcall(vim.cmd.AlphaRedraw)
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "AlphaReady",
+				callback = function()
+					vim.opt.laststatus = 0
 				end,
 			})
 		end,

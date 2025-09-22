@@ -7,3 +7,11 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 		})
 	end,
 })
+
+-- terminal keymaps
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "*",
+	callback = function()
+		_G.set_terminal_keymaps()
+	end,
+})
