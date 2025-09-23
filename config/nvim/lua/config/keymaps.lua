@@ -9,6 +9,7 @@ map("i", "jj", "<Esc>", opts(""))
 map("n", ",w", "<Cmd>w<CR>", opts("Write"))
 map("n", "<Esc>", "<Cmd>noh<CR>", opts(""))
 map("n", "<C-c><C-c>", "<Cmd>qa!<CR>", opts(""))
+map("n", "<Leader>qq", "<Cmd>qa<CR>", opts("Quit All"))
 
 -- cursor behaviors
 map("i", "<C-e>", "<C-o>A", opts("Insert at the end of line"))

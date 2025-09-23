@@ -171,16 +171,19 @@ return {
 			scope = { enabled = false },
 			exclude = {
 				filetypes = {
-					"help",
 					"alpha",
 					"dashboard",
-					"neo-tree",
-					"Trouble",
+					"help",
 					"lazy",
-					"mason",
-					"notify",
-					"toggleterm",
 					"lazyterm",
+					"mason",
+					"neo-tree",
+					"notify",
+					"oil",
+					"oil_preview",
+					"terminal",
+					"toggleterm",
+					"Trouble",
 				},
 			},
 		},
@@ -191,7 +194,12 @@ return {
 		version = false,
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
-			draw = { delay = 0 },
+			draw = {
+				delay = 0,
+				animation = function(s, n)
+					return 2
+				end,
+			},
 			options = { try_as_border = true },
 			symbol = "╎", -- | │ ▏
 		},
@@ -209,6 +217,9 @@ return {
 					"mason",
 					"neo-tree",
 					"notify",
+					"oil",
+					"oil_preview",
+					"terminal",
 					"toggleterm",
 					"trouble",
 					"Trouble",

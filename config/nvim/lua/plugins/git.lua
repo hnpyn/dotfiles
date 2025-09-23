@@ -18,6 +18,13 @@ return {
 		},
 	},
 	{
+		"akinsho/git-conflict.nvim",
+		enabled = true,
+		version = "*",
+		event = { "BufReadPre", "BufNewFile" },
+		config = true,
+	},
+	{
 		"refractalize/oil-git-status.nvim",
 		enabled = true,
 		dependencies = "stevearc/oil.nvim",

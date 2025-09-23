@@ -13,7 +13,6 @@ return {
 			ensure_installed = {
 				"stylua",
 				"lua-language-server",
-				"python-lsp-server",
 			},
 			ui = {
 				icons = {
@@ -31,27 +30,42 @@ return {
 		dependencies = {
 			"mason.nvim",
 			{ "mason-org/mason-lspconfig.nvim", opts = {} },
-			{ "nvimdev/lspsaga.nvim", opts = {} },
+			{
+				"nvimdev/lspsaga.nvim",
+				opts = {
+					lightbulb = { enable = false },
+					floaterm = { height = 0.8, width = 0.85 },
+				},
+			},
 		},
 		opts = {
 			servers = {
-				pylsp = {
+				pyright = {
 					settings = {
-						pylsp = {
-							plugins = {
-								pycodestyle = {
-									ignore = {
-										"E203",
-										"E231",
-										"E302",
-										"E711",
-										"E741",
-										"W291",
-										"W293",
-										"W503",
-									},
-									maxLineLength = 120,
-								},
+						pyright = {
+							-- Using Ruff's import organizer
+							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "openFilesOnly",
+								typeCheckingMode = "off",
+								useLibraryCodeForTypes = true,
+								ignore = { "*" },
+							},
+						},
+					},
+				},
+				ruff = {
+					init_options = {
+						settings = {
+							lineLength = 120,
+							lint = {
+								enabled = true,
+								preview = true,
+								select = { "E", "F", "W" },
+								ignore = { "E501", "W291", "W292" },
 							},
 						},
 					},
