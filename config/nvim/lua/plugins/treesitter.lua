@@ -2,9 +2,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false,
-		event = { "BufReadPost", "BufNewFile", "VeryLazy" },
 		lazy = vim.fn.argc(-1) == 0,
-		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+		event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+		cmd = { "TSUpdate", "TSInstall", "TSUninstall" },
 		opts = {
 			highlight = {
 				enable = true,
@@ -14,16 +14,17 @@ return {
 			ensure_installed = {
 				"c",
 				"cpp",
-				"vim",
-				"html",
 				"css",
-				"lua",
+				"html",
 				"javascript",
-				"typescript",
-				"tsx",
-				"python",
+				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
+				"typescript",
+				"tsx",
+				"vim",
+				"vimdoc",
 			},
 			incremental_selection = {
 				enable = true,
@@ -41,7 +42,6 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		enabled = true,
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
