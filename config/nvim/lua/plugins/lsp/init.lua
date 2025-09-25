@@ -30,13 +30,6 @@ return {
 		dependencies = {
 			"mason.nvim",
 			{ "mason-org/mason-lspconfig.nvim", opts = {} },
-			{
-				"nvimdev/lspsaga.nvim",
-				opts = {
-					lightbulb = { enable = false },
-					floaterm = { height = 0.8, width = 0.85 },
-				},
-			},
 		},
 		opts = {
 			servers = {
@@ -121,6 +114,7 @@ return {
 	},
 	{
 		"nvimtools/none-ls.nvim",
+		enabled = true,
 		event = { "BufReadPost", "BufNewFile" },
 		opts = function()
 			local null_ls = require("null-ls")
@@ -129,7 +123,6 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.clang_format,
 				},
 				on_attach = function(client, bufnr)
 					if client:supports_method("textDocument/formatting") then

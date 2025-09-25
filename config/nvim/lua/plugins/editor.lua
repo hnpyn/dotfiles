@@ -1,15 +1,28 @@
 return {
 	{ "nvim-lua/plenary.nvim" },
 	{
-		"numToStr/Navigator.nvim",
-		enabled = false,
+		"folke/persistence.nvim",
+		event = "BufReadPre",
 		opts = {},
-		keys = {
-			{ "<C-h>", "<Cmd>NavigatorLeft<CR>", desc = "Navigate Left" },
-			{ "<C-j>", "<Cmd>NavigatorDown<CR>", desc = "Navigate Down" },
-			{ "<C-k>", "<Cmd>NavigatorUp<CR>", desc = "Navigate Up" },
-			{ "<C-l>", "<Cmd>NavigatorRight<CR>", desc = "Navigate Right" },
+    -- stylua: ignore
+    keys = {
+      { "<Leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
+      { "<Leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<Leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
+    },
+	},
+	{
+		"folke/snacks.nvim",
+		opts = {
+			bigfile = { enabled = true },
+			picker = { enabled = true, prompt = "> " },
+			quickfile = { enabled = true },
 		},
+    -- stylua: ignore
+    keys = {
+      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>lg", function() Snacks.lazygit() end,   desc = "Lazygit" },
+    },
 	},
 	{
 		"ibhagwan/fzf-lua",
@@ -79,17 +92,17 @@ return {
 				end,
 			}
 		end,
-		init = function()
-			local util = require("util")
-			util.on_very_lazy(function()
-				vim.ui.select = function(...)
-					require("lazy").load({ plugins = { "fzf-lua" } })
-					local opts = util.opts("fzf-lua") or {}
-					require("fzf-lua").register_ui_select(opts.ui_select or nil)
-					return vim.ui.select(...)
-				end
-			end)
-		end,
+		-- init = function()
+		-- 	local util = require("util")
+		-- 	util.on_very_lazy(function()
+		-- 		vim.ui.select = function(...)
+		-- 			require("lazy").load({ plugins = { "fzf-lua" } })
+		-- 			local opts = util.opts("fzf-lua") or {}
+		-- 			require("fzf-lua").register_ui_select(opts.ui_select or nil)
+		-- 			return vim.ui.select(...)
+		-- 		end
+		-- 	end)
+		-- end,
 		keys = {
 			{ "<leader>/", "<Cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
 			{ "<leader>:", "<Cmd>FzfLua command_history<CR>", desc = "Command History" },
@@ -102,27 +115,6 @@ return {
 			-- git
 			{ "<leader>gc", "<Cmd>FzfLua git_commits<CR>", desc = "Git: Commits" },
 			{ "<leader>gs", "<Cmd>FzfLua git_status<CR>", desc = "Git: Status" },
-		},
-	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		enabled = false,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-		cmd = {
-			"RenderMarkdown",
-			"RenderMarkdown toggle",
-		},
-		opts = {},
-		keys = {
-			{
-				"<Leader>md",
-				"<Cmd>RenderMarkdown toggle<CR>",
-				mode = "n",
-				desc = "RenderMarkdown: RenderMarkdown toggle",
-			},
 		},
 	},
 	{
@@ -287,6 +279,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
+		enabled = false,
 		cmd = { "TodoFzfLua", "TodoQuickFix" },
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {},
@@ -308,22 +301,35 @@ return {
 		},
 	},
 	{
-		"folke/persistence.nvim",
-		event = "BufReadPre",
+		"numToStr/Navigator.nvim",
+		enabled = false,
 		opts = {},
-    -- stylua: ignore
-    keys = {
-      { "<Leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
-      { "<Leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<Leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
-    },
+		keys = {
+			{ "<C-h>", "<Cmd>NavigatorLeft<CR>", desc = "Navigate Left" },
+			{ "<C-j>", "<Cmd>NavigatorDown<CR>", desc = "Navigate Down" },
+			{ "<C-k>", "<Cmd>NavigatorUp<CR>", desc = "Navigate Up" },
+			{ "<C-l>", "<Cmd>NavigatorRight<CR>", desc = "Navigate Right" },
+		},
 	},
 	{
-		"echasnovski/mini.bufremove",
-    -- stylua: ignore
-    keys = {
-      { "<Leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<Leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
-    },
+		"MeanderingProgrammer/render-markdown.nvim",
+		enabled = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		cmd = {
+			"RenderMarkdown",
+			"RenderMarkdown toggle",
+		},
+		opts = {},
+		keys = {
+			{
+				"<Leader>md",
+				"<Cmd>RenderMarkdown toggle<CR>",
+				mode = "n",
+				desc = "RenderMarkdown: RenderMarkdown toggle",
+			},
+		},
 	},
 }

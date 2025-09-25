@@ -1,7 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		enabled = true,
+		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "Git", "G" },
 		keys = {
