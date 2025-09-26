@@ -27,18 +27,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			return { desc = "LSP: " .. desc, buffer = ev.buf }
 		end
 
-		-- map("n", "gD", vim.lsp.buf.declaration, opts("go to declaration"))
-		-- map("n", "gd", vim.lsp.buf.definition, opts("go to definition"))
-		-- map("n", "gi", vim.lsp.buf.implementation, opts("go to implementation"))
-		-- map("n", "gr", vim.lsp.buf.references, opts("go to references"))
-		-- map("n", "gy", vim.lsp.buf.type_definition, opts("type definition"))
-
 		-- use FzfLua lsp_* instead
 		map("n", "gd", "<Cmd>FzfLua lsp_definitions<CR>", opts("go to definition"))
 		map("n", "gD", "<Cmd>FzfLua lsp_declarations<CR>", opts("go to declaration"))
-		map("n", "gi", "<Cmd>FzfLua lsp_implementations<CR>", opts("go to implementation"))
-		map("n", "gR", "<Cmd>FzfLua lsp_references<CR>", opts("go to references"))
-		map("n", "gy", "<Cmd>FzfLua lsp_typedefs<CR>", opts("type definition"))
+		map("n", "gri", "<Cmd>FzfLua lsp_implementations<CR>", opts("go to implementation"))
+		map("n", "grr", "<Cmd>FzfLua lsp_references<CR>", opts("go to references"))
+		map("n", "grt", "<Cmd>FzfLua lsp_typedefs<CR>", opts("type definition"))
+		map("n", "grn", vim.lsp.buf.rename, opts("rename"))
+		map({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts("code action"))
 
 		map("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded" })
@@ -52,11 +48,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<Leader>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts("list workspace folders"))
-
-		map("n", "<Leader>rn", vim.lsp.buf.rename, opts("rename"))
-		map({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, opts("code action"))
-		map({ "n", "v" }, "<Leader>cF", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts("format"))
 	end,
 })

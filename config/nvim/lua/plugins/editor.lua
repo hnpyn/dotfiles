@@ -1,17 +1,6 @@
 return {
 	{ "nvim-lua/plenary.nvim" },
 	{
-		"folke/persistence.nvim",
-		event = "BufReadPre",
-		opts = {},
-    -- stylua: ignore
-    keys = {
-      { "<Leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
-      { "<Leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<Leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
-    },
-	},
-	{
 		"folke/snacks.nvim",
 		opts = {
 			bigfile = { enabled = true },
@@ -21,7 +10,38 @@ return {
     -- stylua: ignore
     keys = {
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-      { "<leader>lg", function() Snacks.lazygit() end,   desc = "Lazygit" },
+      { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    },
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			delay = 1000,
+		},
+		config = function(_, opts)
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.add({
+				{ "<Leader>b", group = "+Buffer" },
+				{ "<Leader>f", group = "+Finder" },
+				{ "<Leader>t", group = "+Tree" },
+				{ "<Leader>g", group = "+Git" },
+				{ "<Leader>gh", group = "+Gitsigns" },
+				{ "<Leader>gt", group = "+Gitsigns" },
+				{ "<Leader>gl", desc = "Gitlinker: Copy buffer line url" },
+			})
+		end,
+	},
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		opts = {},
+    -- stylua: ignore start
+    keys = {
+      { "<Leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<Leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<Leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
 	},
 	{
@@ -43,6 +63,9 @@ return {
 			end
 			return {
 				fzf_colors = true,
+				fzf_opts = {
+					["--no-scrollbar"] = true,
+				},
 				files = {
 					fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git]],
 					rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git"]],
@@ -59,7 +82,7 @@ return {
 						ueberzug_scaler = "fit_contain",
 					},
 				},
-				-- Custom LazyVim option to configure vim.ui.select
+				-- Custom option to configure vim.ui.select
 				ui_select = function(fzf_opts, items)
 					return vim.tbl_deep_extend("force", fzf_opts, {
 						prompt = "> ",
@@ -93,6 +116,7 @@ return {
 			}
 		end,
 		-- init = function()
+		--  -- use fzf-lua for vim.ui.select
 		-- 	local util = require("util")
 		-- 	util.on_very_lazy(function()
 		-- 		vim.ui.select = function(...)
@@ -254,26 +278,6 @@ return {
 						require("neo-tree.sources.git_status").refresh()
 					end
 				end,
-			})
-		end,
-	},
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {
-			delay = 1000,
-		},
-		config = function(_, opts)
-			local wk = require("which-key")
-			wk.setup(opts)
-			wk.add({
-				{ "<Leader>b", group = "+Buffer" },
-				{ "<Leader>f", group = "+Finder" },
-				{ "<Leader>t", group = "+Tree" },
-				{ "<Leader>g", group = "+Git" },
-				{ "<Leader>gh", group = "+Gitsigns" },
-				{ "<Leader>gt", group = "+Gitsigns" },
-				{ "<Leader>gl", desc = "Gitlinker: Copy buffer line url" },
 			})
 		end,
 	},

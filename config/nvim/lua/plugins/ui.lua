@@ -1,15 +1,15 @@
 return {
-  { "MunifTanjim/nui.nvim",        lazy = true },
-  { "nvim-tree/nvim-web-devicons", lazy = true },
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-      dashboard = {
-        enabled = true,
-        preset = {
+	{ "MunifTanjim/nui.nvim", lazy = true },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = {
+			dashboard = {
+				enabled = true,
+				preset = {
           -- stylua: ignore start
           keys = {
             { icon = " ", key = "f", desc = "Find File", action = "<Cmd>FzfLua files<CR>" },
@@ -22,329 +22,329 @@ return {
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = "<Cmd>Lazy<CR>", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = "<Cmd>qa<CR>" },
           },
-          -- stylua: ignore end
-          header = [[							
+					-- stylua: ignore end
+					header = [[							
 ███╗   ███╗███████╗   ████   ██╗██╗   ██╗██╗███╗   ███╗
 ████╗ ████║██╔════╝   ████╗  ██║██║   ██║██║████╗ ████║
 ██╔████╔██║█████╗     ██╔██╗ ██║╚██╗ ██╔╝██║██╔████╔██║
 ██║╚██╔╝██║██╔══╝     ██║╚██╗██║ ╚████╔╝ ██║██║╚██╔╝██║
 ██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║
 ╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝]],
-        },
-      },
-      indent = { enabled = true },
-      input = { enabled = true },
-      scope = { enabled = true },
-      scroll = { enabled = true },
-    },
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    enabled = false,
-    cmd = {
-      "ColorizerToggle",
-      "ColorizerAttachToBuffer",
-      "ColorizerDetachFromBuffer",
-      "ColorizerReloadAllBuffers",
-    },
-    opts = {
-      user_default_options = {
-        RRGGBBAA = true,
-        names = false,
-      },
-    },
-  },
-  {
-    "petertriho/nvim-scrollbar",
-    enabled = true,
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      handlers = { gitsigns = true },
-    },
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.g.lualine_laststatus = vim.o.laststatus
-      if vim.fn.argc(-1) > 0 then
-        -- set an empty statusline till lualine loads
-        vim.o.statusline = " "
-      else
-        -- hide the statusline on the starter page
-        vim.o.laststatus = 0
-      end
-    end,
-    opts = function()
-      local icons = require("config.ui").icons
+				},
+			},
+			indent = { enabled = true },
+			input = { enabled = true, icon = "> " },
+			scope = { enabled = true },
+			scroll = { enabled = true },
+		},
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		enabled = false,
+		cmd = {
+			"ColorizerToggle",
+			"ColorizerAttachToBuffer",
+			"ColorizerDetachFromBuffer",
+			"ColorizerReloadAllBuffers",
+		},
+		opts = {
+			user_default_options = {
+				RRGGBBAA = true,
+				names = false,
+			},
+		},
+	},
+	{
+		"petertriho/nvim-scrollbar",
+		enabled = true,
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			handlers = { gitsigns = true },
+		},
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.g.lualine_laststatus = vim.o.laststatus
+			if vim.fn.argc(-1) > 0 then
+				-- set an empty statusline till lualine loads
+				vim.o.statusline = " "
+			else
+				-- hide the statusline on the starter page
+				vim.o.laststatus = 0
+			end
+		end,
+		opts = function()
+			local icons = require("config.ui").icons
 
-      return {
-        options = {
-          theme = "auto",
-          globalstatus = true,
-          icons_enabled = true,
-          always_divide_middle = true,
-          component_separators = { left = "", right = "" },
-          section_separators = { left = "", right = "" },
-          disabled_filetypes = { statusline = { "alpha", "dashboard", "snacks_dashboard" } },
-        },
-        sections = {
-          -- left
-          lualine_a = { "mode" },
-          lualine_b = {
-            "branch",
-            "diff",
-            {
-              "diagnostics",
-              symbols = {
-                error = "E", -- icons.diagnostics.Error,
-                warn = "W", -- icons.diagnostics.Warn,
-                info = "I", -- icons.diagnostics.Info,
-                hint = "H", -- icons.diagnostics.Hint,
-              },
-            },
-          },
-          lualine_c = { "filename" },
-          -- right
-          lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_z = { "location" },
-        },
-        inactive_sections = {
-          lualine_a = { "filename" },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        extensions = { "neo-tree", "lazy", "fzf" },
-      }
-    end,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<Tab>",      "<Cmd>BufferLineCycleNext<CR>",            desc = "Next buffer" },
-      { "<S-Tab>",    "<Cmd>BufferLineCyclePrev<CR>",            desc = "Prev buffer" },
-      { "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
-      { "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-    },
-    opts = function()
-      local get_hex = require("util").get_hex
-      return {
-        options = {
-          left_mouse_command = function(bufnum)
-            local lazy = require("bufferline.lazy")
-            local ui = lazy.require("bufferline.ui")
-            local windows = vim.fn.win_findbuf(bufnum)
-            if windows[1] then
-              vim.api.nvim_set_current_win(windows[1])
-            end
-            vim.schedule(function()
-              vim.cmd(string.format("buffer %d", bufnum))
-              ui.refresh()
-            end)
-          end,
+			return {
+				options = {
+					theme = "auto",
+					globalstatus = true,
+					icons_enabled = true,
+					always_divide_middle = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = { statusline = { "alpha", "dashboard", "snacks_dashboard" } },
+				},
+				sections = {
+					-- left
+					lualine_a = { "mode" },
+					lualine_b = {
+						"branch",
+						"diff",
+						{
+							"diagnostics",
+							symbols = {
+								error = "E", -- icons.diagnostics.Error,
+								warn = "W", -- icons.diagnostics.Warn,
+								info = "I", -- icons.diagnostics.Info,
+								hint = "H", -- icons.diagnostics.Hint,
+							},
+						},
+					},
+					lualine_c = { "filename" },
+					-- right
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_z = { "location" },
+				},
+				inactive_sections = {
+					lualine_a = { "filename" },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				extensions = { "neo-tree", "lazy", "fzf" },
+			}
+		end,
+	},
+	{
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+		keys = {
+			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
+			{ "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+		},
+		opts = function()
+			local get_hex = require("util").get_hex
+			return {
+				options = {
+					left_mouse_command = function(bufnum)
+						local lazy = require("bufferline.lazy")
+						local ui = lazy.require("bufferline.ui")
+						local windows = vim.fn.win_findbuf(bufnum)
+						if windows[1] then
+							vim.api.nvim_set_current_win(windows[1])
+						end
+						vim.schedule(function()
+							vim.cmd(string.format("buffer %d", bufnum))
+							ui.refresh()
+						end)
+					end,
           -- stylua: ignore
           close_command = function(n) Snacks.bufdelete(n) end,
           -- stylua: ignore
           right_mouse_command = function(n) Snacks.bufdelete(n) end,
-          diagnostics = "nvim_lsp",
-          always_show_bufferline = false,
-          diagnostics_indicator = function(_, _, diag)
-            local icons = require("config.ui").icons.diagnostics
-            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-                .. (diag.warning and icons.Warn .. diag.warning or "")
-            return vim.trim(ret)
-          end,
-          offsets = {
-            {
-              filetype = "neo-tree",
-              text = "Neo-tree",
-              highlight = "Directory",
-              text_align = "left",
-            },
-          },
-          separator_style = { "", "" }, -- ▎
-        },
-        highlights = {
-          fill = { bg = get_hex("Normal", "bg") },
-          background = { bg = get_hex("Normal", "bg") },
-          separator = { bg = get_hex("Normal", "bg") },
-          indicator_selected = { fg = "#b16286" },
-          numbers = { bg = get_hex("Normal", "bg") },
-          buffer = { bg = get_hex("Normal", "bg") },
-          close_button = { bg = get_hex("Normal", "bg") },
-          modified = { bg = get_hex("Normal", "bg") },
-          duplicate = { bg = get_hex("Normal", "bg") },
-          pick = { bg = get_hex("Normal", "bg") },
-          diagnostic = { bg = get_hex("Normal", "bg") },
-          error = { bg = get_hex("Normal", "bg") },
-          error_diagnostic = { bg = get_hex("Normal", "bg") },
-          warning = { bg = get_hex("Normal", "bg") },
-          warning_diagnostic = { bg = get_hex("Normal", "bg") },
-          info = { bg = get_hex("Normal", "bg") },
-          info_diagnostic = { bg = get_hex("Normal", "bg") },
-          hint = { bg = get_hex("Normal", "bg") },
-          hint_diagnostic = { bg = get_hex("Normal", "bg") },
-        },
-      }
-    end,
-    config = function(_, opts)
-      local bufferline = require("bufferline")
-      bufferline.setup(opts)
-      -- Fix bufferline when restoring a session
-      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-        callback = function()
-          vim.schedule(function()
-            pcall(bufferline.refresh)
-          end)
-        end,
-      })
-    end,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-    event = { "BufReadPost", "BufNewFile" },
-    main = "ibl",
-    opts = {
-      indent = {
-        char = "│",
-        tab_char = "│", -- ▏
-      },
-      scope = { enabled = false },
-      exclude = {
-        filetypes = {
-          "alpha",
-          "dashboard",
-          "help",
-          "lazy",
-          "lazyterm",
-          "mason",
-          "neo-tree",
-          "notify",
-          "oil",
-          "oil_preview",
-          "terminal",
-          "toggleterm",
-          "Trouble",
-        },
-      },
-    },
-  },
-  {
-    "nvim-mini/mini.indentscope",
-    enabled = false,
-    version = false,
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      draw = {
-        delay = 0,
-        animation = function(s, n)
-          return 2
-        end,
-      },
-      options = { try_as_border = true },
-      symbol = "╎", -- | │ ▏
-    },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "alpha",
-          "dashboard",
-          "erlang",
-          "fzf",
-          "help",
-          "lazy",
-          "lazyterm",
-          "markdown",
-          "mason",
-          "neo-tree",
-          "notify",
-          "oil",
-          "oil_preview",
-          "terminal",
-          "toggleterm",
-          "trouble",
-          "Trouble",
-        },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-  },
-  {
-    "goolord/alpha-nvim",
-    enabled = false,
-    event = "VimEnter",
-    opts = function()
-      local dashboard = require("alpha.themes.dashboard")
-      local logo = {
-        "███╗   ███╗███████╗   ████   ██╗██╗   ██╗██╗███╗   ███╗",
-        "████╗ ████║██╔════╝   ████╗  ██║██║   ██║██║████╗ ████║",
-        "██╔████╔██║█████╗     ██╔██╗ ██║╚██╗ ██╔╝██║██╔████╔██║",
-        "██║╚██╔╝██║██╔══╝     ██║╚██╗██║ ╚████╔╝ ██║██║╚██╔╝██║",
-        "██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║",
-        "╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝",
-      }
+					diagnostics = "nvim_lsp",
+					always_show_bufferline = false,
+					diagnostics_indicator = function(_, _, diag)
+						local icons = require("config.ui").icons.diagnostics
+						local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+							.. (diag.warning and icons.Warn .. diag.warning or "")
+						return vim.trim(ret)
+					end,
+					offsets = {
+						{
+							filetype = "neo-tree",
+							text = "Neo-tree",
+							highlight = "Directory",
+							text_align = "left",
+						},
+					},
+					separator_style = { "", "" }, -- ▎
+				},
+				highlights = {
+					fill = { bg = get_hex("Normal", "bg") },
+					background = { bg = get_hex("Normal", "bg") },
+					separator = { bg = get_hex("Normal", "bg") },
+					indicator_selected = { fg = "#b16286" },
+					numbers = { bg = get_hex("Normal", "bg") },
+					buffer = { bg = get_hex("Normal", "bg") },
+					close_button = { bg = get_hex("Normal", "bg") },
+					modified = { bg = get_hex("Normal", "bg") },
+					duplicate = { bg = get_hex("Normal", "bg") },
+					pick = { bg = get_hex("Normal", "bg") },
+					diagnostic = { bg = get_hex("Normal", "bg") },
+					error = { bg = get_hex("Normal", "bg") },
+					error_diagnostic = { bg = get_hex("Normal", "bg") },
+					warning = { bg = get_hex("Normal", "bg") },
+					warning_diagnostic = { bg = get_hex("Normal", "bg") },
+					info = { bg = get_hex("Normal", "bg") },
+					info_diagnostic = { bg = get_hex("Normal", "bg") },
+					hint = { bg = get_hex("Normal", "bg") },
+					hint_diagnostic = { bg = get_hex("Normal", "bg") },
+				},
+			}
+		end,
+		config = function(_, opts)
+			local bufferline = require("bufferline")
+			bufferline.setup(opts)
+			-- Fix bufferline when restoring a session
+			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+				callback = function()
+					vim.schedule(function()
+						pcall(bufferline.refresh)
+					end)
+				end,
+			})
+		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		enabled = false,
+		event = { "BufReadPost", "BufNewFile" },
+		main = "ibl",
+		opts = {
+			indent = {
+				char = "│",
+				tab_char = "│", -- ▏
+			},
+			scope = { enabled = false },
+			exclude = {
+				filetypes = {
+					"alpha",
+					"dashboard",
+					"help",
+					"lazy",
+					"lazyterm",
+					"mason",
+					"neo-tree",
+					"notify",
+					"oil",
+					"oil_preview",
+					"terminal",
+					"toggleterm",
+					"Trouble",
+				},
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.indentscope",
+		enabled = false,
+		version = false,
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			draw = {
+				delay = 0,
+				animation = function(s, n)
+					return 2
+				end,
+			},
+			options = { try_as_border = true },
+			symbol = "╎", -- | │ ▏
+		},
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = {
+					"alpha",
+					"dashboard",
+					"erlang",
+					"fzf",
+					"help",
+					"lazy",
+					"lazyterm",
+					"markdown",
+					"mason",
+					"neo-tree",
+					"notify",
+					"oil",
+					"oil_preview",
+					"terminal",
+					"toggleterm",
+					"trouble",
+					"Trouble",
+				},
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
+	},
+	{
+		"goolord/alpha-nvim",
+		enabled = false,
+		event = "VimEnter",
+		opts = function()
+			local dashboard = require("alpha.themes.dashboard")
+			local logo = {
+				"███╗   ███╗███████╗   ████   ██╗██╗   ██╗██╗███╗   ███╗",
+				"████╗ ████║██╔════╝   ████╗  ██║██║   ██║██║████╗ ████║",
+				"██╔████╔██║█████╗     ██╔██╗ ██║╚██╗ ██╔╝██║██╔████╔██║",
+				"██║╚██╔╝██║██╔══╝     ██║╚██╗██║ ╚████╔╝ ██║██║╚██╔╝██║",
+				"██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║",
+				"╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝",
+			}
 
-      dashboard.section.header.val = logo
-      dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file", "<Cmd>FzfLua files<CR>"),
-        dashboard.button("n", " " .. " New file", "<Cmd>ene <BAR> startinsert<CR>"),
-        dashboard.button("r", " " .. " Recent files", "<Cmd>FzfLua oldfiles<CR>"),
-        dashboard.button("g", " " .. " Find text", "<Cmd>FzfLua live_grep<CR>"),
-        dashboard.button("e", "󰙅 " .. " File explorer", "<Cmd>Oil --float<CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[<Cmd>lua require("persistence").load()<CR>]]),
-        dashboard.button("c", " " .. " Config", "<Cmd>e $MYVIMRC<CR>"),
-        dashboard.button("l", "󰒲 " .. " Lazy", "<Cmd>Lazy<CR>"),
-        dashboard.button("q", " " .. " Quit", "<Cmd>qa<CR>"),
-      }
-      for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = "AlphaButtons"
-        button.opts.hl_shortcut = "AlphaShortcut"
-      end
-      dashboard.section.header.opts.hl = "AlphaHeader"
-      dashboard.section.buttons.opts.hl = "AlphaButtons"
-      dashboard.section.footer.opts.hl = "AlphaFooter"
-      dashboard.opts.layout[1].val = 8
-      return dashboard
-    end,
-    config = function(_, dashboard)
-      -- close Lazy and re-open when the dashboard is ready
-      if vim.o.filetype == "lazy" then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "AlphaReady",
-          callback = function()
-            require("lazy").show()
-          end,
-        })
-      end
+			dashboard.section.header.val = logo
+			dashboard.section.buttons.val = {
+				dashboard.button("f", " " .. " Find file", "<Cmd>FzfLua files<CR>"),
+				dashboard.button("n", " " .. " New file", "<Cmd>ene <BAR> startinsert<CR>"),
+				dashboard.button("r", " " .. " Recent files", "<Cmd>FzfLua oldfiles<CR>"),
+				dashboard.button("g", " " .. " Find text", "<Cmd>FzfLua live_grep<CR>"),
+				dashboard.button("e", "󰙅 " .. " File explorer", "<Cmd>Oil --float<CR>"),
+				dashboard.button("s", " " .. " Restore Session", [[<Cmd>lua require("persistence").load()<CR>]]),
+				dashboard.button("c", " " .. " Config", "<Cmd>e $MYVIMRC<CR>"),
+				dashboard.button("l", "󰒲 " .. " Lazy", "<Cmd>Lazy<CR>"),
+				dashboard.button("q", " " .. " Quit", "<Cmd>qa<CR>"),
+			}
+			for _, button in ipairs(dashboard.section.buttons.val) do
+				button.opts.hl = "AlphaButtons"
+				button.opts.hl_shortcut = "AlphaShortcut"
+			end
+			dashboard.section.header.opts.hl = "AlphaHeader"
+			dashboard.section.buttons.opts.hl = "AlphaButtons"
+			dashboard.section.footer.opts.hl = "AlphaFooter"
+			dashboard.opts.layout[1].val = 8
+			return dashboard
+		end,
+		config = function(_, dashboard)
+			-- close Lazy and re-open when the dashboard is ready
+			if vim.o.filetype == "lazy" then
+				vim.cmd.close()
+				vim.api.nvim_create_autocmd("User", {
+					pattern = "AlphaReady",
+					callback = function()
+						require("lazy").show()
+					end,
+				})
+			end
 
-      require("alpha").setup(dashboard.opts)
+			require("alpha").setup(dashboard.opts)
 
-      vim.api.nvim_create_autocmd("User", {
-        once = true,
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-          pcall(vim.cmd.AlphaRedraw)
-        end,
-      })
+			vim.api.nvim_create_autocmd("User", {
+				once = true,
+				pattern = "LazyVimStarted",
+				callback = function()
+					local stats = require("lazy").stats()
+					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+					dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+					pcall(vim.cmd.AlphaRedraw)
+				end,
+			})
 
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "AlphaReady",
-        callback = function()
-          vim.opt.laststatus = 0
-        end,
-      })
-    end,
-  },
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "AlphaReady",
+				callback = function()
+					vim.opt.laststatus = 0
+				end,
+			})
+		end,
+	},
 }

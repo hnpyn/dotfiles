@@ -8,7 +8,7 @@ end
 map("i", "jj", "<Esc>", opts(""))
 map("n", ",w", "<Cmd>w<CR>", opts("Write"))
 map("n", "<Esc>", "<Cmd>noh<CR>", opts(""))
-map("n", "<C-c><C-c>", "<Cmd>qa!<CR>", opts(""))
+map("n", "<C-c><C-c>", "<Cmd>qa!<CR>", opts("Force Quit!"))
 map("n", "<Leader>qq", "<Cmd>qa<CR>", opts("Quit All"))
 
 -- cursor behaviors

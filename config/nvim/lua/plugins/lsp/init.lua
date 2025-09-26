@@ -113,31 +113,40 @@ return {
 		end,
 	},
 	{
-		"nvimtools/none-ls.nvim",
-		enabled = true,
-		event = { "BufReadPost", "BufNewFile" },
-		opts = function()
-			local null_ls = require("null-ls")
-			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.stylua,
-				},
-				on_attach = function(client, bufnr)
-					if client:supports_method("textDocument/formatting") then
-						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							group = augroup,
-							buffer = bufnr,
-							callback = function()
-								-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-								vim.lsp.buf.format({ bufnr = bufnr })
-							end,
-						})
-					end
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		cmd = "ConformInfo",
+		keys = {
+			{
+				"<leader>cF",
+				function()
+					require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
 				end,
-			})
-		end,
+				mode = { "n", "v" },
+				desc = "Format Injected Langs",
+			},
+		},
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+			},
+			default_format_opts = {
+				timeout_ms = 3000,
+				async = false, -- not recommended to change
+				quiet = false, -- not recommended to change
+				lsp_format = "fallback", -- not recommended to change
+			},
+			format_on_save = function(bufnr)
+				local ignore_filetypes = { "python" }
+				if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+					return
+				end
+
+				return { timeout_ms = 3000, lsp_format = "fallback" }
+			end,
+			formatters = {
+				injected = { options = { ignore_errors = true } },
+			},
+		},
 	},
 }
