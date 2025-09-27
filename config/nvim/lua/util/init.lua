@@ -152,4 +152,37 @@ function M.get_diagnostic_text()
 	end
 end
 
+---@return string (git repo with out .git)
+function M.get_git_repo()
+	local repo = vim.fn.systemlist("git remote get-url origin")[1] or ""
+	repo = repo:gsub("%.git$", "")
+	return repo
+end
+
+---@return {branch:string, file:string, line_start:number, line_end:number, line_count:number}
+function M.get_git_fields()
+	local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
+	local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
+
+	local line_start, line_end
+	if vim.fn.mode():find("[vV]") then
+		line_start = vim.fn.line("v")
+		line_end = vim.fn.line(".")
+		if line_start > line_end then
+			line_start, line_end = line_end, line_start
+		end
+	else
+		line_start = vim.fn.line(".")
+		line_end = line_start
+	end
+
+	return {
+		branch = branch,
+		file = file,
+		line_start = line_start,
+		line_end = line_end,
+		line_count = line_end - line_start + 1,
+	}
+end
+
 return M

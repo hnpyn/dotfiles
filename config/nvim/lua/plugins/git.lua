@@ -1,8 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		enabled = false,
-		event = { "BufReadPre", "BufNewFile" },
+		enabled = true,
 		cmd = { "Git", "G" },
 		keys = {
 			{
@@ -89,7 +88,7 @@ return {
 	},
 	{
 		"ruifm/gitlinker.nvim",
-		enabled = true,
+		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },
 		opts = function()
 			local get_custom_type_url = function(url_data)

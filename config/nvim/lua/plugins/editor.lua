@@ -4,15 +4,22 @@ return {
 		"folke/snacks.nvim",
 		opts = {
 			bigfile = { enabled = true },
+			gitbrowse = {
+				open = function(url)
+					vim.fn.setreg("+", url)
+					vim.notify("Copied URL: " .. url)
+				end,
+			},
 			picker = { enabled = true, prompt = "> " },
 			quickfile = { enabled = true },
 		},
     -- stylua: ignore
-    keys = {
-      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-      { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-      { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-    },
+		keys = {
+      { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<Leader>gl", function() Snacks.gitbrowse() end, desc = "GitBrowse: Copy URL", mode = { "n", "v" } },
+      { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+      { "<Leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+		},
 	},
 	{
 		"folke/which-key.nvim",
@@ -30,7 +37,6 @@ return {
 				{ "<Leader>g", group = "+Git" },
 				{ "<Leader>gh", group = "+Gitsigns" },
 				{ "<Leader>gt", group = "+Gitsigns" },
-				{ "<Leader>gl", desc = "Gitlinker: Copy buffer line url" },
 			})
 		end,
 	},
