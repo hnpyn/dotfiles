@@ -5,10 +5,6 @@ return {
 		opts = {
 			bigfile = { enabled = true },
 			gitbrowse = {
-				open = function(url)
-					vim.fn.setreg("+", url)
-					vim.notify("Copied URL: " .. url)
-				end,
 				config = function(opts, defaults)
 					table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
 					opts.url_patterns["112%.29%.101%.105:28088"] = {
@@ -22,12 +18,26 @@ return {
 			picker = { enabled = true, prompt = "> " },
 			quickfile = { enabled = true },
 		},
-    -- stylua: ignore
 		keys = {
+			-- stylua: ignore start
       { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-      { "<Leader>gl", function() Snacks.gitbrowse() end, desc = "GitBrowse: Copy URL", mode = { "n", "v" } },
       { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
       { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+			-- stylua: ignore end
+			{
+				"<Leader>gl",
+				function()
+					Snacks.gitbrowse({
+						open = function(url)
+							vim.fn.setreg("+", url)
+							vim.notify("Copied [origin](" .. url .. ")")
+						end,
+						notify = false,
+					})
+				end,
+				desc = "GitBrowse: Copy URL",
+				mode = { "n", "x" },
+			},
 		},
 	},
 	{
