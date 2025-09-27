@@ -9,6 +9,18 @@ return {
 					vim.fn.setreg("+", url)
 					vim.notify("Copied URL: " .. url)
 				end,
+				config = function(opts, defaults)
+					table.insert(
+						opts.remote_patterns,
+						{ "^https://http://(%d+%.%d+%.%d+%.%d+)(/.*)$", "http://%1:28088%2" }
+					)
+					opts.url_pattern["112%.29%.101%.105:28088"] = {
+						branch = "/-/tree/{branch}",
+						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
+						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
+						commit = "/-/commit/{commit}",
+					}
+				end,
 			},
 			picker = { enabled = true, prompt = "> " },
 			quickfile = { enabled = true },
@@ -18,7 +30,7 @@ return {
       { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
       { "<Leader>gl", function() Snacks.gitbrowse() end, desc = "GitBrowse: Copy URL", mode = { "n", "v" } },
       { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-      { "<Leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+      { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		},
 	},
 	{
