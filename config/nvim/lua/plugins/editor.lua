@@ -10,11 +10,8 @@ return {
 					vim.notify("Copied URL: " .. url)
 				end,
 				config = function(opts, defaults)
-					table.insert(
-						opts.remote_patterns,
-						{ "^https://http://(%d+%.%d+%.%d+%.%d+)(/.*)$", "http://%1:28088%2" }
-					)
-					opts.url_pattern["112%.29%.101%.105:28088"] = {
+					table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
+					opts.url_patterns["112%.29%.101%.105:28088"] = {
 						branch = "/-/tree/{branch}",
 						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
 						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
