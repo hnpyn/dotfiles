@@ -31,8 +31,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "gd", "<Cmd>FzfLua lsp_definitions<CR>", opts("go to definition"))
 		map("n", "gD", "<Cmd>FzfLua lsp_declarations<CR>", opts("go to declaration"))
 		map("n", "gri", "<Cmd>FzfLua lsp_implementations<CR>", opts("go to implementation"))
-		map("n", "grr", "<Cmd>FzfLua lsp_references<CR>", opts("go to references"))
-		map("n", "grt", "<Cmd>FzfLua lsp_typedefs<CR>", opts("type definition"))
+		map("n", "grr", "<Cmd>FzfLua lsp_references<CR>", opts("go to reference"))
+		map("n", "grt", "<Cmd>FzfLua lsp_typedefs<CR>", opts("go to type definition"))
 		map("n", "grn", vim.lsp.buf.rename, opts("rename"))
 		map({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts("code action"))
 
