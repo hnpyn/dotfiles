@@ -29,6 +29,7 @@ return {
 				function()
 					Snacks.gitbrowse({
 						open = function(url)
+							url = url:gsub("^https://http://", "http://")
 							vim.fn.setreg("+", url)
 							vim.notify("Copied [origin](" .. url .. ")")
 						end,
