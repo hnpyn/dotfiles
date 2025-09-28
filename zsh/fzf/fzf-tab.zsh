@@ -1,9 +1,15 @@
 export RUNEWIDTH_EASTASIAN=0
 # export FZF_PREVIEW_COMMAND='bash /home/charles/.zsh/file_preview.sh {}'
 # export FZF_DEFAULT_OPTS="--height 12 --layout=reverse --history=/home/charles/.zsh/cache/fzfhistory"
-export FZF_DEFAULT_OPTS="--preview 'bash ~/.zsh/fzf/file_preview.sh {}' --layout=reverse --height=12"
+export FZF_DEFAULT_OPTS="--preview 'bash ~/.zsh/fzf/file_preview.sh {}' --layout=reverse --height=48 \
+  --color=fg:#908caa,bg:#191724,hl:#ebbcba \
+  --color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba \
+  --color=border:#403d52,header:#31748f,gutter:#191724 \
+  --color=spinner:#f6c177,info:#9ccfd8 \
+  --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,dist,vendor} --type f"
 
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':completion:complete:*:options' sort false
 zstyle ':fzf-tab:complete:cd:*' query-string input
 zstyle ':completion:*:descriptions' format "[%d]"
@@ -21,5 +27,5 @@ zstyle ':fzf-tab:complete:git-log:*' fzf-preview 'git log --color=always $word'
 zstyle ':fzf-tab:complete:git-show:*' fzf-preview 'git show --color=always $word'
 zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview '[ -f "$realpath" ] && git diff --color=always $word || git log --color=always $word'
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'bash ~/.zsh/fzf/file_preview.sh ${(Q)realpath}'
-zstyle ':fzf-tab:complete:*:*' fzf-flags --height=12
+zstyle ':fzf-tab:complete:*:*' fzf-flags --height=24
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
