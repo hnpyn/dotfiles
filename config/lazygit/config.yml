@@ -14,49 +14,7 @@ gui:
         icon: "\ue606"
         color: "#FFD700"
   theme:
-    # default color
-    # lightTheme: false
-    # activeBorderColor:
-    #   - green
-    #   - bold
-    # inactiveBorderColor:
-    #   - white
-    # optionsTextColor:
-    #   - blue
-    # selectedLineBgColor:
-    #   - blue # set to `default` to have no background colour
-    # selectedRangeBgColor:
-    #   - blue
-    # cherryPickedCommitBgColor:
-    #   - cyan
-    # cherryPickedCommitFgColor:
-    #   - blue
-    # unstagedChangesColor:
-    #   - red
-    # defaultFgColor:
-    #   - default
-
-    # frappe theme
-    # lightTheme: false 
-    # activeBorderColor:
-    #   - "#a6d189" # Green
-    #   - bold
-    # inactiveBorderColor:
-    #   - "#c6d0f5" # Text
-    # optionsTextColor:
-    #   - "#8caaee" # Blue
-    # selectedLineBgColor:
-    #   - "#414559" # Surface0
-    # selectedRangeBgColor:
-    #   - "#414559" # Surface0
-    # cherryPickedCommitBgColor:
-    #   - "#81c8be" # Teal
-    # cherryPickedCommitFgColor:
-    #   - "#8caaee" # Blue
-    # unstagedChangesColor:
-    #   - red       # Red
-
-    # latte theme
+    # latte
     # lightTheme: true
     # activeBorderColor:
     #   - "#40a02b" # Green
@@ -76,45 +34,54 @@ gui:
     # unstagedChangesColor:
     #   - red       # Red
 
-    # macchiato theme
-    # lightTheme: false 
+    # mocha
+    # lightTheme: false
     # activeBorderColor:
-    #   - "#a6da95" # Green
+    #   - "#a6e3a1" # Green
     #   - bold
     # inactiveBorderColor:
-    #   - "#cad3f5" # Text
+    #   - "#cdd6f4" # Text
     # optionsTextColor:
-    #   - "#8aadf4" # Blue
+    #   - "#89b4fa" # Blue
     # selectedLineBgColor:
-    #   - "#363a4f" # Surface0
+    #   - "#313244" # Surface0
     # selectedRangeBgColor:
-    #   - "#363a4f" # Surface0
+    #   - "#313244" # Surface0
     # cherryPickedCommitBgColor:
-    #   - "#8bd5ca" # Teal
+    #   - "#94e2d5" # Teal
     # cherryPickedCommitFgColor:
-    #   - "#8aadf4" # Blue
+    #   - "#89b4fa" # Blue
     # unstagedChangesColor:
-    #   - red       # Red
+    #   - red # Red
 
-    # mocha theme
-    lightTheme: false
+    # rose-pine
     activeBorderColor:
-      - "#a6e3a1" # Green
+      - "#31748f"
       - bold
     inactiveBorderColor:
-      - "#cdd6f4" # Text
+      - "#6e6a86"
+    searchingActiveBorderColor:
+      - "#ebbcba"
+      - bold
     optionsTextColor:
-      - "#89b4fa" # Blue
+      - "#9ccfd8"
     selectedLineBgColor:
-      - "#313244" # Surface0
-    selectedRangeBgColor:
-      - "#313244" # Surface0
-    cherryPickedCommitBgColor:
-      - "#94e2d5" # Teal
+      - "#31748f"
+    inactiveViewSelectedLineBgColor:
+      - "#26233a"
+      - bold
     cherryPickedCommitFgColor:
-      - "#89b4fa" # Blue
+      - "#1f1d2e"
+    cherryPickedCommitBgColor:
+      - "#ebbcba"
+    markedBaseCommitFgColor:
+      - "#9ccfd8"
+    markedBaseCommitBgColor:
+      - "#f6c177"
     unstagedChangesColor:
-      - red # Red
+      - "#eb6f92"
+    defaultFgColor:
+      - "#e0def4"
   commitLength:
     show: true
   mouseEvents: true
@@ -126,7 +93,7 @@ gui:
   experimentalShowBranchHeads: false # visualize branch heads with (*) in commits list
   showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
   showCommandLog: true
-  nerdFontsVersion: "2"
+  nerdFontsVersion: "3"
   showFileIcons: true
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'

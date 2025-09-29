@@ -87,6 +87,41 @@ return {
 		},
 	},
 	{
+		"folke/snacks.nvim",
+		opts = {
+			gitbrowse = {
+				config = function(opts, defaults)
+					table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
+					opts.url_patterns["112%.29%.101%.105:28088"] = {
+						branch = "/-/tree/{branch}",
+						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
+						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
+						commit = "/-/commit/{commit}",
+					}
+				end,
+			},
+		},
+		keys = {
+			-- stylua: ignore
+      { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+			{
+				"<Leader>gl",
+				function()
+					Snacks.gitbrowse({
+						open = function(url)
+							url = url:gsub("^https://http://", "http://")
+							vim.fn.setreg("+", url)
+							vim.notify("Copied [origin](" .. url .. ")")
+						end,
+						notify = false,
+					})
+				end,
+				desc = "GitBrowse: Copy URL",
+				mode = { "n", "x" },
+			},
+		},
+	},
+	{
 		"ruifm/gitlinker.nvim",
 		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },

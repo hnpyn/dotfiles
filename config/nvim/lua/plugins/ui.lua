@@ -39,88 +39,12 @@ return {
 		},
 	},
 	{
-		"NvChad/nvim-colorizer.lua",
-		enabled = false,
-		cmd = {
-			"ColorizerToggle",
-			"ColorizerAttachToBuffer",
-			"ColorizerDetachFromBuffer",
-			"ColorizerReloadAllBuffers",
-		},
-		opts = {
-			user_default_options = {
-				RRGGBBAA = true,
-				names = false,
-			},
-		},
-	},
-	{
 		"petertriho/nvim-scrollbar",
 		enabled = true,
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			handlers = { gitsigns = true },
 		},
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.g.lualine_laststatus = vim.o.laststatus
-			if vim.fn.argc(-1) > 0 then
-				-- set an empty statusline till lualine loads
-				vim.o.statusline = " "
-			else
-				-- hide the statusline on the starter page
-				vim.o.laststatus = 0
-			end
-		end,
-		opts = function()
-			local icons = require("config.ui").icons
-
-			return {
-				options = {
-					theme = "auto",
-					globalstatus = true,
-					icons_enabled = true,
-					always_divide_middle = true,
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
-					disabled_filetypes = { statusline = { "alpha", "dashboard", "snacks_dashboard" } },
-				},
-				sections = {
-					-- left
-					lualine_a = { "mode" },
-					lualine_b = {
-						"branch",
-						"diff",
-						{
-							"diagnostics",
-							symbols = {
-								error = "E", -- icons.diagnostics.Error,
-								warn = "W", -- icons.diagnostics.Warn,
-								info = "I", -- icons.diagnostics.Info,
-								hint = "H", -- icons.diagnostics.Hint,
-							},
-						},
-					},
-					lualine_c = { "filename" },
-					-- right
-					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_z = { "location" },
-				},
-				inactive_sections = {
-					lualine_a = { "filename" },
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
-				},
-				tabline = {},
-				extensions = { "neo-tree", "lazy", "fzf" },
-			}
-		end,
 	},
 	{
 		"akinsho/bufferline.nvim",
@@ -135,22 +59,10 @@ return {
 			local get_hex = require("util").get_hex
 			return {
 				options = {
-					left_mouse_command = function(bufnum)
-						local lazy = require("bufferline.lazy")
-						local ui = lazy.require("bufferline.ui")
-						local windows = vim.fn.win_findbuf(bufnum)
-						if windows[1] then
-							vim.api.nvim_set_current_win(windows[1])
-						end
-						vim.schedule(function()
-							vim.cmd(string.format("buffer %d", bufnum))
-							ui.refresh()
-						end)
-					end,
-          -- stylua: ignore
+          -- stylua: ignore start
           close_command = function(n) Snacks.bufdelete(n) end,
-          -- stylua: ignore
           right_mouse_command = function(n) Snacks.bufdelete(n) end,
+					-- stylua: ignore end
 					diagnostics = "nvim_lsp",
 					always_show_bufferline = false,
 					diagnostics_indicator = function(_, _, diag)
@@ -205,6 +117,63 @@ return {
 			})
 		end,
 	},
+	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.g.lualine_laststatus = vim.o.laststatus
+			if vim.fn.argc(-1) > 0 then
+				-- set an empty statusline till lualine loads
+				vim.o.statusline = " "
+			else
+				-- hide the statusline on the starter page
+				vim.o.laststatus = 0
+			end
+		end,
+		opts = function()
+			-- PERF: we don't need this lualine require madness
+			local lualine_require = require("lualine_require")
+			lualine_require.require = require
+
+			local icons = require("config.ui").icons
+
+			vim.o.laststatus = vim.g.lualine_laststatus
+
+			return {
+				options = {
+					theme = "auto",
+					globalstatus = vim.o.laststatus == 3,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = { statusline = { "alpha", "dashboard", "snacks_dashboard" } },
+				},
+				sections = {
+					-- left
+					lualine_a = { "mode" },
+					lualine_b = {
+						"branch",
+						"diff",
+						{
+							"diagnostics",
+							symbols = {
+								error = "E", -- icons.diagnostics.Error,
+								warn = "W", -- icons.diagnostics.Warn,
+								info = "I", -- icons.diagnostics.Info,
+								hint = "H", -- icons.diagnostics.Hint,
+							},
+						},
+					},
+					lualine_c = { "filename" },
+					-- right
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_z = { "location" },
+				},
+				tabline = {},
+				extensions = { "neo-tree", "lazy", "fzf" },
+			}
+		end,
+	},
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		enabled = false,
@@ -346,5 +315,21 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		enabled = false,
+		cmd = {
+			"ColorizerToggle",
+			"ColorizerAttachToBuffer",
+			"ColorizerDetachFromBuffer",
+			"ColorizerReloadAllBuffers",
+		},
+		opts = {
+			user_default_options = {
+				RRGGBBAA = true,
+				names = false,
+			},
+		},
 	},
 }

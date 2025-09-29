@@ -4,41 +4,13 @@ return {
 		"folke/snacks.nvim",
 		opts = {
 			bigfile = { enabled = true },
-			gitbrowse = {
-				config = function(opts, defaults)
-					table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
-					opts.url_patterns["112%.29%.101%.105:28088"] = {
-						branch = "/-/tree/{branch}",
-						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
-						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
-						commit = "/-/commit/{commit}",
-					}
-				end,
-			},
 			picker = { enabled = true, prompt = "> " },
 			quickfile = { enabled = true },
 		},
+		-- stylua: ignore
 		keys = {
-			-- stylua: ignore start
       { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-      { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
       { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-			-- stylua: ignore end
-			{
-				"<Leader>gl",
-				function()
-					Snacks.gitbrowse({
-						open = function(url)
-							url = url:gsub("^https://http://", "http://")
-							vim.fn.setreg("+", url)
-							vim.notify("Copied [origin](" .. url .. ")")
-						end,
-						notify = false,
-					})
-				end,
-				desc = "GitBrowse: Copy URL",
-				mode = { "n", "x" },
-			},
 		},
 	},
 	{
@@ -205,13 +177,9 @@ return {
 			keymaps = {
 				["q"] = { "actions.close", mode = "n" },
 			},
-			view_options = {
-				show_hidden = true,
-			},
+			view_options = { show_hidden = true },
 			-- for oil-git-status
-			win_options = {
-				signcolumn = "yes:2",
-			},
+			win_options = { signcolumn = "yes:2" },
 		},
 	},
 	{

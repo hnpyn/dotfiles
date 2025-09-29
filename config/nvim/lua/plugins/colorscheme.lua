@@ -19,6 +19,15 @@ return {
 	--   end,
 	-- },
 	-- {
+	--   "luisiacc/gruvbox-baby",
+	--   enabled = true,
+	--   lazy = false,
+	--   priority = 1000,
+	--   config = function()
+	--     vim.cmd("colorscheme gruvbox-baby")
+	--   end,
+	-- },
+	-- {
 	-- 	"sainnhe/gruvbox-material",
 	-- 	lazy = false,
 	-- 	priority = 1000,
@@ -29,13 +38,13 @@ return {
 	-- 	end,
 	-- },
 	-- {
-	--   "luisiacc/gruvbox-baby",
-	--   enabled = true,
-	--   lazy = false,
-	--   priority = 1000,
-	--   config = function()
-	--     vim.cmd("colorscheme gruvbox-baby")
-	--   end,
+	-- 	"neanias/everforest-nvim",
+	-- 	version = false,
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme everforest")
+	-- 	end,
 	-- },
 	-- {
 	-- 	"catppuccin/nvim",
