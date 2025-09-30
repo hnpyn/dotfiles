@@ -10,6 +10,7 @@ return {
 		-- stylua: ignore
 		keys = {
       { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<Leader>br", function() Snacks.rename.rename_file() end, desc = "Rename File" },
       { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		},
 	},
