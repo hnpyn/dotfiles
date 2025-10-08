@@ -151,7 +151,7 @@ install_dotfiles() {
 	# home dotfiles
 	info '...'
 	info 'Installing $HOME dotfiles...'
-	for src in $(find -H "$DOTFILES" -maxdepth 1 \( -name 'vim' -o -name 'zsh' \)); do
+	for src in $(find -H "$DOTFILES" -maxdepth 1 \( -name 'vim' -o -name 'zsh' -o -name 'emacs.d' \)); do
 		bname="$(basename "${src}")"
 		dst="$HOME/.$bname"
 		link_file "$src" "$dst"

@@ -18,10 +18,12 @@ config/nvim/lazy-lock.json
 config/mpv/watch_later/
 
 # emacs
-config/emacs/auto-save-list/
-config/emacs/elpa/
-config/emacs/transient/
-config/emacs/recentf
+emacs.d/auto-save-list/
+emacs.d/elpa/
+emacs.d/eln-cache/
+emacs.d/transient/
+emacs.d/recentf
+emacs.d/**/*.el
 
 # tmp
 *~
