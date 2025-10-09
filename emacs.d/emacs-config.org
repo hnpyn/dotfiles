@@ -439,21 +439,6 @@
   (if (display-graphic-p)
       (ef-themes-load-random)
     (ef-themes-load-random 'dark))
-
-  :config
-  ;; auto change theme, aligning with system themes.
-  (defun my/apply-theme (appearance)
-    "Load theme, taking current system APPEARANCE into consideration."
-    (mapc #'disable-theme custom-enabled-themes)
-    (pcase appearance
-      ('light (if (display-graphic-p) (ef-themes-load-random 'light) (ef-themes-load-random 'dark)))
-      ('dark (ef-themes-load-random 'dark))))
-
-  (if (eq system-type 'darwin)
-      ;; only for emacs-plus
-      (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-    (ef-themes-select 'ef-summer)
-    )
   )
 
 ;; gruvbox
@@ -566,6 +551,17 @@
 (use-package delsel
   :ensure nil
   :hook (after-init . delete-selection-mode))
+
+#+END_SRC
+** Magit
+#+BEGIN_SRC emacs-lisp
+;; magit
+(use-package magit
+  :ensure t
+  :defer t
+  :commands (magit-status magit-blame)
+  :init
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 #+END_SRC
 ** Evil Mode
@@ -744,7 +740,7 @@
      ("\\.xlsx\\'"    . default)
      ("\\.svg\\'"     . default)
      ("\\.html?\\'"   . default)
-     (auto-mode       . emacs)
+     ;; (auto-mode       . emacs)
      (directory       . emacs)))
 
   :config
@@ -1141,6 +1137,19 @@ For locate on MacOS:
 
 #+END_SRC
 
+** Which-key
+#+BEGIN_SRC emacs-lisp
+;; which-key settings
+(use-package which-key
+  :ensure nil
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.4
+        which-key-separator " → "
+        which-key-prefix-prefix "+ "
+        which-key-side-window-location 'bottom))
+#+END_SRC
 ** Yasnippet
 #+BEGIN_SRC emacs-lisp
 ;; provides reusable templates for faster editing and coding

@@ -153,6 +153,9 @@ return {
 					lualine_b = {
 						"branch",
 						"diff",
+					},
+					lualine_c = {
+						"filename",
 						{
 							"diagnostics",
 							symbols = {
@@ -163,7 +166,6 @@ return {
 							},
 						},
 					},
-					lualine_c = { "filename" },
 					-- right
 					lualine_x = { "encoding", "fileformat", "filetype" },
 					lualine_z = { "location" },

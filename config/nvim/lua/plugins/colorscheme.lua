@@ -10,22 +10,22 @@ return {
 	-- 	end,
 	-- },
 	-- {
-	--   "ellisonleao/gruvbox.nvim",
-	--   lazy = false,
-	--   priority = 1000,
-	--   config = function()
-	--     vim.o.background = "dark"
-	--     vim.cmd("colorscheme gruvbox")
-	--   end,
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.o.background = "dark"
+	-- 		vim.cmd("colorscheme gruvbox")
+	-- 	end,
 	-- },
 	-- {
-	--   "luisiacc/gruvbox-baby",
-	--   enabled = true,
-	--   lazy = false,
-	--   priority = 1000,
-	--   config = function()
-	--     vim.cmd("colorscheme gruvbox-baby")
-	--   end,
+	-- 	"luisiacc/gruvbox-baby",
+	-- 	enabled = true,
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme gruvbox-baby")
+	-- 	end,
 	-- },
 	-- {
 	-- 	"sainnhe/gruvbox-material",
@@ -65,13 +65,13 @@ return {
 		end,
 	},
 	-- {
-	--   "folke/tokyonight.nvim",
-	--   lazy = false,
-	--   priority = 1000,
-	--   opts = {},
-	--   config = function()
-	--     vim.cmd("colorscheme tokyonight-night")
-	--   end,
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme tokyonight-night")
+	-- 	end,
 	-- },
 	-- {
 	-- 	"Mofiqul/dracula.nvim",
@@ -129,6 +129,18 @@ return {
 	-- 	priority = 1000,
 	-- 	config = function()
 	-- 		vim.cmd("colorscheme min-theme")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"oonamo/ef-themes.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		transparent = false,
+	-- 	},
+	-- 	config = function(_, opts)
+	-- 		require("ef-themes").setup(opts)
+	-- 		vim.cmd("colorscheme ef-dark")
 	-- 	end,
 	-- },
 }
