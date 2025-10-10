@@ -6,7 +6,7 @@ return {
 	-- 	config = function()
 	-- 		-- setup must be called before loading the colorscheme
 	-- 		-- Default options:
-	-- 		-- vim.cmd("colorscheme nvim-base16-gruvbox-soft")
+	-- 		vim.cmd("colorscheme base16-gruvbox-dark")
 	-- 	end,
 	-- },
 	-- {

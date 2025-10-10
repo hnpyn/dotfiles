@@ -14,74 +14,12 @@ gui:
         icon: "\ue606"
         color: "#FFD700"
   theme:
-    # latte
-    # lightTheme: true
-    # activeBorderColor:
-    #   - "#40a02b" # Green
-    #   - bold
-    # inactiveBorderColor:
-    #   - "#4c4f69" # Text
-    # optionsTextColor:
-    #   - "#1e66f5" # Blue
-    # selectedLineBgColor:
-    #   - "#ccd0da" # Surface0
-    # selectedRangeBgColor:
-    #   - "#ccd0da" # Surface0
-    # cherryPickedCommitBgColor:
-    #   - "#179299" # Teal
-    # cherryPickedCommitFgColor:
-    #   - "#1e66f5" # Blue
-    # unstagedChangesColor:
-    #   - red       # Red
-
-    # mocha
-    # lightTheme: false
-    # activeBorderColor:
-    #   - "#a6e3a1" # Green
-    #   - bold
-    # inactiveBorderColor:
-    #   - "#cdd6f4" # Text
-    # optionsTextColor:
-    #   - "#89b4fa" # Blue
-    # selectedLineBgColor:
-    #   - "#313244" # Surface0
-    # selectedRangeBgColor:
-    #   - "#313244" # Surface0
-    # cherryPickedCommitBgColor:
-    #   - "#94e2d5" # Teal
-    # cherryPickedCommitFgColor:
-    #   - "#89b4fa" # Blue
-    # unstagedChangesColor:
-    #   - red # Red
-
-    # rose-pine
-    activeBorderColor:
-      - "#31748f"
-      - bold
-    inactiveBorderColor:
-      - "#6e6a86"
-    searchingActiveBorderColor:
-      - "#ebbcba"
-      - bold
-    optionsTextColor:
-      - "#9ccfd8"
+    lightTheme: false
     selectedLineBgColor:
-      - "#313244" # "#31748f"
-    inactiveViewSelectedLineBgColor:
-      - "#26233a"
-      - bold
-    cherryPickedCommitFgColor:
-      - "#1f1d2e"
-    cherryPickedCommitBgColor:
-      - "#ebbcba"
-    markedBaseCommitFgColor:
-      - "#9ccfd8"
-    markedBaseCommitBgColor:
-      - "#f6c177"
-    unstagedChangesColor:
-      - "#eb6f92"
-    defaultFgColor:
-      - "#e0def4"
+      - "#3c3836"
+    selectedRangeBgColor:
+      - "#3c3836"
+
   commitLength:
     show: true
   mouseEvents: true
