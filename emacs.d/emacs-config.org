@@ -733,7 +733,7 @@
   (org-file-apps
    '(("\\.png\\'"     . default)
      ("\\.gif\\'"     . my-func/open-and-play-gif-image)
-     ("\\.pdf\\'"     . emacs)
+     ;; ("\\.pdf\\'"     . emacs)
      ("\\.md\\'"      . emacs)
      ("\\.docx\\'"    . default)
      ("\\.pptx\\'"    . default)
