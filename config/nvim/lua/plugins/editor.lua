@@ -143,7 +143,7 @@ return {
 	},
 	{
 		"nvim-mini/mini.files",
-		enabled = true,
+		enabled = false,
 		opts = {
 			windows = {
 				preview = true,
@@ -193,7 +193,7 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		enabled = false,
+		enabled = true,
 		cmd = "Neotree",
 		keys = {
 			{
@@ -217,14 +217,6 @@ return {
 		deactivate = function()
 			vim.cmd([[Neotree close]])
 		end,
-		-- init = function()
-		-- 	if vim.fn.argc() == 1 then
-		-- 		local stat = vim.loop.fs_stat(vim.fn.argv(0))
-		-- 		if stat and stat.type == "directory" then
-		-- 			require("neo-tree")
-		-- 		end
-		-- 	end
-		-- end,
 		opts = function()
 			local icons = require("config.ui").icons
 			return {

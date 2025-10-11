@@ -1,5 +1,6 @@
 local set = vim.o
 local util = require("util")
+local set_hl = vim.api.nvim_set_hl
 
 -- basic
 set.autoindent = true
@@ -22,8 +23,9 @@ else
 	set.clipboard = "unnamedplus"
 end
 
--- highlight groups
--- vim.cmd("hi Visual guifg=#0d0e0f guibg=#e7d7ad gui=none")
-vim.cmd("hi Search guifg=#0d0e0f guibg=#d79921 gui=none")
-vim.cmd("hi IncSearch guifg=#0d0e0f guibg=#eebd35 gui=none")
-vim.cmd("hi CurSearch guifg=#0d0e0f guibg=#689d6a gui=none")
+-- highlight
+-- sel_hl(0, "Visual", { fg = "#0d0e0f", bg = "e7d7ad", bold = false })
+set_hl(0, "Search", { fg = "#0d0e0f", bg = "#d79921", bold = false })
+set_hl(0, "IncSearch", { fg = "#0d0e0f", bg = "#eebd35", bold = false })
+set_hl(0, "CurSearch", { fg = "#0d0e0f", bg = "#689d6a", bold = false })
+set_hl(0, "WinSeparator", { fg = "bg", bg = "NONE", bold = false })
