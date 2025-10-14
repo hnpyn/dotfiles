@@ -33,7 +33,7 @@ return {
 	-- 	priority = 1000,
 	-- 	config = function()
 	-- 		vim.o.background = "dark"
-	-- 		vim.cmd("let g:gruvbox_material_background = 'soft'")
+	-- 		vim.cmd("let g:gruvbox_material_background = 'hard'")
 	-- 		vim.cmd("colorscheme gruvbox-material")
 	-- 	end,
 	-- },

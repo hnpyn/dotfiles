@@ -266,7 +266,7 @@
 (when (display-graphic-p)
   (let ((top    0)
         (left   (/ (x-display-pixel-width) 10))
-        (height (round (* 0.8
+        (height (round (* 0.65
                           (/ (x-display-pixel-height)
                              (frame-char-height))))))
     (let ((width  (round (* 2.5 height))))
@@ -612,7 +612,8 @@
   :ensure nil
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . visual-line-mode)
-         (org-mode . my/org-prettify-symbols))
+         ;; (org-mode . my/org-prettify-symbols)
+	 )
   :commands (org-find-exact-headline-in-buffer org-set-tags)
 
   ;; faces: headline, code block, etc.
@@ -622,8 +623,8 @@
   (org-level-2        ((t (:height 1.15 :weight bold))))
   (org-level-3        ((t (:height 1.1 :weight bold))))
   (org-level-4        ((t (:height 1.05 :weight bold))))
-  (org-block-begin-line ((t (:underline t :background unspecified))))
-  (org-block-end-line   ((t (:overline t :background unspecified))))
+  ;; (org-block-begin-line ((t (:underline t :background unspecified))))
+  ;; (org-block-end-line   ((t (:overline t :background unspecified))))
 
   :custom
   ;; directories and files
@@ -811,7 +812,9 @@
   :config
   ;; Fancy headline bullets
   (setq org-modern-star
-        ["◉" "○" "✸" "✳" "◈" "◇" "✿" "❀" "✜"])
+        ;; ["◉" "○" "✸" "✳" "◈" "◇" "✿" "❀" "✜"]
+	nil
+	)
 
   ;; Add extra line spacing (0.1 = 10% of font height, 1 = 1px)
   (setq-default line-spacing 0.1)
@@ -837,7 +840,7 @@
 
   ;; Show vertical line on the left of code blocks
   ;; (may look odd if `visual-fill-column-mode' is enabled)
-  (setq org-modern-block-fringe t)
+  (setq org-modern-block-fringe nil)
 
   ;; Disable prettification of block language names
   (setq org-modern-block-name nil)
@@ -846,6 +849,7 @@
   (setq org-modern-keyword nil))
 
 #+END_SRC
+
 ** Org-appear
 #+BEGIN_SRC emacs-lisp
 ;; auto reveal
@@ -861,6 +865,7 @@
   )
 
 #+END_SRC
+
 ** Auto Tangle
 #+BEGIN_SRC emacs-lisp
 ;; automatically tangle code blocks upon saving Org files
