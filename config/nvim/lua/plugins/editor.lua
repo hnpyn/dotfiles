@@ -226,6 +226,10 @@ return {
 				sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 				open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
 				filesystem = {
+					filtered_items = {
+						hide_dotfiles = false,
+						hide_gitignored = false,
+					},
 					bind_to_cwd = false,
 					follow_current_file = { enabled = true },
 					use_libuv_file_watcher = true,
