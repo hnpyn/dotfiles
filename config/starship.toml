@@ -1,0 +1,5 @@
+[conda]
+ignore_base=false
+
+[directory]
+truncation_length = 8
