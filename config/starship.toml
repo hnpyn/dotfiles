@@ -14,20 +14,21 @@ truncation_length = 6
 [git_branch]
 style = 'bold green'
 format = '[$symbol$branch$tag]($style)'
+symbol = "\ue725 "
 
 [git_status]
 style = 'bold white'
-format = ' ([\[$all_status$ahead_behind\]]($style) )'
-conflicted = '[=$count](bold red)'
-ahead = '[⇡$count](bold cyan)'
-behind = '[⇣$count](bold cyan)'
-diverged = '[⇕$count](bold cyan)'
-untracked = '[?$count](bold blue)'
-stashed = '[$$count](bold blue)'
-modified = '[!$count](bold yellow)'
-staged = '[+$count](bold green)'
-renamed = '[»$count](bold green)'
-deleted = '[✘$count](bold red)'
+format = ' ([$all_status$ahead_behind]($style))'
+conflicted = '[=$count](bold red) '
+ahead = '[⇡$count](bold cyan) '
+behind = '[⇣$count](bold cyan) '
+diverged = '[⇕$count](bold cyan) '
+untracked = '[?$count](bold blue) '
+stashed = '[$$count](bold blue) '
+modified = '[!$count](bold yellow) '
+staged = '[+$count](bold green) '
+renamed = '[»$count](bold green) '
+deleted = '[✘$count](bold red) '
 
 [hostname]
 format = 'in [$ssh_symbol$hostname]($style)'
