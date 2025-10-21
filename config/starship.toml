@@ -1,5 +1,36 @@
+format = """
+$conda$directory$git_branch$git_state$git_status$git_metrics$hostname
+$container$username$character"""
+
 [conda]
+style = 'bold green'
+format = '[\($environment\)]($style) '
 ignore_base=false
 
 [directory]
-truncation_length = 8
+truncate_to_repo = false
+truncation_length = 6
+
+[git_branch]
+style = 'bold green'
+format = '[$symbol$branch$tag]($style)'
+
+[git_status]
+style = 'bold white'
+format = ' ([\[$all_status$ahead_behind\]]($style) )'
+conflicted = '[=$count](bold red)'
+ahead = '[⇡$count](bold cyan)'
+behind = '[⇣$count](bold cyan)'
+diverged = '[⇕$count](bold cyan)'
+untracked = '[?$count](bold blue)'
+stashed = '[$$count](bold blue)'
+modified = '[!$count](bold yellow)'
+staged = '[+$count](bold green)'
+renamed = '[»$count](bold green)'
+deleted = '[✘$count](bold red)'
+
+[hostname]
+format = ' in [$ssh_symbol$hostname]($style)'
+
+[username]
+format = ' [$user]($style) '
