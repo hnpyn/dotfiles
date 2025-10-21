@@ -30,7 +30,7 @@ renamed = '[»$count](bold green)'
 deleted = '[✘$count](bold red)'
 
 [hostname]
-format = ' in [$ssh_symbol$hostname]($style)'
+format = 'in [$ssh_symbol$hostname]($style)'
 
 [username]
-format = ' [$user]($style) '
+format = '[$user]($style) '
