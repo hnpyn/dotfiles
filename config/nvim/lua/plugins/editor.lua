@@ -67,8 +67,8 @@ return {
 					["--no-scrollbar"] = true,
 				},
 				files = {
-					fd_opts = [[--color=never --hidden --no-ignore --type f --type l --exclude .git]],
-					rg_opts = [[--color=never --hidden --no-ignore --files -g "!.git"]],
+					fd_opts = [[--color=never --hidden --type f --type l --exclude .git]],
+					rg_opts = [[--color=never --hidden --files -g "!.git"]],
 				},
 				previewers = {
 					builtin = {
