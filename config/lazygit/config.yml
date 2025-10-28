@@ -16,9 +16,9 @@ gui:
   theme:
     lightTheme: false
     selectedLineBgColor:
-      - "#3c3836"
+      - "#4c4c4c" # "dcdcdc"
     selectedRangeBgColor:
-      - "#3c3836"
+      - "#4c4c4c" # "dcdcdc"
 
   commitLength:
     show: true
