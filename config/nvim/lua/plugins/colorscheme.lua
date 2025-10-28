@@ -37,15 +37,19 @@ return {
 	-- 		vim.cmd("colorscheme gruvbox-material")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"neanias/everforest-nvim",
-	-- 	version = false,
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme everforest")
-	-- 	end,
-	-- },
+	{
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("everforest").setup({
+				background = "hard",
+				transparent_background_level = 2,
+			})
+			require("everforest").load()
+		end,
+	},
 	-- {
 	-- 	"catppuccin/nvim",
 	-- 	name = "catppuccin",
@@ -55,15 +59,15 @@ return {
 	-- 		vim.cmd("colorscheme catppuccin-mocha")
 	-- 	end,
 	-- },
-	{
-		"rose-pine/neovim",
-		lazy = false,
-		priority = 1000,
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine-main")
-		end,
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme rose-pine-main")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	lazy = false,
@@ -85,11 +89,9 @@ return {
 	-- 	"Mofiqul/vscode.nvim",
 	-- 	lazy = false,
 	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		transparent = true,
-	-- 	},
-	-- 	config = function(_, opts)
-	-- 		require("vscode").setup(opts)
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		require("vscode").setup({ transparent = true })
 	-- 		require("vscode").load("dark")
 	-- 	end,
 	-- },
@@ -106,9 +108,7 @@ return {
 	-- 	lazy = false,
 	-- 	priority = 1000,
 	-- 	config = function()
-	-- 		require("onedark").setup({
-	-- 			style = "darker",
-	-- 		})
+	-- 		require("onedark").setup({ style = "darker" })
 	-- 		vim.cmd("colorscheme onedark")
 	-- 	end,
 	-- },
@@ -132,11 +132,8 @@ return {
 	-- 	"oonamo/ef-themes.nvim",
 	-- 	lazy = false,
 	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		transparent = false,
-	-- 	},
-	-- 	config = function(_, opts)
-	-- 		require("ef-themes").setup(opts)
+	-- 	config = function()
+	-- 		require("ef-themes").setup({ transparent = false })
 	-- 		vim.cmd("colorscheme ef-dark")
 	-- 	end,
 	-- },
