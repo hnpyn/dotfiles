@@ -2,9 +2,9 @@
 mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
 if [ -d "$1" ]; then
-  lsd -A --icon=always "$1" 2>/dev/null 
+  ls -A "$1" 2>/dev/null 
 elif [ "$category" = text ]; then
-  (batcat -p --style numbers --color=always "$1" ) 2>/dev/null | head -1000
+  cat "$1" 2>/dev/null | head -1000
 elif [ "$category" = image ]; then 
   # (~/.zsh/fzf/img_preview $1) 2>/dev/null 
   chafa -f symbols "$1"
