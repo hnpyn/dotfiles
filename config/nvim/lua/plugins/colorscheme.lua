@@ -56,7 +56,12 @@ return {
 	-- 	lazy = false,
 	-- 	priority = 1000,
 	-- 	config = function()
-	-- 		vim.cmd("colorscheme catppuccin-mocha")
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "auto",
+	-- 			transparent_background = true,
+	-- 			float = { transparent = true },
+	-- 		})
+	-- 		vim.cmd("colorscheme catppuccin")
 	-- 	end,
 	-- },
 	-- {
