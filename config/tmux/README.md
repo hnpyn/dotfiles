@@ -7,5 +7,5 @@ my tmux settings
 ```bash
 sh clean_plugins.sh
 tmux -new -s Session
-[CTRL-a I]
+[CTRL-b I]
 ```
