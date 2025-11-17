@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-mini/mini.pairs",
+		enabled = false,
 		event = "InsertEnter",
 		opts = {
 			modes = { insert = true, command = true, terminal = false },
@@ -14,9 +15,12 @@ return {
 			-- better deal with markdown code blocks
 			markdown = true,
 		},
-		config = function(_, opts)
-			require("mini.pairs").setup(opts)
-		end,
+	},
+	{
+		"windwp/nvim-autopairs",
+		enabled = true,
+		event = "InsertEnter",
+		opts = {},
 	},
 	{
 		"kylechui/nvim-surround",
