@@ -12,7 +12,6 @@ map("n", "<C-c><C-c>", "<Cmd>qa!<CR>", opts("Force Quit!"))
 map("n", "<Leader>qq", "<Cmd>qa<CR>", opts("Quit All"))
 
 -- cursor behaviors
-map("i", "<C-e>", "<C-o>A", opts("Insert at the end of line"))
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 map("n", "j", [[v:count ? 'j': 'gj']], { noremap = true, expr = true })
 map("n", "k", [[v:count ? 'k': 'gk']], { noremap = true, expr = true })
