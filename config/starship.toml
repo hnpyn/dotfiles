@@ -2,6 +2,9 @@ format = """
 $conda$python$directory$git_branch$git_state$git_status$git_metrics$hostname
 $container$username$character"""
 
+scan_timeout = 500
+command_timeout = 3000
+
 [conda]
 style = 'bold green'
 format = '[\($environment\)]($style) '
@@ -30,14 +33,14 @@ staged = '[+$count](bold green) '
 renamed = '[»$count](bold green) '
 deleted = '[✘$count](bold red) '
 
+[hostname]
+format = 'in [$hostname]($style)'
+
 [python]
 format = '[\($virtualenv\)]($style) '
 detect_extensions = []
 detect_files = []
 detect_folders = []
-
-[hostname]
-format = 'in [$hostname]($style)'
 
 [username]
 format = '[$user]($style) '
