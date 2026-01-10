@@ -13,34 +13,37 @@
 
 # =========================== Basic ===========================
 # My zsh path
-ZSH=$HOME/.zsh
+ZSH="$HOME/.zsh"
 # History
-HISTFILE=$HOME/.zsh_history
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=2000
 SAVEHIST=1000
 
 # =========================== OS rc ===========================
-case `uname` in
+case "$(uname -s)" in
   Darwin )
-    source $ZSH/os/macos.zsh;;
+    source "$ZSH/os/macos.zsh"
+    ;;
   Linux )
-    source $ZSH/os/linux.zsh;;
+    source "$ZSH/os/linux.zsh"
+    ;;
 esac
 
+# ========================== Aliases ==========================
+source "$ZSH/aliases.zsh"
+
 # ========================== Plugins ==========================
-PLUGINS=$ZSH/plugins
+PLUGINS="$ZSH/plugins"
 
 autoload -Uz compinit && compinit
 
-source $PLUGINS/fzf-tab/fzf-tab.plugin.zsh
-source $ZSH/fzf/fzf-tab.zsh
+source "$PLUGINS/fzf-tab/fzf-tab.plugin.zsh"
+source "$ZSH/fzf/fzf-tab.zsh"
 
-source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=96"
+source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=96'
 
-source $PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-source $PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 eval "$(zoxide init zsh)"
 
@@ -50,19 +53,30 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
 fi
 eval "$(starship init zsh)"
 
-# ========================== Aliases ==========================
-source $ZSH/aliases.zsh
+source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 # ========================== Env var ==========================
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export NVM_DIR="$HOME/.nvm"
+# Lazy load nvm
+function nvm node npm npx pnpm {
+  unfunction nvm node npm npx pnpm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  "$0" "$@"
+}
+
+export http_proxy='http://127.0.0.1:7897'
+export https_proxy='http://127.0.0.1:7897'
 
 # ========================== MISC =============================
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export TERM="xterm-256color"
-  export EDITOR="vim"
+if [[ -n "$SSH_CONNECTION" ]]; then
+  export TERM='xterm-256color'
+  export EDITOR='vim'
 else
-  export EDITOR="nvim"
+  export EDITOR='nvim'
 fi
 
 # Paste highlight

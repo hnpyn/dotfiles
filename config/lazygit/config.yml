@@ -11,7 +11,7 @@ gui:
   customIcons:
     extensions:
       ".py":
-        icon: "\ue606"
+        icon: ""
         color: "#FFD700"
   theme:
     lightTheme: false
@@ -19,7 +19,6 @@ gui:
       - "#4c4c4c" # "#dcdcdc"
     selectedRangeBgColor:
       - "#4c4c4c"
-
   commitLength:
     show: true
   mouseEvents: true
@@ -38,9 +37,9 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: 'single' # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --line-numbers --syntax-theme="Dracula"
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --line-numbers --syntax-theme="Dracula"
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
@@ -168,7 +167,7 @@ keybinding:
     viewResetOptions: 'D'
     fetch: 'f'
     toggleTreeView: '`'
-    openMergeTool: 'M'
+    openMergeOptions: 'M'
     openStatusFilter: '<c-b>'
   branches:
     createPullRequest: 'o'

@@ -9,9 +9,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # some apps aliases
-alias vi="nvim"
-alias vim="nvim"
-alias lg="lazygit"
-alias lzd="lazydocker"
-alias icat="kitty +kitten icat"
-alias chrome="google-chrome"
+alias vi='nvim'
+alias vim='nvim'
+alias lg='lazygit'
+alias lzd='lazydocker'
+alias icat='kitty +kitten icat'
+alias chrome='google-chrome'
