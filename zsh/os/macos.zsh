@@ -1,6 +1,8 @@
 # zshrc for macos
 
 # environment variable
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
