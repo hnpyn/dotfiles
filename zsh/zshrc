@@ -14,12 +14,13 @@
 # =========================== Basic ===========================
 # My zsh path
 ZSH="$HOME/.zsh"
+
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=2000
 SAVEHIST=1000
 
-# =========================== OS rc ===========================
+# =========================== OS ==============================
 case "$(uname -s)" in
   Darwin )
     source "$ZSH/os/macos.zsh"
@@ -47,6 +48,8 @@ source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 eval "$(zoxide init zsh)"
 
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
       "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
     zle -N zle-keymap-select "";
@@ -57,14 +60,6 @@ source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 # ========================== Env var ==========================
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-# Lazy load nvm
-function nvm node npm npx pnpm {
-  unfunction nvm node npm npx pnpm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  "$0" "$@"
-}
 
 export http_proxy='http://127.0.0.1:7897'
 export https_proxy='http://127.0.0.1:7897'
