@@ -17,13 +17,6 @@ return {
 		},
 	},
 	{
-		"akinsho/git-conflict.nvim",
-		enabled = true,
-		version = "*",
-		event = { "BufReadPre", "BufNewFile" },
-		config = true,
-	},
-	{
 		"refractalize/oil-git-status.nvim",
 		enabled = true,
 		dependencies = "stevearc/oil.nvim",
@@ -91,8 +84,8 @@ return {
 		opts = {
 			gitbrowse = {
 				config = function(opts, defaults)
-					table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
-					opts.url_patterns["112%.29%.101%.105:28088"] = {
+					-- table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
+					opts.url_patterns["%d+%.%d+%.%d+%.%d+"] = {
 						branch = "/-/tree/{branch}",
 						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
 						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
