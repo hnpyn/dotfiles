@@ -48,8 +48,6 @@ source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 eval "$(zoxide init zsh)"
 
-eval "$(fnm env --use-on-cd --shell zsh)"
-
 if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
       "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
     zle -N zle-keymap-select "";
@@ -60,6 +58,12 @@ source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 # ========================== Env var ==========================
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 export all_proxy='socks5://127.0.0.1:7897'
 export http_proxy='http://127.0.0.1:7897'

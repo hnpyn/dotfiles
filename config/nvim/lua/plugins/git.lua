@@ -2,6 +2,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		enabled = true,
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "Git", "G" },
 		keys = {
 			{
@@ -13,6 +14,16 @@ return {
 				"<Leader>gv",
 				"<Cmd>vert Git<CR>",
 				desc = "Git: fugitive vertical",
+			},
+			{
+				"gh",
+				"<Cmd>diffget //2<CR>",
+				desc = "Git: fugitive accept ours",
+			},
+			{
+				"gl",
+				"<Cmd>diffget //3<CR>",
+				desc = "Git: fugitive accept theirs",
 			},
 		},
 	},

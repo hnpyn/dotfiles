@@ -3,3 +3,12 @@
   email = AUTHOREMAIL
 [credential]
   helper = GIT_CREDENTIAL_HELPER
+[init]
+  defaultBranch = main
+[merge]
+  tool = fugitive
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "fugitive"]
+  cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
