@@ -6,9 +6,9 @@
 
 # Requirements
 
-Required: git, zsh, xclip, file, ripgrep, fzf, fd, lsd, bat, chafa.
+Required: git, zsh, xclip, file, ripgrep, fzf, fd, zoxide, chafa.
 
-Optional: neovim, zoxide, yazi, kitty, lazygit, tmux, etc.
+Optional: neovim, yazi, kitty, lazygit, tmux, etc.
 
 # Install
 
