@@ -13,7 +13,6 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 			indent = { enable = true },
-			folds = { enable = true },
 			ensure_installed = {
 				"c",
 				"cpp",
@@ -41,6 +40,10 @@ return {
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
+			vim.o.foldmethod = "expr"
+			vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.o.foldlevel = 99
+			vim.o.foldlevelstart = 99
 		end,
 	},
 	{

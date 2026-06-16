@@ -54,7 +54,7 @@ return {
 			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
 			{ "[B", "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer prev" },
 			{ "]B", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer next" },
-			{ "<Leader>bD", "<Cmd>BufferLineColoseOthers<CR>", desc = "Delete other buffers" },
+			{ "<Leader>bD", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete other buffers" },
 			{ "<Leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
 			{ "<Leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
 		},

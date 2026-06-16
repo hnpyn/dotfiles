@@ -244,7 +244,7 @@ return {
 					indent = {
 						with_expanders = nil, -- true, -- if nil and file nesting is enabled, will enable expanders
 						expander_collapsed = icons.file.FoldClosed,
-						expander_expanded = icons.file.FoldOpen,
+						expander_expanded = icons.file.FoldOpened,
 						expander_highlight = "NeoTreeExpander",
 					},
 					icon = {

@@ -18,15 +18,16 @@ return {
 	-- 		vim.cmd("colorscheme gruvbox")
 	-- 	end,
 	-- },
-	-- {
-	-- 	"luisiacc/gruvbox-baby",
-	-- 	enabled = true,
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme gruvbox-baby")
-	-- 	end,
-	-- },
+	{
+		"luisiacc/gruvbox-baby",
+		enabled = true,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.gruvbox_baby_transparent_mode = 1
+			vim.cmd("colorscheme gruvbox-baby")
+		end,
+	},
 	-- {
 	-- 	"sainnhe/gruvbox-material",
 	-- 	lazy = false,
@@ -37,19 +38,19 @@ return {
 	-- 		vim.cmd("colorscheme gruvbox-material")
 	-- 	end,
 	-- },
-	{
-		"neanias/everforest-nvim",
-		version = false,
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				transparent_background_level = 2,
-			})
-			require("everforest").load()
-		end,
-	},
+	-- {
+	-- 	"neanias/everforest-nvim",
+	-- 	version = false,
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			background = "hard",
+	-- 			transparent_background_level = 2,
+	-- 		})
+	-- 		require("everforest").load()
+	-- 	end,
+	-- },
 	-- {
 	-- 	"catppuccin/nvim",
 	-- 	name = "catppuccin",
