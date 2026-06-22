@@ -19,8 +19,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		version = false,
-		lazy = false,
 		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile", "VeryLazy" },
 		cmd = { "TSUpdate", "TSInstall", "TSUninstall", "TSLog" },
 		keys = {
 			{

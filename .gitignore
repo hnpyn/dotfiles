@@ -3,6 +3,7 @@
 .codex
 .cursor
 .qoder
+.vscode/*
 
 # plugins
 **/plugins/
@@ -17,7 +18,8 @@
 # lazygit
 config/lazygit/state.yml
 
-# nvim lazy
+# nvim
+nvim.log
 config/nvim/lazy-lock.json
 
 # mpv
@@ -36,4 +38,3 @@ emacs.d/**/*.el
 *swp
 
 .DS_Store
-.vscode/*
