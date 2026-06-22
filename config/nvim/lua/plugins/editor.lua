@@ -1,20 +1,6 @@
 return {
 	{ "nvim-lua/plenary.nvim" },
 	{
-		"folke/snacks.nvim",
-		opts = {
-			bigfile = { enabled = true },
-			picker = { enabled = true, prompt = "> " },
-			quickfile = { enabled = true },
-		},
-		-- stylua: ignore
-		keys = {
-      { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-      { "<Leader>br", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-      { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-		},
-	},
-	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -115,18 +101,18 @@ return {
 				end,
 			}
 		end,
-		-- init = function()
-		--  -- use fzf-lua for vim.ui.select
-		-- 	local util = require("util")
-		-- 	util.on_very_lazy(function()
-		-- 		vim.ui.select = function(...)
-		-- 			require("lazy").load({ plugins = { "fzf-lua" } })
-		-- 			local opts = util.opts("fzf-lua") or {}
-		-- 			require("fzf-lua").register_ui_select(opts.ui_select or nil)
-		-- 			return vim.ui.select(...)
-		-- 		end
-		-- 	end)
-		-- end,
+		init = function()
+			-- use fzf-lua for vim.ui.select
+			local util = require("util")
+			util.on_very_lazy(function()
+				vim.ui.select = function(...)
+					require("lazy").load({ plugins = { "fzf-lua" } })
+					local opts = util.opts("fzf-lua") or {}
+					require("fzf-lua").register_ui_select(opts.ui_select or nil)
+					return vim.ui.select(...)
+				end
+			end)
+		end,
 		keys = {
 			{ "<leader>/", "<Cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
 			{ "<leader>:", "<Cmd>FzfLua command_history<CR>", desc = "Command History" },
@@ -175,7 +161,7 @@ return {
 		},
 		init = function()
 			if vim.fn.argc() == 1 then
-				local stat = vim.loop.fs_stat(vim.fn.argv(0))
+				local stat = vim.uv.fs_stat(vim.fn.argv(0))
 				if stat and stat.type == "directory" then
 					require("oil")
 				end
@@ -193,7 +179,7 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		enabled = true,
+		enabled = false,
 		cmd = "Neotree",
 		keys = {
 			{
@@ -209,7 +195,7 @@ return {
 			{
 				"<Leader>te",
 				function()
-					require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+					require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
 				end,
 				desc = "Explorer NeoTree (cwd)",
 			},

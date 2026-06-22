@@ -9,11 +9,8 @@ return {
 			"MasonLog",
 			"MasonUpdate",
 		},
+		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 		opts = {
-			ensure_installed = {
-				"stylua",
-				"lua-language-server",
-			},
 			ui = {
 				icons = {
 					package_installed = "✓",
@@ -22,14 +19,18 @@ return {
 				},
 			},
 		},
-		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"mason.nvim",
-			{ "mason-org/mason-lspconfig.nvim", opts = {} },
+			"mason-org/mason.nvim",
+			{
+				"mason-org/mason-lspconfig.nvim",
+				opts = {
+					ensure_installed = { "clangd", "lua_ls", "pyright", "ruff", "stylua" },
+				},
+			},
 		},
 		opts = {
 			servers = {

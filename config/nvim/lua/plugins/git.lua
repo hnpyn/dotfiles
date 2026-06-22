@@ -91,41 +91,6 @@ return {
 		},
 	},
 	{
-		"folke/snacks.nvim",
-		opts = {
-			gitbrowse = {
-				config = function(opts, defaults)
-					-- table.insert(opts.remote_patterns, { "^(http://%d+%.%d+%.%d+%.%d+)(/.*)$", "%1:28088%2" })
-					opts.url_patterns["%d+%.%d+%.%d+%.%d+"] = {
-						branch = "/-/tree/{branch}",
-						file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
-						permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
-						commit = "/-/commit/{commit}",
-					}
-				end,
-			},
-		},
-		keys = {
-			-- stylua: ignore
-      { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-			{
-				"<Leader>gl",
-				function()
-					Snacks.gitbrowse({
-						open = function(url)
-							url = url:gsub("^https://http://", "http://")
-							vim.fn.setreg("+", url)
-							vim.notify("Copied [origin](" .. url .. ")")
-						end,
-						notify = false,
-					})
-				end,
-				desc = "GitBrowse: Copy URL",
-				mode = { "n", "x" },
-			},
-		},
-	},
-	{
 		"ruifm/gitlinker.nvim",
 		enabled = false,
 		event = { "BufReadPre", "BufNewFile" },
@@ -147,12 +112,12 @@ return {
 
 			return {
 				callbacks = {
-					["112.29.101.105"] = function(url_data)
-						url_data.port = "28088"
+					["ip"] = function(url_data)
+						url_data.port = "port"
 						return get_custom_type_url(url_data)
 					end,
-					["ads.shineauto.com.cn"] = function(url_data)
-						url_data.port = "28088"
+					["domain"] = function(url_data)
+						url_data.port = "port"
 						return get_custom_type_url(url_data)
 					end,
 				},

@@ -2,7 +2,7 @@ local LazyUtil = require("lazy.core.util")
 
 local M = {}
 
-M.root_patterns = { ".git", "lua" }
+M.root_patterns = { ".git", "pyproject.toml" }
 
 ---Returns the color set by the current colorscheme for the `attr` attribute of
 ---the `hlgroup_name` highlight group in hexadecimal format.
@@ -32,7 +32,7 @@ function M.has(plugin)
 end
 
 function M.has_words_before()
-	unpack = unpack or table.unpack
+	local unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end

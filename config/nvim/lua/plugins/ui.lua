@@ -2,43 +2,6 @@ return {
 	{ "MunifTanjim/nui.nvim", lazy = true },
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
-		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
-		---@type snacks.Config
-		opts = {
-			dashboard = {
-				enabled = true,
-				preset = {
-          -- stylua: ignore start
-          keys = {
-            { icon = " ", key = "f", desc = "Find File", action = "<Cmd>FzfLua files<CR>" },
-            { icon = " ", key = "n", desc = "New File", action = "<Cmd>ene | startinsert<CR>" },
-            { icon = " ", key = "g", desc = "Find Text", action = "<Cmd>FzfLua live_grep<CR>" },
-            { icon = " ", key = "r", desc = "Recent Files", action = "<Cmd>FzfLua oldfiles<CR>" },
-            { icon = "󰙅 ", key = "e", desc = "File explorer", action = "<Cmd>Oil --float<CR>" },
-            { icon = " ", key = "c", desc = "Config", action = "<Cmd>e $MYVIMRC<CR>" },
-            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = "󰒲 ", key = "L", desc = "Lazy", action = "<Cmd>Lazy<CR>", enabled = package.loaded.lazy ~= nil },
-            { icon = " ", key = "q", desc = "Quit", action = "<Cmd>qa<CR>" },
-          },
-					-- stylua: ignore end
-					header = [[							
-███╗   ███╗███████╗   ████   ██╗██╗   ██╗██╗███╗   ███╗
-████╗ ████║██╔════╝   ████╗  ██║██║   ██║██║████╗ ████║
-██╔████╔██║█████╗     ██╔██╗ ██║╚██╗ ██╔╝██║██╔████╔██║
-██║╚██╔╝██║██╔══╝     ██║╚██╗██║ ╚████╔╝ ██║██║╚██╔╝██║
-██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║
-╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝]],
-				},
-			},
-			indent = { enabled = true },
-			input = { enabled = true, icon = "> " },
-			scope = { enabled = true },
-			scroll = { enabled = true },
-		},
-	},
-	{
 		"petertriho/nvim-scrollbar",
 		enabled = true,
 		event = { "BufReadPost", "BufNewFile" },
