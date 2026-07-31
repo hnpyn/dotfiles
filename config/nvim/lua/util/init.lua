@@ -1,5 +1,3 @@
-local LazyUtil = require("lazy.core.util")
-
 local M = {}
 
 M.root_patterns = { ".git", "pyproject.toml" }
@@ -27,6 +25,7 @@ function M.on_attach(on_attach)
 end
 
 ---@param plugin string
+---NOTE: requires lazy internals; only call from plugin specs (after lazy.setup)
 function M.has(plugin)
 	return require("lazy.core.config").spec.plugins[plugin] ~= nil
 end
@@ -60,6 +59,7 @@ function M.on_very_lazy(fn)
 end
 
 ---@param name string
+---NOTE: requires lazy internals; only call from plugin specs (after lazy.setup)
 function M.opts(name)
 	local plugin = require("lazy.core.config").plugins[name]
 	if not plugin then
@@ -115,6 +115,7 @@ end
 
 ---@param name string
 ---@param fn fun(name:string)
+---NOTE: requires lazy internals; only call from plugin specs (after lazy.setup)
 function M.on_load(name, fn)
 	local Config = require("lazy.core.config")
 	if Config.plugins[name] and Config.plugins[name]._.loaded then

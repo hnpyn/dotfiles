@@ -2,7 +2,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-keybindings = {}
+local keybindings = {}
 
 -- basic
 keybindings.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
@@ -13,38 +13,38 @@ function keybindings.basic()
     {
       key = "n",
       mods = "CTRL|SHIFT",
-      action = wezterm.action.SpawnCommandInNewWindow({ cwd = "~" }),
+      action = act.SpawnCommandInNewWindow({ cwd = "~" }),
     },
     {
       key = "t",
       mods = "CTRL|SHIFT",
-      action = wezterm.action.SpawnCommandInNewTab({ cwd = "~" }),
+      action = act.SpawnCommandInNewTab({ cwd = "~" }),
     },
     {
       key = "f",
       mods = "CTRL|SUPER",
-      action = "ToggleFullScreen",
+      action = act.ToggleFullScreen,
     },
     {
       key = "z",
       mods = "CTRL|SUPER",
-      action = "TogglePaneZoomState",
+      action = act.TogglePaneZoomState,
     },
     -- manage pane
     {
       key = "v",
       mods = "LEADER",
-      action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+      action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
     },
     {
       key = "s",
       mods = "LEADER",
-      action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+      action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
     },
     {
       key = "x",
       mods = "LEADER",
-      action = wezterm.action.CloseCurrentPane({ confirm = false }),
+      action = act.CloseCurrentPane({ confirm = false }),
     },
     {
       key = "H",

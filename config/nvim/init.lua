@@ -16,9 +16,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Map leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Load config
+require("config")
+
+-- Setup plugins
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
@@ -36,6 +41,3 @@ require("lazy").setup({
 		},
 	},
 })
-
--- Load config
-require("config")

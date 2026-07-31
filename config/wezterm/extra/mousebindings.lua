@@ -2,7 +2,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-mousebindings = {}
+local mousebindings = {}
 
 function mousebindings.basic()
 	local mouse = {
