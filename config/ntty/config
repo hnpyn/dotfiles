@@ -1,0 +1,36 @@
+# ███╗   ██╗████████╗████████╗██╗   ██╗
+# ████╗  ██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+# ██╔██╗ ██║   ██║      ██║    ╚████╔╝
+# ██║╚██╗██║   ██║      ██║     ╚██╔╝
+# ██║ ╚████║   ██║      ██║      ██║
+# ╚═╝  ╚═══╝   ╚═╝      ╚═╝      ╚═╝
+#
+# Ghostty syntax. Docs: https://ghostty.org/docs/config
+
+# --------------- Appearance ---------------
+theme = Gruvbox Dark Hard
+background-opacity = 0.9
+background-blur = 0
+window-decoration = none
+
+# --------------- Font ---------------
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+
+# --------------- Window ---------------
+window-width = 120
+window-height = 34
+# window-padding-x = 8
+# window-padding-y = 6
+
+# --------------- Clipboard ---------------
+# allow: skip OSC 52 prompts (local trust). Use ask to confirm.
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+
+# --------------- Terminal ---------------
+# Keep xterm-ghostty for full features. Sync terminfo once per host:
+#   infocmp -x xterm-ghostty | ssh HOST -- tic -x -
+# Or fall back:
+# term = xterm-256color
