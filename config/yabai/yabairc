@@ -35,10 +35,10 @@ yabai -m config mouse_action1 move
 # fn + 右键
 yabai -m config mouse_action2 resize
 # 焦点跟随鼠标 默认off: 关闭 autoraise:自动提升 autofocus: 自动对焦
-yabai -m config focus_follows_mouse autofocus
+yabai -m config focus_follows_mouse off
 # 设置鼠标是否跟随当前活动窗口 默认 off: 关闭 on: 开启
 # 不可与 focus_follows_mouse 同时开启
-yabai -m config mouse_follows_focus off
+yabai -m config mouse_follows_focus on
 
 # 修改窗口阴影 on: 打开 off: 关闭 float: 只显示浮动窗口的阴影
 yabai -m config window_shadow float
