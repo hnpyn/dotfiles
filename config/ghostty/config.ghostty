@@ -8,7 +8,7 @@
 # --------------- UI ---------------
 background-opacity = 0.9
 font-size = 14
-theme = Everforest Dark Hard
+theme = Gruvbox Dark Hard
 macos-titlebar-style = tabs
 
 # --------------- Keybindings ----------------

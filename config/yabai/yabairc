@@ -37,19 +37,17 @@ yabai -m config mouse_action2 resize
 # 焦点跟随鼠标 默认off: 关闭 autoraise:自动提升 autofocus: 自动对焦
 yabai -m config focus_follows_mouse autofocus
 # 设置鼠标是否跟随当前活动窗口 默认 off: 关闭 on: 开启
-yabai -m config mouse_follows_focus on
+# 不可与 focus_follows_mouse 同时开启
+yabai -m config mouse_follows_focus off
 
-# 浮动窗口问题在顶部
-yabai -m config window_topmost on
 # 修改窗口阴影 on: 打开 off: 关闭 float: 只显示浮动窗口的阴影
 yabai -m config window_shadow float
 
-# 窗口透明度设置
-yabai -m config window_opacity on
-# 配置活动窗口不透明度
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 1.0
-yabai -m config window_opacity_duration 0.0
+# 窗口透明度（需要 SIP 部分关闭才可用）
+yabai -m config window_opacity off
+# yabai -m config active_window_opacity 1.0
+# yabai -m config normal_window_opacity 1.0
+# yabai -m config window_opacity_duration 0.0
 
 # 在主显示器上的每个空间顶部添加 20 填充 底部添加 0 填充
 # yabai -m config external_bar main:20:0
@@ -63,7 +61,9 @@ yabai -m rule --add app="^访达$" manage=off
 yabai -m rule --add app="^日历$" manage=off
 yabai -m rule --add app="^照片$" manage=off
 yabai -m rule --add app="^系统设置$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^系统信息$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^pot$" manage=off
 yabai -m rule --add app="^ToDesk$" manage=off
@@ -73,6 +73,9 @@ yabai -m rule --add app="^Battle.net$" manage=off
 yabai -m rule --add app="^Hearthstone$" manage=off
 yabai -m rule --add app="^网易云音乐$" manage=off
 yabai -m rule --add app="^微信$" manage=off
+yabai -m rule --add app="^飞书$" manage=off
+yabai -m rule --add app="^Lark$" manage=off
+yabai -m rule --add app="^Feishu$" manage=off
 yabai -m rule --add app="^飞书视频$" manage=off
 yabai -m rule --add app="^飞书会议$" manage=off
 yabai -m rule --add app="^腾讯会议$" manage=off
