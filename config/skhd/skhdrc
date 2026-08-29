@@ -8,141 +8,123 @@
 # ╚═╝     ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
 # ====================================================================
 
-# ============================== DISPLAY SETTINGS ============================== #
-# Float or BSP
+# ============================== LAYOUT ============================== #
+# Whole space layout
 shift + cmd - f : yabai -m space --layout float
 shift + cmd - b : yabai -m space --layout bsp
 
-# focus window : h 左 / j 下 / k 上 / l 右
+# Toggle float and center on a 4x4 grid
+alt - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
+
+# Rotate the whole space 90 degrees
+alt - r : yabai -m space --rotate 90
+
+# Fullscreen
+shift + alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Grid (yabai-only). rows:cols:start-x:start-y:width:height
+ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
+ctrl + alt - up     : yabai -m window --grid 2:1:0:0:1:1
+ctrl + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+ctrl + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+ctrl + alt - down   : yabai -m window --grid 2:1:0:1:1:1
+
+# toggle window zoom
+alt - d : yabai -m window --toggle zoom-parent
+
+# ============================== FOCUS ============================== #
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east 
-# 交换窗口位置
+alt - l : yabai -m window --focus east
+
+# ============================== MOVE ============================== #
 shift + alt - h : yabai -m window --swap west
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east
-# 移动窗口位置
 shift + cmd - h : yabai -m window --warp west
 shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
-# 恢复原始窗口大小
+
+# ============================== RESIZE ============================== #
+# Shrink or grow the focused pane. --ratio always moves the parent split;
+# split-type is the next insert direction and is wrong on the newest window.
+# 0x1B minus, 0x18 equal. Positive delta grows the first child.
+alt - 0x1B : if [ "$(yabai -m query --windows --window | jq -r '."split-child"')" = "second_child" ]; then yabai -m window --ratio rel:0.05; else yabai -m window --ratio rel:-0.05; fi
+alt - 0x18 : if [ "$(yabai -m query --windows --window | jq -r '."split-child"')" = "second_child" ]; then yabai -m window --ratio rel:-0.05; else yabai -m window --ratio rel:0.05; fi
 ctrl + alt - 0 : yabai -m space --balance
-# 把浮动窗口左右平分整个屏幕  rows:cols:start-x:star-y:width:height  m行:n列:x:y:w:h
-# 最大化
-ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
-# 2分屏上
-ctrl + alt - up     : yabai -m window --grid 2:1:0:0:1:1
-# 2分屏左
-ctrl + alt - left   : yabai -m window --grid 1:2:0:0:1:1
-# 2分屏右
-ctrl + alt - right  : yabai -m window --grid 1:2:1:0:1:1
-# 2分屏下
-ctrl + alt - down   : yabai -m window --grid 2:1:0:1:1:1
-# # 4分屏左上
-# ctrl + alt - u : yabai -m window --grid 2:2:0:0:1:1
-# # 4分屏右上
-# ctrl + alt - i : yabai -m window --grid 2:2:1:0:1:1
-# # 4分屏左下
-# ctrl + alt - j : yabai -m window --grid 2:2:0:1:1:1
-# # 4分屏右下
-# ctrl + alt - k : yabai -m window --grid 2:2:1:1:1:1
-# # 3分屏左1
-# ctrl + alt - d : yabai -m window --grid 1:3:0:0:1:1
-# # 3分屏左2
-# ctrl + alt - e : yabai -m window --grid 1:3:0:0:2:1
-# # 3分屏中1
-# ctrl + alt - f : yabai -m window --grid 1:3:1:0:1:1
-# # 3分屏右2
-# ctrl + alt - t : yabai -m window --grid 1:3:1:0:2:1
-# # 3分屏右1
-# ctrl + alt - g : yabai -m window --grid 1:3:2:0:1:1
-# # 9分屏居中
-# ctrl + alt - c : yabai -m window --grid 3:3:1:1:1:1
 
-# 浮动/不浮动窗口 float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
+# ============================== SPACES ============================== #
+# Switch space
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
 
-alt - r : yabai -m space --rotate 90
+# Send window and follow
+shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
 
-# toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-shift + alt - f : yabai -m window --toggle zoom-fullscreen
+# Last visited space
+alt - tab : yabai -m space --focus recent
 
-# 调整窗口大小
-ctrl + alt + cmd - left : yabai -m window --resize left:-50:0; yabai -m window --resize right:-50:0
-ctrl + alt + cmd - down : yabai -m window --resize bottom:0:50; yabai -m window --resize top:0:50
-ctrl + alt + cmd - up : yabai -m window --resize top:0:-50; yabai -m window --resize bottom:0:-50
-ctrl + alt + cmd - right : yabai -m window --resize right:50:0; yabai -m window --resize left:50:0
+# Bring space onto this display
+ctrl + cmd - 1 : yabai -m space 1 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 1
+ctrl + cmd - 2 : yabai -m space 2 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 2
+ctrl + cmd - 3 : yabai -m space 3 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 3
+ctrl + cmd - 4 : yabai -m space 4 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 4
+ctrl + cmd - 5 : yabai -m space 5 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 5
+ctrl + cmd - 6 : yabai -m space 6 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 6
+ctrl + cmd - 7 : yabai -m space 7 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 7
+ctrl + cmd - 8 : yabai -m space 8 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 8
+ctrl + cmd - 9 : yabai -m space 9 --display "$(yabai -m query --displays --display | jq '.index')" && yabai -m space --focus 9
 
-# 重启 Yabai
-cmd + alt - r : /usr/bin/env osascript <<< "display notification \"正在重启 Yabai\" with title \"Yabai\""; yabai --restart-service
-
-# ================================ MULTI DESKTOP ================================
-# 创建一个新桌面，并把当前活动的窗口发送到新桌面，并且自动跳转到新桌面 需要jq支持 brew install jq
+# New space, send focused window, follow
 shift + alt - n : yabai -m space --create && \
                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
                   yabai -m window --space "${index}" && \
                   yabai -m space --focus "${index}"
-# 切换桌面
-ctrl + alt - 1 : yabai -m space --focus 1
-ctrl + alt - 2 : yabai -m space --focus 2
-ctrl + alt - 3 : yabai -m space --focus 3
-ctrl + alt - 4 : yabai -m space --focus 4
-ctrl + alt - 5 : yabai -m space --focus 5
-ctrl + alt - 6 : yabai -m space --focus 6
-ctrl + alt - 7 : yabai -m space --focus 7
-ctrl + alt - 8 : yabai -m space --focus 8
-ctrl + alt - 9 : yabai -m space --focus 9
-# 关闭当前桌面
+
+# Destroy current space
 cmd + alt - w : yabai -m space --destroy
 
-# 把窗口发送到桌面，并跟随过去 send window to desktop and follow focus
-# shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
-# shift + cmd - 1 : yabai -m window --space  1; yabai -m space --focus 1
-# shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
-# shift + cmd - 3 : yabai -m window --space  3; yabai -m space --focus 3
-# shift + cmd - 4 : yabai -m window --space  4; yabai -m space --focus 4
-# shift + cmd - 5 : yabai -m window --space  5; yabai -m space --focus 5
-# shift + cmd - 6 : yabai -m window --space  6; yabai -m space --focus 6
-# shift + cmd - 7 : yabai -m window --space  7; yabai -m space --focus 7
-# shift + cmd - 8 : yabai -m window --space  8; yabai -m space --focus 8
-# shift + cmd - 9 : yabai -m window --space  9; yabai -m space --focus 9
+# ============================== MONITORS ============================== #
+# ctrl-alt-arrows are grid; focus display uses the old yabai key
+# ctrl + alt - 3 : yabai -m display --focus 3
+ctrl + alt - z : yabai -m display --focus next
+ctrl + shift + alt - left  : yabai -m window --display west;  yabai -m display --focus west
+ctrl + shift + alt - right : yabai -m window --display east;  yabai -m display --focus east
+ctrl + shift + alt - up    : yabai -m window --display north; yabai -m display --focus north
+ctrl + shift + alt - down  : yabai -m window --display south; yabai -m display --focus south
 
-# ================================ APPS ================================
-cmd - return : open -na ntty
-
-# ================================ MULTI MONITOR ================================
-# focus monitora : 
-# ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
-
-# send window to monitor and follow focus
-# ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-
-# move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
-
-# increase window size
-# shift + alt - a : yabai -m window --resize left:-20:0
-# shift + alt - w : yabai -m window --resize top:0:-20
-
-# decrease window size
-# shift + cmd - s : yabai -m window --resize bottom:0:-20
-# shift + cmd - w : yabai -m window --resize top:0:20
-
-# set insertion point in focused container
-# ctrl + alt - h : yabai -m window --insert west
+# Move current space to the next display
+shift + alt - tab : yabai -m space --display next
 
 # toggle window split type
-# alt - e : yabai -m window --toggle split
+alt - e : yabai -m window --toggle split
 
 # toggle sticky(+float), sub-layer above, picture-in-picture
-# alt - p : yabai -m window --toggle sticky;\
-#           yabai -m window --sub-layer above;\
-#           yabai -m window --toggle pip
+alt - p : yabai -m window --toggle sticky;\
+          yabai -m window --sub-layer above;\
+          yabai -m window --toggle pip
 
+# ============================== APPS ============================== #
+# alt-enter: i3-style. cmd-enter is "send" in Lark / WeChat / Slack.
+alt - return : open -na ntty
+
+# ============================== SERVICE ============================== #
+cmd + alt - r : /usr/bin/env osascript <<< "display notification \"正在重启 Yabai\" with title \"Yabai\""; yabai --restart-service

@@ -1,0 +1,189 @@
+# ========================================================================
+#  █████╗ ███████╗██████╗  ██████╗ ███████╗██████╗  █████╗  ██████╗███████╗
+# ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝
+# ███████║█████╗  ██████╔╝██║   ██║███████╗██████╔╝███████║██║     █████╗
+# ██╔══██║██╔══╝  ██╔══██╗██║   ██║╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝
+# ██║  ██║███████╗██║  ██║╚██████╔╝███████║██║     ██║  ██║╚██████╗███████╗
+# ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝
+# ========================================================================
+
+# =============================== GENERAL ================================
+# Config schema version
+config-version = 2
+
+# Launch at login
+start-at-login = true
+# Re-read this file whenever it is saved
+auto-reload-config = true
+
+# Commands to run once the app has started
+after-startup-command = [
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=2.0',
+]
+# Commands to run when the binding mode changes
+on-mode-changed = []
+
+# Leave windows hidden by the macOS "Hide application" feature alone
+automatically-unhide-macos-hidden-apps = false
+# Keyboard layout used to resolve binding key names
+key-mapping.preset = 'qwerty'
+
+# ================================ LAYOUT ================================
+# Collapse containers that hold a single window
+enable-normalization-flatten-containers = true
+# Nested containers alternate between horizontal and vertical
+enable-normalization-opposite-orientation-for-nested-containers = true
+# Workspace root layout  tiles: side by side  accordion: stacked
+default-root-container-layout = 'tiles'
+# Workspace root orientation  horizontal  vertical  auto: by monitor shape
+default-root-container-orientation = 'auto'
+# Padding that hints at hidden windows in an accordion layout
+accordion-padding = 30
+
+# ================================= GAPS =================================
+# Gap between adjacent windows
+gaps.inner.horizontal = 4
+gaps.inner.vertical = 4
+# Gap between the tiled area and the screen edges
+gaps.outer.left = 4
+gaps.outer.bottom = 4
+gaps.outer.top = 4
+gaps.outer.right = 4
+
+# ============================== CALLBACKS ===============================
+# Hovering a window does not focus it; focus is keyboard driven
+focus-follows-mouse.enabled = false
+# Warp the pointer to the newly focused window, so it marks where focus is
+on-focus-changed = ['move-mouse window-lazy-center']
+# Warp the pointer when focus lands on another monitor
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# ============================== WORKSPACES ==============================
+# Workspaces that stay alive while empty
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+# ============================= WINDOW RULES =============================
+# Apps that open floating and stay out of the tiling tree
+# Look up a bundle id with: aerospace list-apps
+on-window-detected = [
+    { if = 'test %{app-bundle-id} = com.apple.Preview', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.finder', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.iCal', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.Photos', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.systempreferences', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.SystemProfiler', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.AppStore', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.pot-app.desktop', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.todesk.todesk', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = app.hiddify.com', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = io.github.clash-verge-rev.clash-verge-rev', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = io.tailscale.ipn.macsys', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = net.battle.bootstrapper || test %{app-bundle-id} = net.battle.net.app', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.blizzard.hearthstone', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.netease.163music', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.tencent.xinWeChat', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.electron.lark', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.tencent.meeting', run = 'layout floating' },
+]
+
+# ============================= KEY BINDINGS =============================
+[mode.main.binding]
+
+# --- Layout ---
+# Toggle the focused window between floating and tiling
+alt-t = 'layout floating tiling'
+# Flip the current container between horizontal and vertical
+alt-e = 'layout horizontal vertical'
+# Toggle the current container between tiles and accordion
+alt-comma = 'layout tiles accordion'
+# Flatten the workspace tree to a single layer
+ctrl-alt-enter = 'flatten-workspace-tree'
+alt-shift-f = 'fullscreen'
+
+# --- Focus ---
+# h: left  j: down  k: up  l: right
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# --- Move windows ---
+# Exchange window with its neighbour; focus stays on the same window
+alt-shift-h = 'swap left'
+alt-shift-j = 'swap down'
+alt-shift-k = 'swap up'
+alt-shift-l = 'swap right'
+# Re-insert window elsewhere in the tree, splitting the target
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+# Nest the focused window with its neighbour
+ctrl-alt-h = 'join-with left'
+ctrl-alt-j = 'join-with down'
+ctrl-alt-k = 'join-with up'
+ctrl-alt-l = 'join-with right'
+
+# --- Resize ---
+# Shrink or grow along the parent container's orientation
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+# Give every window an equal share of the screen
+ctrl-alt-0 = 'balance-sizes'
+
+# --- Workspaces ---
+# Switch workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-shift-1 = 'move-node-to-workspace --focus-follows-window 1'
+alt-shift-2 = 'move-node-to-workspace --focus-follows-window 2'
+alt-shift-3 = 'move-node-to-workspace --focus-follows-window 3'
+alt-shift-4 = 'move-node-to-workspace --focus-follows-window 4'
+alt-shift-5 = 'move-node-to-workspace --focus-follows-window 5'
+alt-shift-6 = 'move-node-to-workspace --focus-follows-window 6'
+alt-shift-7 = 'move-node-to-workspace --focus-follows-window 7'
+alt-shift-8 = 'move-node-to-workspace --focus-follows-window 8'
+alt-shift-9 = 'move-node-to-workspace --focus-follows-window 9'
+# Last visited workspace
+alt-tab = 'workspace-back-and-forth'
+# Bring workspace onto the focused monitor (other screen keeps its own)
+# Not cmd-alt-N: Finder uses ⌘⌥1–4 for icon/list/column/gallery view
+ctrl-cmd-1 = 'summon-workspace 1'
+ctrl-cmd-2 = 'summon-workspace 2'
+ctrl-cmd-3 = 'summon-workspace 3'
+ctrl-cmd-4 = 'summon-workspace 4'
+ctrl-cmd-5 = 'summon-workspace 5'
+ctrl-cmd-6 = 'summon-workspace 6'
+ctrl-cmd-7 = 'summon-workspace 7'
+ctrl-cmd-8 = 'summon-workspace 8'
+ctrl-cmd-9 = 'summon-workspace 9'
+
+# --- Monitors ---
+# Direction is spatial. This desk is stacked (PHL above built-in), so up/down
+# works; left/right no-ops until the displays sit side by side.
+ctrl-alt-left = 'focus-monitor --wrap-around left'
+ctrl-alt-right = 'focus-monitor --wrap-around right'
+ctrl-alt-up = 'focus-monitor --wrap-around up'
+ctrl-alt-down = 'focus-monitor --wrap-around down'
+ctrl-alt-shift-left = 'move-node-to-monitor --wrap-around --focus-follows-window left'
+ctrl-alt-shift-right = 'move-node-to-monitor --wrap-around --focus-follows-window right'
+ctrl-alt-shift-up = 'move-node-to-monitor --wrap-around --focus-follows-window up'
+ctrl-alt-shift-down = 'move-node-to-monitor --wrap-around --focus-follows-window down'
+# Move the whole current workspace to the other monitor
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# --- Apps ---
+# alt-enter: i3-style. cmd-enter is "send" in Lark / WeChat / Slack.
+alt-enter = 'exec-and-forget open -na ntty'
+
+# --- Service ---
+# Reload this file
+cmd-alt-r = 'reload-config'
+
