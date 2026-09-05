@@ -16,6 +16,11 @@ window-decoration = none
 # --------------- Font ---------------
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
+adjust-cell-height = 14%
+font-thicken = true
+font-thicken-strength = 40
+font-feature = calt
+font-feature = liga
 
 # --------------- Window ---------------
 window-width = 120
