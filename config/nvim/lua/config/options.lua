@@ -13,9 +13,9 @@ set.tabstop = 2
 set.termguicolors = true
 
 -- clipboard
--- providers from `:h clipboard`
+-- providers from `:h clipboard`; ignore `$TMUX` inside herdr
 local function has_clipboard_provider()
-	if os.getenv("TMUX") then
+	if os.getenv("TMUX") and not (os.getenv("HERDR_PANE_ID") or os.getenv("HERDR_ENV")) then
 		return true
 	end
 	if vim.fn.executable("pbcopy") == 1 then
