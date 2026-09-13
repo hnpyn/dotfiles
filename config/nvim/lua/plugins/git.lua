@@ -1,55 +1,55 @@
 return {
-	{
-		"tpope/vim-fugitive",
-		enabled = true,
-		event = { "BufReadPre", "BufNewFile" },
-		cmd = { "Git", "G" },
-		keys = {
-			{
-				"<Leader>gg",
-				"<Cmd>Git<CR>",
-				desc = "Git: fugitive",
-			},
-			{
-				"<Leader>gv",
-				"<Cmd>vert Git<CR>",
-				desc = "Git: fugitive vertical",
-			},
-			{
-				"gh",
-				"<Cmd>diffget //2<CR>",
-				desc = "Git: fugitive accept ours",
-			},
-			{
-				"gl",
-				"<Cmd>diffget //3<CR>",
-				desc = "Git: fugitive accept theirs",
-			},
-		},
-	},
-	{
-		"refractalize/oil-git-status.nvim",
-		enabled = true,
-		dependencies = "stevearc/oil.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			signs = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				changedelete = { text = "▎" },
-				untracked = { text = "▎" },
-			},
-			on_attach = function(buffer)
-				local gs = require("gitsigns")
+  {
+    "tpope/vim-fugitive",
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Git", "G" },
+    keys = {
+      {
+        "<Leader>gg",
+        "<Cmd>Git<CR>",
+        desc = "Git: fugitive",
+      },
+      {
+        "<Leader>gv",
+        "<Cmd>vert Git<CR>",
+        desc = "Git: fugitive vertical",
+      },
+      {
+        "gh",
+        "<Cmd>diffget //2<CR>",
+        desc = "Git: fugitive accept ours",
+      },
+      {
+        "gl",
+        "<Cmd>diffget //3<CR>",
+        desc = "Git: fugitive accept theirs",
+      },
+    },
+  },
+  {
+    "refractalize/oil-git-status.nvim",
+    enabled = true,
+    dependencies = "stevearc/oil.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      on_attach = function(buffer)
+        local gs = require("gitsigns")
 
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-				end
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
 
         -- stylua: ignore start
         -- navigation
@@ -86,8 +86,8 @@ return {
         map('n', '<leader>gtw', gs.toggle_word_diff, "Toggle Word Diff")
         -- text object
         map({ "o", "x" }, "ih", "<Cmd>Gitsigns select_hunk<CR>", "Select Hunk")
-				-- stylua: ignore end
-			end,
-		},
-	},
+        -- stylua: ignore end
+      end,
+    },
+  },
 }

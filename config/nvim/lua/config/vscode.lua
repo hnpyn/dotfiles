@@ -4,16 +4,16 @@
 local map = vim.keymap.set
 
 local function opts(desc)
-	return { desc = "" .. desc, noremap = true, silent = true }
+  return { desc = "" .. desc, noremap = true, silent = true }
 end
 
 -- the `vscode` module only exists when nvim is spawned by the extension,
 -- so require it lazily to keep this file loadable on its own
 ---@param name string
 local function action(name)
-	return function()
-		require("vscode").action(name)
-	end
+  return function()
+    require("vscode").action(name)
+  end
 end
 
 vim.g.mapleader = " "
@@ -21,7 +21,7 @@ vim.g.maplocalleader = "\\"
 
 -- clipboard goes through VSCode's API so remote hosts share the local one
 if vim.g.vscode_clipboard then
-	vim.g.clipboard = vim.g.vscode_clipboard
+  vim.g.clipboard = vim.g.vscode_clipboard
 end
 
 -- basic
