@@ -1,5 +1,13 @@
--- Bootstrap lazy.nvim
+-- bytecode cache for lua modules; independent of lazy
 vim.loader.enable()
+
+-- vscode-neovim: keymaps only, skip lazy and every terminal UI plugin
+if vim.g.vscode then
+	require("config.vscode")
+	return
+end
+
+-- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -16,14 +24,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Map leader key
+-- map leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Load config
+-- load config
 require("config")
 
--- Setup plugins
+-- setup plugins
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },

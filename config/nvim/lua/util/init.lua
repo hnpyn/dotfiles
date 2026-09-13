@@ -135,14 +135,6 @@ function M.on_load(name, fn)
 	end
 end
 
-function M.is_remote()
-	return os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") or os.getenv("SSH_CONNECTION")
-end
-
-function M.is_tmux()
-	return os.getenv("TMUX")
-end
-
 function M.get_diagnostic_text()
 	local line = vim.fn.line(".") - 1
 	local diagnostics = vim.diagnostic.get(0, { lnum = line })

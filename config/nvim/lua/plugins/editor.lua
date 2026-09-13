@@ -68,7 +68,7 @@ return {
 						ueberzug_scaler = "fit_contain",
 					},
 				},
-				-- Custom option to configure vim.ui.select
+				-- custom option to configure vim.ui.select
 				ui_select = function(fzf_opts, items)
 					return vim.tbl_deep_extend("force", fzf_opts, {
 						prompt = "> ",
@@ -137,7 +137,7 @@ return {
 				width_preview = 50,
 			},
 			options = {
-				-- Whether to use for editing directories
+				-- whether to use for editing directories
 				use_as_default_explorer = false,
 			},
 		},

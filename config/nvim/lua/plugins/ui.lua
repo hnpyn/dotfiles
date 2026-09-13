@@ -73,7 +73,7 @@ return {
 		config = function(_, opts)
 			local bufferline = require("bufferline")
 			bufferline.setup(opts)
-			-- Fix bufferline when restoring a session
+			-- fix bufferline when restoring a session
 			vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
 				callback = function()
 					vim.schedule(function()

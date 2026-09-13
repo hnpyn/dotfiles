@@ -1,7 +1,7 @@
--- Global mappings.
+-- global mappings
 local map = vim.keymap.set
 
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- see `:help vim.diagnostic.*`
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic go to prev" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic go to next" })
 map("n", "<Leader>e", function()
@@ -9,20 +9,20 @@ map("n", "<Leader>e", function()
 end, { desc = "Diagnostic open float" })
 -- map("n", "<Leader>ll", vim.diagnostic.setloclist, { desc = "Diagnostic set locllist" })
 
--- Use FzfLua
+-- use FzfLua
 map("n", "<Leader>ll", "<Cmd>FzfLua diagnostics_document<CR>", { desc = "Diagnostic locllist" })
 map("n", "<Leader>ls", "<Cmd>FzfLua lsp_document_symbols<CR>", { desc = "LSP: symbols" })
 
--- Use LspAttach autocommand to only map the following keys
+-- use LspAttach to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		-- Enable completion triggered by <c-x><c-o>
+		-- enable completion triggered by <c-x><c-o>
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		-- Buffer local mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		-- buffer local mappings
+		-- see `:help vim.lsp.*`
 		local function opts(desc)
 			return { desc = "LSP: " .. desc, buffer = ev.buf }
 		end

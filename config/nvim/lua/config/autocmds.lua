@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- highlight overrides
--- Colorschemes run `hi clear` on load, so overrides must be reapplied
+-- colorschemes run `hi clear` on load, so overrides must be reapplied
 -- on ColorScheme instead of relying on load order
 vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",

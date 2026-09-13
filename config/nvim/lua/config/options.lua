@@ -1,5 +1,4 @@
 local set = vim.o
-local util = require("util")
 
 -- basic
 set.autoindent = true
@@ -14,9 +13,41 @@ set.tabstop = 2
 set.termguicolors = true
 
 -- clipboard
-if util.is_remote() and not util.is_tmux() then
-	set.clipboard = "unnamedplus"
-	vim.g.clipboard = "osc52"
-else
-	set.clipboard = "unnamedplus"
+-- providers from `:h clipboard`
+local function has_clipboard_provider()
+	if os.getenv("TMUX") then
+		return true
+	end
+	if vim.fn.executable("pbcopy") == 1 then
+		return true
+	end
+	if os.getenv("WAYLAND_DISPLAY") and vim.fn.executable("wl-copy") == 1 then
+		return true
+	end
+	if os.getenv("DISPLAY") and (vim.fn.executable("xclip") == 1 or vim.fn.executable("xsel") == 1) then
+		return true
+	end
+	return false
+end
+
+set.clipboard = "unnamedplus"
+if not has_clipboard_provider() then
+	local osc52 = require("vim.ui.clipboard.osc52")
+	local function paste()
+		return {
+			vim.fn.split(vim.fn.getreg(""), "\n"),
+			vim.fn.getregtype(""),
+		}
+	end
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = osc52.copy("+"),
+			["*"] = osc52.copy("*"),
+		},
+		paste = {
+			["+"] = paste,
+			["*"] = paste,
+		},
+	}
 end
