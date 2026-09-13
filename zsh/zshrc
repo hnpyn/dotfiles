@@ -17,8 +17,8 @@ ZSH="$HOME/.zsh"
 
 # History
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=2000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=10000
 
 # =========================== OS ==============================
 case "$(uname -s)" in
@@ -32,6 +32,9 @@ esac
 
 # ========================== Aliases ==========================
 source "$ZSH/aliases.zsh"
+
+# ========================= Functions =========================
+source "$ZSH/functions.zsh"
 
 # ========================== Plugins ==========================
 PLUGINS="$ZSH/plugins"
@@ -60,14 +63,10 @@ source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
+if [ -x "$FNM_PATH/fnm" ]; then
   export PATH="$FNM_PATH:$PATH"
 fi
 eval "$(fnm env --use-on-cd --shell zsh)"
-
-export all_proxy='socks5://127.0.0.1:7897'
-export http_proxy='http://127.0.0.1:7897'
-export https_proxy='http://127.0.0.1:7897'
 
 # ========================== MISC =============================
 # Preferred editor for local and remote sessions
@@ -80,3 +79,11 @@ fi
 
 # Paste highlight
 zle_highlight=('paste:none')
+
+# pnpm
+export PNPM_HOME="/Users/n/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
