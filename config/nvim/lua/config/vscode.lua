@@ -19,7 +19,8 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- clipboard goes through VSCode's API so remote hosts share the local one
+-- clipboard
+vim.o.clipboard = "unnamedplus"
 if vim.g.vscode_clipboard then
   vim.g.clipboard = vim.g.vscode_clipboard
 end
