@@ -79,11 +79,3 @@ fi
 
 # Paste highlight
 zle_highlight=('paste:none')
-
-# pnpm
-export PNPM_HOME="/Users/n/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
