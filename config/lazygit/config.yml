@@ -40,6 +40,7 @@ git:
   pagers:
     - colorArg: always
       pager: delta --dark --paging=never --line-numbers --syntax-theme="Dracula"
+      # pager: delta --light --paging=never --line-numbers --syntax-theme="GitHub"
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
