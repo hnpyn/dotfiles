@@ -1,157 +1,66 @@
-return {
-  -- {
-  --   "RRethy/nvim-base16",
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- setup must be called before loading the colorscheme
-  --     -- Default options:
-  --     vim.cmd("colorscheme base16-gruvbox-dark")
-  --   end,
-  -- },
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.o.background = "dark"
-  --     vim.cmd("colorscheme gruvbox")
-  --   end,
-  -- },
-  {
-    "luisiacc/gruvbox-baby",
-    enabled = true,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_baby_transparent_mode = 1
-      vim.cmd("colorscheme gruvbox-baby")
-    end,
-  },
-  -- {
-  --   "sainnhe/gruvbox-material",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.o.background = "dark"
-  --     vim.cmd("let g:gruvbox_material_background = 'hard'")
-  --     vim.cmd("colorscheme gruvbox-material")
-  --   end,
-  -- },
-  -- {
-  --   "neanias/everforest-nvim",
-  --   version = false,
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("everforest").setup({
-  --       background = "hard",
-  --       transparent_background_level = 2,
-  --     })
-  --     require("everforest").load()
-  --   end,
-  -- },
+-- startup colorscheme; `<Leader>fc` only previews for the current session
+local colorscheme = "kanagawa"
+
+-- themes load on `:colorscheme <name>`; prefer family names (no variant) so the
+-- variant follows 'background', and never set vim.o.background here
+local themes = {
+  -- `:colorscheme catppuccin` is a builtin in nvim 0.12, use `catppuccin-nvim`
   -- {
   --   "catppuccin/nvim",
   --   name = "catppuccin",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("catppuccin").setup({
-  --       flavour = "auto",
-  --       transparent_background = true,
-  --       float = { transparent = true },
-  --     })
-  --     vim.cmd("colorscheme catppuccin")
-  --   end,
+  --   opts = { flavour = "auto", transparent_background = true, float = { transparent = true } },
   -- },
+  -- { "EdenEast/nightfox.nvim", opts = { options = { transparent = true } } },
+  -- { "ellisonleao/gruvbox.nvim" },
+  -- { "folke/tokyonight.nvim", opts = { style = "moon" } },
   -- {
-  --   "rose-pine/neovim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   name = "rose-pine",
-  --   config = function()
-  --     vim.cmd("colorscheme rose-pine-main")
+  --   "luisiacc/gruvbox-baby",
+  --   init = function()
+  --     vim.g.gruvbox_baby_transparent_mode = 1
   --   end,
   -- },
+  -- { "miikanissi/modus-themes.nvim" },
+  -- { "Mofiqul/dracula.nvim" },
+  -- { "Mofiqul/vscode.nvim", opts = { transparent = true } },
+  -- { "navarasu/onedark.nvim", opts = { style = "dark" } },
   -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     vim.cmd("colorscheme tokyonight-night")
-  --   end,
+  --   "neanias/everforest-nvim",
+  --   main = "everforest",
+  --   version = false,
+  --   opts = { background = "hard", transparent_background_level = 2 },
   -- },
+  -- { "oonamo/ef-themes.nvim", opts = { transparent = false } },
+  -- no family name, use a variant such as `github_dark_default`
+  -- { "projekt0n/github-nvim-theme" },
+  { "rebelot/kanagawa.nvim" },
+  -- { "rose-pine/neovim", name = "rose-pine", opts = { styles = { transparency = false } } },
   -- {
-  --   "Mofiqul/dracula.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd("colorscheme dracula")
+  --   "sainnhe/gruvbox-material",
+  --   init = function()
+  --     vim.g.gruvbox_material_background = "hard"
   --   end,
   -- },
-  -- {
-  --   "Mofiqul/vscode.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function()
-  --     require("vscode").setup({ transparent = true })
-  --     require("vscode").load("dark")
-  --   end,
-  -- },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd("colorscheme kanagawa")
-  --   end,
-  -- },
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("onedark").setup({ style = "darker" })
-  --     vim.cmd("colorscheme onedark")
-  --   end,
-  -- },
-  -- {
-  --   "shaunsingh/nord.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd("colorscheme nord")
-  --   end,
-  -- },
-  -- {
-  --   "datsfilipe/min-theme.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd("colorscheme min-theme")
-  --   end,
-  -- },
-  -- {
-  --   "oonamo/ef-themes.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("ef-themes").setup({ transparent = false })
-  --     vim.cmd("colorscheme ef-dark")
-  --   end,
-  -- },
-  -- {
-  --   "EdenEast/nightfox.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("nightfox").setup({
-  --       options = { transparent = true },
-  --     })
-  --     vim.cmd("colorscheme nightfox")
-  --   end,
-  -- },
+  -- setup() would otherwise apply its own default scheme before the requested one
+  -- { "tinted-theming/tinted-nvim", opts = { apply_scheme_on_startup = false } },
 }
+
+local specs = vim.tbl_map(function(spec)
+  return vim.tbl_extend("keep", spec, { lazy = true })
+end, themes)
+
+-- placeholder spec (installs nothing) that applies the colorscheme at startup
+table.insert(specs, {
+  name = "colorscheme-loader",
+  dir = vim.fn.stdpath("config"),
+  lazy = false,
+  priority = 10000, -- above other start plugins (snacks.nvim uses 1000)
+  config = function()
+    local ok, err = pcall(vim.cmd.colorscheme, colorscheme)
+    if not ok then
+      vim.notify("Could not load colorscheme '" .. colorscheme .. "': " .. err, vim.log.levels.ERROR)
+      vim.cmd.colorscheme("habamax")
+    end
+  end,
+})
+
+return specs

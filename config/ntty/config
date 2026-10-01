@@ -8,8 +8,8 @@
 # Ghostty syntax. Docs: https://ghostty.org/docs/config
 
 # --------------- Appearance ---------------
-theme = Gruvbox Dark Hard
-background-opacity = 0.9
+theme = Kanagawa Wave
+background-opacity = 1.0
 background-blur = 0
 window-decoration = none
 

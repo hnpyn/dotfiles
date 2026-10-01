@@ -122,6 +122,7 @@ return {
       { "<leader>fg", "<Cmd>FzfLua git_files<CR>", desc = "Find Git Files" },
       { "<leader>fr", "<Cmd>FzfLua oldfiles<CR>", desc = "Recent Files" },
       { "<leader>fR", "<Cmd>FzfLua resume<CR>", desc = "Resume Find" },
+      { "<leader>fc", "<Cmd>FzfLua colorschemes<CR>", desc = "Colorschemes" },
       -- git
       { "<leader>gc", "<Cmd>FzfLua git_commits<CR>", desc = "Git: Commits" },
       { "<leader>gs", "<Cmd>FzfLua git_status<CR>", desc = "Git: Status" },
