@@ -69,7 +69,7 @@ return {
             Lua = {
               single_file_support = true,
               diagnostics = {
-                globals = { "vim", "hs" },
+                globals = { "vim", "hs", "Snacks" },
               },
               workspace = {
                 checkThirdParty = true,
