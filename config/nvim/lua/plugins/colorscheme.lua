@@ -1,5 +1,5 @@
 -- startup colorscheme; `<Leader>fc` only previews for the current session
-local colorscheme = "kanagawa"
+local colorscheme = "modus"
 
 -- themes load on `:colorscheme <name>`; prefer family names (no variant) so the
 -- variant follows 'background', and never set vim.o.background here
@@ -19,7 +19,7 @@ local themes = {
   --     vim.g.gruvbox_baby_transparent_mode = 1
   --   end,
   -- },
-  -- { "miikanissi/modus-themes.nvim" },
+  { "miikanissi/modus-themes.nvim" },
   -- { "Mofiqul/dracula.nvim" },
   -- { "Mofiqul/vscode.nvim", opts = { transparent = true } },
   -- { "navarasu/onedark.nvim", opts = { style = "dark" } },
@@ -32,7 +32,7 @@ local themes = {
   -- { "oonamo/ef-themes.nvim", opts = { transparent = false } },
   -- no family name, use a variant such as `github_dark_default`
   -- { "projekt0n/github-nvim-theme" },
-  { "rebelot/kanagawa.nvim" },
+  -- { "rebelot/kanagawa.nvim" },
   -- { "rose-pine/neovim", name = "rose-pine", opts = { styles = { transparency = false } } },
   -- {
   --   "sainnhe/gruvbox-material",

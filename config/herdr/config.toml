@@ -1,8 +1,10 @@
 onboarding = false
 
 [theme]
-name = "kanagawa"
-auto_switch = false
+name = "one-light"
+auto_switch = true
+dark_name = "one-dark"
+light_name = "one-light"
 
 [ui]
 agent_panel_sort = "spaces"

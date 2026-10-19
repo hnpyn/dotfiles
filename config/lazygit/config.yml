@@ -13,12 +13,15 @@ gui:
       ".py":
         icon: ""
         color: "#FFD700"
-  theme:
-    lightTheme: false
+  # auto asks the terminal; falls back to dark if it doesn't answer
+  colorScheme: auto
+  theme: {}
+  darkTheme:
     selectedLineBgColor:
-      - "#4c4c4c" # "#dcdcdc"
-    selectedRangeBgColor:
       - "#4c4c4c"
+  lightTheme:
+    selectedLineBgColor:
+      - "#dcdcdc"
   commitLength:
     show: true
   mouseEvents: true
@@ -37,9 +40,9 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: 'single' # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --line-numbers --syntax-theme="ansi" # base16, base16-256, gruvbox
+      command: delta --light --paging=never --line-numbers --syntax-theme="ansi" # base16, base16-256, gruvbox
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'

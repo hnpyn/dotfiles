@@ -51,7 +51,7 @@ return {
           fill = { bg = get_hex("Normal", "bg") },
           background = { bg = get_hex("Normal", "bg") },
           separator = { bg = get_hex("Normal", "bg") },
-          indicator_selected = { fg = "#b16286" },
+          -- indicator_selected = { fg = "#b16286" },
           numbers = { bg = get_hex("Normal", "bg") },
           buffer = { bg = get_hex("Normal", "bg") },
           close_button = { bg = get_hex("Normal", "bg") },

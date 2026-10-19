@@ -8,7 +8,7 @@
 # Ghostty syntax. Docs: https://ghostty.org/docs/config
 
 # --------------- Appearance ---------------
-theme = Kanagawa Wave
+theme = dark:Apple System Colors,light:Apple System Colors Light
 background-opacity = 1.0
 background-blur = 0
 window-decoration = none
