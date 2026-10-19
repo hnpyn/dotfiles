@@ -11,7 +11,7 @@ proxyon() {
   export ALL_PROXY="$all_proxy"
   export HTTP_PROXY="$http_proxy"
   export HTTPS_PROXY="$https_proxy"
-  export no_proxy='localhost,127.0.0.1,::1,.local'
+  export no_proxy='localhost,127.0.0.1,::1,.local,.ts.net,100.64.0.0/10'
   export NO_PROXY="$no_proxy"
 }
 
