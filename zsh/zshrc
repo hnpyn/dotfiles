@@ -36,6 +36,15 @@ source "$ZSH/aliases.zsh"
 # ========================= Functions =========================
 source "$ZSH/functions.zsh"
 
+# ========================== Env var ==========================
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -x "$FNM_PATH/fnm" ]; then
+  export PATH="$FNM_PATH:$PATH"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # ========================== Plugins ==========================
 PLUGINS="$ZSH/plugins"
 
@@ -58,15 +67,6 @@ fi
 eval "$(starship init zsh)"
 
 source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-
-# ========================== Env var ==========================
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
-
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -x "$FNM_PATH/fnm" ]; then
-  export PATH="$FNM_PATH:$PATH"
-fi
-eval "$(fnm env --use-on-cd --shell zsh)"
 
 # ========================== MISC =============================
 # Preferred editor for local and remote sessions
