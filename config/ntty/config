@@ -15,6 +15,11 @@ window-decoration = none
 
 # --------------- Font ---------------
 font-family = JetBrainsMono Nerd Font Mono
+font-family = Sarasa Term SC
+font-family = Sarasa Mono SC
+font-family = Maple Mono CN
+font-family = PingFang SC
+font-family = Apple Color Emoji
 font-size = 14
 adjust-cell-height = 14%
 font-thicken = true
