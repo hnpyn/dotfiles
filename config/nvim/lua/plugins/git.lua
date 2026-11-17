@@ -35,6 +35,42 @@ return {
     opts = {},
   },
   {
+    "muleyuck/conflux.nvim",
+    event = "BufReadPost",
+    opts = {
+      -- default hexes are dark-only; link Diff* so light/dark both stay readable
+      highlights = {
+        -- ours = HEAD (already here); theirs = incoming
+        ours = { link = "DiffText" },
+        ours_marker = { link = "DiffText" },
+        ancestor = { link = "DiffChange" },
+        ancestor_marker = { link = "DiffChange" },
+        separator = { link = "DiffChange" },
+        theirs = { link = "DiffAdd" },
+        theirs_marker = { link = "DiffAdd" },
+        keymap_hint = { link = "Comment" },
+        all_keymap_hint = { link = "Comment" },
+      },
+      -- plugin qf uses cwd's git root; we open from the buffer's repo instead
+      quickfix_keymaps = { open = false },
+    },
+    keys = {
+      {
+        "<Leader>cq",
+        function()
+          local file = vim.api.nvim_buf_get_name(0)
+          local dir = (file ~= "" and vim.fn.fnamemodify(file, ":p:h")) or vim.fn.getcwd()
+          local root = vim.fs.root(dir, { ".git" }) or dir
+          local prev = vim.fn.getcwd()
+          vim.cmd.lcd(vim.fn.fnameescape(root))
+          require("conflux.quickfix").quickfix()
+          vim.cmd.lcd(vim.fn.fnameescape(prev))
+        end,
+        desc = "Conflux: conflict quickfix (buffer repo)",
+      },
+    },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {

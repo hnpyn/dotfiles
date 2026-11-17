@@ -1,5 +1,5 @@
 -- startup colorscheme; `<Leader>fc` only previews for the current session
-local colorscheme = "modus"
+local colorscheme = "claude"
 
 -- themes load on `:colorscheme <name>`; prefer family names (no variant) so the
 -- variant follows 'background', and never set vim.o.background here
@@ -10,38 +10,40 @@ local themes = {
   --   name = "catppuccin",
   --   opts = { flavour = "auto", transparent_background = true, float = { transparent = true } },
   -- },
-  -- { "EdenEast/nightfox.nvim", opts = { options = { transparent = true } } },
-  -- { "ellisonleao/gruvbox.nvim" },
-  -- { "folke/tokyonight.nvim", opts = { style = "moon" } },
-  -- {
-  --   "luisiacc/gruvbox-baby",
-  --   init = function()
-  --     vim.g.gruvbox_baby_transparent_mode = 1
-  --   end,
-  -- },
-  { "miikanissi/modus-themes.nvim" },
+  { "hnpyn/claude-theme.nvim", opts = { transparent = false } },
   -- { "Mofiqul/dracula.nvim" },
-  -- { "Mofiqul/vscode.nvim", opts = { transparent = true } },
-  -- { "navarasu/onedark.nvim", opts = { style = "dark" } },
+  -- { "oonamo/ef-themes.nvim", opts = { transparent = false } },
   -- {
   --   "neanias/everforest-nvim",
   --   main = "everforest",
   --   version = false,
   --   opts = { background = "hard", transparent_background_level = 2 },
   -- },
-  -- { "oonamo/ef-themes.nvim", opts = { transparent = false } },
   -- no family name, use a variant such as `github_dark_default`
   -- { "projekt0n/github-nvim-theme" },
-  -- { "rebelot/kanagawa.nvim" },
-  -- { "rose-pine/neovim", name = "rose-pine", opts = { styles = { transparency = false } } },
+  -- { "kryptamine/gruber-darker-renaissance" },
+  -- { "ellisonleao/gruvbox.nvim" },
+  -- {
+  --   "luisiacc/gruvbox-baby",
+  --   init = function()
+  --     vim.g.gruvbox_baby_transparent_mode = 1
+  --   end,
+  -- },
   -- {
   --   "sainnhe/gruvbox-material",
   --   init = function()
   --     vim.g.gruvbox_material_background = "hard"
   --   end,
   -- },
+  -- { "rebelot/kanagawa.nvim" },
+  -- { "miikanissi/modus-themes.nvim" },
+  -- { "EdenEast/nightfox.nvim", opts = { options = { transparent = true } } },
+  -- { "navarasu/onedark.nvim", opts = { style = "dark" } },
+  -- { "rose-pine/neovim", name = "rose-pine", opts = { styles = { transparency = false } } },
   -- setup() would otherwise apply its own default scheme before the requested one
   -- { "tinted-theming/tinted-nvim", opts = { apply_scheme_on_startup = false } },
+  -- { "folke/tokyonight.nvim", opts = { style = "moon" } },
+  -- { "Mofiqul/vscode.nvim", opts = { transparent = true } },
 }
 
 local specs = vim.tbl_map(function(spec)

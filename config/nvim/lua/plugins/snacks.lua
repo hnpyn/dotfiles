@@ -15,10 +15,10 @@ return {
         preset = {
           -- stylua: ignore start
           keys = {
-            { icon = " ", key = "f", desc = "Find File", action = "<Cmd>FzfLua files<CR>" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
             { icon = " ", key = "n", desc = "New File", action = "<Cmd>ene | startinsert<CR>" },
-            { icon = " ", key = "g", desc = "Find Text", action = "<Cmd>FzfLua live_grep<CR>" },
-            { icon = " ", key = "r", desc = "Recent Files", action = "<Cmd>FzfLua oldfiles<CR>" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.picker.grep()" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
             { icon = "󰙅 ", key = "e", desc = "File explorer", action = "<Cmd>Oil --float<CR>" },
             { icon = " ", key = "c", desc = "Config", action = "<Cmd>e $MYVIMRC<CR>" },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
@@ -33,6 +33,38 @@ return {
 ██║╚██╔╝██║██╔══╝     ██║╚██╗██║ ╚████╔╝ ██║██║╚██╔╝██║
 ██║ ╚═╝ ██║███████╗██╗██║ ╚████║  ╚██╔╝  ██║██║ ╚═╝ ██║
 ╚═╝     ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝     ╚═╝]],
+        },
+      },
+
+      -- kitty graphics
+      image = {
+        enabled = true,
+        convert = {
+          magick = {
+            -- PNG output is lossless. `-quality 10` is zlib level 1 (faster encode,
+            -- same pixels). `1600x900>` only shrinks images larger than a preview pane.
+            default = { "{src}[0]", "-scale", "1600x900>", "-quality", "10", "-strip" },
+          },
+        },
+      },
+
+      picker = {
+        enabled = true,
+        ui_select = true,
+        sources = {
+          files = { hidden = true },
+          -- list every symbol the LSP returns
+          lsp_symbols = { filter = { default = true } },
+          select = {
+            kinds = {
+              codeaction = {
+                layout = {
+                  preset = "vertical",
+                  layout = { width = 0.5, height = 0.8 },
+                },
+              },
+            },
+          },
         },
       },
 
@@ -61,6 +93,18 @@ return {
       { "<Leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
       { "<Leader>br", function() Snacks.rename.rename_file() end, desc = "Rename File" },
       { "<Leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+
+      -- finder
+      { "<Leader>/", function() Snacks.picker.grep() end, desc = "Live Grep" },
+      { "<Leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+      { "<Leader>fb", function() Snacks.picker.buffers() end, desc = "Find Buffers" },
+      { "<Leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+      { "<Leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+      { "<Leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
+      { "<Leader>fR", function() Snacks.picker.resume() end, desc = "Resume Find" },
+      { "<Leader>fc", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+      { "<Leader>gc", function() Snacks.picker.git_log() end, desc = "Git: Commits" },
+      { "<Leader>gs", function() Snacks.picker.git_status() end, desc = "Git: Status" },
 
       -- git
       { "<Leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },

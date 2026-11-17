@@ -1,17 +1,34 @@
--- global mappings
-local map = vim.keymap.set
+-- stylua: ignore start
+local global_keys = {
+  -- see `:help vim.diagnostic.*`
+  { "[d", vim.diagnostic.goto_prev, desc = "Diagnostic go to prev" },
+  { "]d", vim.diagnostic.goto_next, desc = "Diagnostic go to next" },
+  { "<Leader>e", function() vim.diagnostic.open_float({ border = "rounded" }) end, desc = "Diagnostic open float" },
+  -- { "<Leader>ll", vim.diagnostic.setloclist, desc = "Diagnostic set locllist" },
+  { "<Leader>ll", function() Snacks.picker.diagnostics_buffer() end, desc = "Diagnostic locllist" },
+  { "<Leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "LSP: symbols" },
+}
 
--- see `:help vim.diagnostic.*`
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic go to prev" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic go to next" })
-map("n", "<Leader>e", function()
-  vim.diagnostic.open_float({ border = "rounded" })
-end, { desc = "Diagnostic open float" })
--- map("n", "<Leader>ll", vim.diagnostic.setloclist, { desc = "Diagnostic set locllist" })
+local lsp_keys = {
+  -- see `:help vim.lsp.*`
+  { "gd", function() Snacks.picker.lsp_definitions() end, desc = "go to definition" },
+  { "gD", function() Snacks.picker.lsp_declarations() end, desc = "go to declaration" },
+  { "gri", function() Snacks.picker.lsp_implementations() end, desc = "go to implementation" },
+  { "grr", function() Snacks.picker.lsp_references() end, desc = "go to reference" },
+  { "grt", function() Snacks.picker.lsp_type_definitions() end, desc = "go to type definition" },
+  { "grn", vim.lsp.buf.rename, desc = "rename" },
+  { "gra", vim.lsp.buf.code_action, desc = "code action", mode = { "n", "v" } },
+  { "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, desc = "hover documentation" },
+  { "gK", function() vim.lsp.buf.signature_help({ border = "rounded" }) end, desc = "signature help" },
+  { "<Leader>wa", vim.lsp.buf.add_workspace_folder, desc = "add workspace folder" },
+  { "<Leader>wr", vim.lsp.buf.remove_workspace_folder, desc = "remove workspace folder" },
+  { "<Leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, desc = "list workspace folders" },
+}
+-- stylua: ignore end
 
--- use FzfLua
-map("n", "<Leader>ll", "<Cmd>FzfLua diagnostics_document<CR>", { desc = "Diagnostic locllist" })
-map("n", "<Leader>ls", "<Cmd>FzfLua lsp_document_symbols<CR>", { desc = "LSP: symbols" })
+for _, k in ipairs(global_keys) do
+  vim.keymap.set(k.mode or "n", k[1], k[2], { desc = k.desc })
+end
 
 -- use LspAttach to only map the following keys
 -- after the language server attaches to the current buffer
@@ -21,32 +38,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- buffer local mappings
-    -- see `:help vim.lsp.*`
-    local function opts(desc)
-      return { desc = "LSP: " .. desc, buffer = ev.buf }
+    for _, k in ipairs(lsp_keys) do
+      vim.keymap.set(k.mode or "n", k[1], k[2], { desc = "LSP: " .. k.desc, buffer = ev.buf })
     end
-
-    -- use FzfLua lsp_* instead
-    map("n", "gd", "<Cmd>FzfLua lsp_definitions<CR>", opts("go to definition"))
-    map("n", "gD", "<Cmd>FzfLua lsp_declarations<CR>", opts("go to declaration"))
-    map("n", "gri", "<Cmd>FzfLua lsp_implementations<CR>", opts("go to implementation"))
-    map("n", "grr", "<Cmd>FzfLua lsp_references<CR>", opts("go to reference"))
-    map("n", "grt", "<Cmd>FzfLua lsp_typedefs<CR>", opts("go to type definition"))
-    map("n", "grn", vim.lsp.buf.rename, opts("rename"))
-    map({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts("code action"))
-
-    map("n", "K", function()
-      vim.lsp.buf.hover({ border = "rounded" })
-    end, opts("hover documentation"))
-    map("n", "gK", function()
-      vim.lsp.buf.signature_help({ border = "rounded" })
-    end, opts("signature help"))
-
-    map("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, opts("add workspace folder"))
-    map("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, opts("remove workspace folder"))
-    map("n", "<Leader>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts("list workspace folders"))
   end,
 })

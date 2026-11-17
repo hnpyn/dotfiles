@@ -32,75 +32,56 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    enabled = true,
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = { "FzfLua" },
-    opts = function()
-      local img_previewer ---@type string[]?
-      for _, v in ipairs({
-        { cmd = "ueberzug", args = {} },
-        { cmd = "chafa", args = { "{file}", "--format=symbols" } },
-        { cmd = "viu", args = { "-b" } },
-      }) do
-        if vim.fn.executable(v.cmd) == 1 then
-          img_previewer = vim.list_extend({ v.cmd }, v.args)
-          break
-        end
-      end
-      return {
-        fzf_colors = true,
-        fzf_opts = {
-          ["--no-scrollbar"] = true,
+    opts = {
+      fzf_colors = true,
+      fzf_opts = {
+        ["--no-scrollbar"] = true,
+      },
+      files = {
+        fd_opts = [[--color=never --hidden --type f --type l --exclude .git]],
+        rg_opts = [[--color=never --hidden --files -g "!.git"]],
+      },
+      previewers = {
+        builtin = {
+          -- shell previewers (ueberzug/chafa/viu) run before snacks and would win
+          snacks_image = { enabled = true, render_inline = true },
         },
-        files = {
-          fd_opts = [[--color=never --hidden --type f --type l --exclude .git]],
-          rg_opts = [[--color=never --hidden --files -g "!.git"]],
-        },
-        previewers = {
-          builtin = {
-            extensions = {
-              ["png"] = img_previewer,
-              ["jpg"] = img_previewer,
-              ["jpeg"] = img_previewer,
-              ["gif"] = img_previewer,
-              ["webp"] = img_previewer,
-            },
-            ueberzug_scaler = "fit_contain",
+      },
+      -- custom option to configure vim.ui.select
+      ui_select = function(fzf_opts, items)
+        return vim.tbl_deep_extend("force", fzf_opts, {
+          prompt = "> ",
+          winopts = {
+            title = " " .. vim.trim((fzf_opts.prompt or "Select"):gsub("%s*:%s*$", "")) .. " ",
+            title_pos = "center",
           },
-        },
-        -- custom option to configure vim.ui.select
-        ui_select = function(fzf_opts, items)
-          return vim.tbl_deep_extend("force", fzf_opts, {
-            prompt = "> ",
-            winopts = {
-              title = " " .. vim.trim((fzf_opts.prompt or "Select"):gsub("%s*:%s*$", "")) .. " ",
-              title_pos = "center",
-            },
-          }, fzf_opts.kind == "codeaction" and {
-            winopts = {
+        }, fzf_opts.kind == "codeaction" and {
+          winopts = {
+            layout = "vertical",
+            -- height is number of items minus 15 lines for the preview, with a max of 80% screen height
+            height = math.floor(math.min(vim.o.lines * 0.8 - 16, #items + 4) + 0.5) + 16,
+            width = 0.5,
+            preview = not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = 0, name = "vtsls" })) and {
               layout = "vertical",
-              -- height is number of items minus 15 lines for the preview, with a max of 80% screen height
-              height = math.floor(math.min(vim.o.lines * 0.8 - 16, #items + 4) + 0.5) + 16,
-              width = 0.5,
-              preview = not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = 0, name = "vtsls" })) and {
-                layout = "vertical",
-                vertical = "down:15,border-top",
-                hidden = "hidden",
-              } or {
-                layout = "vertical",
-                vertical = "down:15,border-top",
-              },
+              vertical = "down:15,border-top",
+              hidden = "hidden",
+            } or {
+              layout = "vertical",
+              vertical = "down:15,border-top",
             },
-          } or {
-            winopts = {
-              width = 0.5,
-              -- height is number of items, with a max of 80% screen height
-              height = math.floor(math.min(vim.o.lines * 0.8, #items + 4) + 0.5),
-            },
-          })
-        end,
-      }
-    end,
+          },
+        } or {
+          winopts = {
+            width = 0.5,
+            -- height is number of items, with a max of 80% screen height
+            height = math.floor(math.min(vim.o.lines * 0.8, #items + 4) + 0.5),
+          },
+        })
+      end,
+    },
     init = function()
       -- use fzf-lua for vim.ui.select
       local util = require("util")
