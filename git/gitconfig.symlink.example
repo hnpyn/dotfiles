@@ -6,9 +6,10 @@
 [init]
   defaultBranch = main
 [merge]
-  tool = fugitive
+  tool = conflux
 [mergetool]
   prompt = false
   keepBackup = false
-[mergetool "fugitive"]
-  cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
+[mergetool "conflux"]
+  cmd = nvim -f "$MERGED"
+  trustExitCode = true
