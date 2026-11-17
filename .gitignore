@@ -33,6 +33,11 @@ emacs.d/transient/
 emacs.d/recentf
 emacs.d/**/*.el
 
+# ntty7
+config/ntty7/*
+!config/ntty7/config.json
+!config/ntty7/themes/
+
 # tmp
 *~
 *swp

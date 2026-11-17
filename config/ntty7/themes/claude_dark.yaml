@@ -1,0 +1,25 @@
+name: Claude Dark
+background: "#1f1e1b"
+foreground: "#f0eee6"
+accent: "#d97757"
+cursor: "#d97757"
+selection: "#393834"
+ansi:
+  normal:
+    - "#302f2c"
+    - "#e05252"
+    - "#4eba65"
+    - "#e0a345"
+    - "#6a9bcc"
+    - "#9a86fd"
+    - "#4db3a2"
+    - "#b5b3a9"
+  bright:
+    - "#7c7b74"
+    - "#d97757"
+    - "#6fd182"
+    - "#ecc06c"
+    - "#87b4e0"
+    - "#b1b9f9"
+    - "#6ccac0"
+    - "#faf9f5"

@@ -1,0 +1,25 @@
+name: Claude Light
+background: "#faf9f5"
+foreground: "#141413"
+accent: "#d97757"
+cursor: "#d97757"
+selection: "#e8e6dc"
+ansi:
+  normal:
+    - "#141413"
+    - "#b5332a"
+    - "#27794b"
+    - "#9a5b13"
+    - "#2c5ea8"
+    - "#6b4ea2"
+    - "#1d6f72"
+    - "#87867f"
+  bright:
+    - "#5e5d59"
+    - "#d97757"
+    - "#35945e"
+    - "#b87324"
+    - "#4377c4"
+    - "#8465bd"
+    - "#2b8a8e"
+    - "#f0eee6"
