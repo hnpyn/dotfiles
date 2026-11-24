@@ -3,12 +3,12 @@ background: "#faf9f5"
 foreground: "#141413"
 accent: "#d97757"
 cursor: "#d97757"
-selection: "#e8e6dc"
+selection: "#dfd9cc"
 ansi:
   normal:
     - "#141413"
     - "#be3b30"
-    - "#2f7d44"
+    - "#4f7532"
     - "#965a14"
     - "#2f67b8"
     - "#7b3fa0"
@@ -17,7 +17,7 @@ ansi:
   bright:
     - "#5e5d59"
     - "#d97757"
-    - "#35945e"
+    - "#588238"
     - "#b87324"
     - "#4377c4"
     - "#8465bd"
