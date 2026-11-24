@@ -6,7 +6,7 @@ return {
     enabled = true,
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      handlers = { gitsigns = true },
+      providers = { gitsigns = true },
     },
   },
   {
