@@ -35,7 +35,7 @@
   "notify_threshold_secs": 10,
   "confirm_close": "when-busy",
   "bell": "visual",
-  "prompt_editor": true,
+  "prompt_editor": false,
   "tab_completion": false,
   "history_search": true,
   "cursor_style": "block",

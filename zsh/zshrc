@@ -50,8 +50,19 @@ PLUGINS="$ZSH/plugins"
 
 autoload -Uz compinit && compinit
 
+(( $+commands[fzf] )) && source <(fzf --zsh)
+
 source "$PLUGINS/fzf-tab/fzf-tab.plugin.zsh"
 source "$ZSH/fzf/fzf-tab.zsh"
+
+source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-tab-complete)
+
+zvm_after_init_commands+=(
+  '(( $+widgets[fzf-history-widget] )) && bindkey -M viins "^R" fzf-history-widget && bindkey -M vicmd "^R" redo'
+)
+source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 eval "$(zoxide init zsh)"
 
@@ -61,15 +72,7 @@ if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
 fi
 eval "$(starship init zsh)"
 
-if [[ "$TERM_PROGRAM" != "tty7" && -z "$TTY7_PANE" && -z "$NTTY7_PANE" ]]; then
-  source "$PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=96'
-
-  source "$PLUGINS/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-  source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-else
-  bindkey -e
-fi
+source "$PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 
 # ========================== MISC =============================
 # Preferred editor for local and remote sessions

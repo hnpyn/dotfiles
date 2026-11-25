@@ -1,6 +1,7 @@
 export RUNEWIDTH_EASTASIAN=0
 export FZF_DEFAULT_OPTS="--preview 'bash ~/.zsh/fzf/file_preview.sh {}' --layout=reverse --height=48 --color=16"
 export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude .idea --exclude .vscode --exclude .sass-cache --exclude node_modules --exclude build --exclude dist --exclude vendor"
+export FZF_CTRL_R_OPTS="--preview='' --preview-window=hidden"
 
 typeset -a _fzf_tab_base_flags=(--layout=reverse --height=24 --color=16)
 
