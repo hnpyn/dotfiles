@@ -2,7 +2,6 @@
   "font_family": "JetBrainsMono Nerd Font Mono",
   "font_fallbacks": [
     "Menlo",
-    "Hasklug Nerd Font Mono",
     "Sarasa Term SC",
     "PingFang SC",
     "Apple Color Emoji"
@@ -37,7 +36,7 @@
   "confirm_close": "when-busy",
   "bell": "visual",
   "prompt_editor": true,
-  "tab_completion": true,
+  "tab_completion": false,
   "history_search": true,
   "cursor_style": "block",
   "prompt_cursor_style": "follow",
