@@ -17,8 +17,9 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting $ZSH/plu
 echo ''
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/plugins/zsh-autosuggestions
 echo ''
-git clone https://github.com/jeffreytse/zsh-vi-mode.git $ZSH/plugins/zsh-vi-mode
-echo ''
+# Replaced by lightweight native zsh/vi-mode.zsh
+# git clone https://github.com/jeffreytse/zsh-vi-mode.git $ZSH/plugins/zsh-vi-mode
+# echo ''
 curl -sS https://starship.rs/install.sh | sh
 echo ''
 
